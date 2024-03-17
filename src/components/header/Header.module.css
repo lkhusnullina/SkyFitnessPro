@@ -18,8 +18,10 @@
     font-size: 16px;
     line-height: 24px;
     text-align: center;
-    /* width: 45px;
-    height: 24px; */
-
-
+}
+.header_btn:hover {
+    background-color: #2D1F79;
+}
+.header_btn:active {
+    background-color: #3B29A1;
 }
