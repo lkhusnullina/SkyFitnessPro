@@ -1,3 +1,4 @@
+import Button from "../Buttons/Button";
 import styles from "./Header.module.css";
 
 
@@ -6,7 +7,7 @@ function Header(){
         <div>
             <div className={styles.header_block}>
                 <img src="images/header_logo.png" />
-                <button>Войти</button>
+                <Button/>
             </div>
         </div>
     )
