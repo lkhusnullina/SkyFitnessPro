@@ -3,3 +3,26 @@
     display: flex;
     justify-content: space-between;
 }
+.header_btn {
+    Width: 77px;
+    Height: 36px;
+    margin-top: 24px;
+    margin-left: 1223px;
+    border-radius: 46px;
+    Padding: 5px, 16px, 7px, 16px;
+    Gap: 8px;
+    background-color: #140D40;
+    color: #ffff;
+    font: StratosSkyeng;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    /* width: 45px;
+    height: 24px; */
+
+
+}
+.header_btnActive {
+
+}
