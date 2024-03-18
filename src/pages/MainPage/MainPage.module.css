@@ -34,6 +34,7 @@
     flex-wrap: wrap;
     column-gap: 37px;
     row-gap: 44px;
+    margin-top: 52px;
 }
 
 .middle__card {
@@ -49,6 +50,7 @@
 .footer{
     display: flex;
     justify-content: center;
+    margin-top: 34px;
 }
 
 .footer__button {
