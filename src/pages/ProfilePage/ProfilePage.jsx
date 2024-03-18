@@ -26,6 +26,14 @@ export const ProfilePage = () => {
           <img className={styles.img_courses} alt="Бодифлекс" src="images/prof_card_28.png"/>
           <button className={styles.btn_courses}>Перейти →</button>
         </div>
+        {/* <div className={styles.img_container}> 
+          <img className={styles.img_courses} alt="Степ-аэробика" src="images/prof_card_6.png"/>
+          <button className={styles.btn_courses}>Перейти →</button>
+        </div>
+        <div className={styles.img_container}> 
+          <img className={styles.img_courses} alt="Танцевальный фитнес" src="images/prof_card_20.png"/>
+          <button className={styles.btn_courses}>Перейти →</button>
+        </div> */}
       </div>
     </div>
   );

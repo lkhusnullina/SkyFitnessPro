@@ -71,13 +71,15 @@
     margin-top: 60px;
     display: flex;
     flex-direction: row;
-    gap: 40px;
+    column-gap: 40px;
+    flex-wrap: wrap;
  }
  .img_container{
     position: relative;
     width: 360px;
     height: 480px;
     border-radius: 29.997791290283203px;
+    margin-bottom: 40px;
  }
  .img_courses{
     /* width: 100%;
