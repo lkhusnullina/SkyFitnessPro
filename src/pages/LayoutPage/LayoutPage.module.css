@@ -6,6 +6,7 @@
   position: relative;
   /* overflow: scroll; */
   overflow: none;
+  background-color: #ffff;
 }
 
 .main {
