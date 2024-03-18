@@ -1,3 +1,7 @@
+.section{
+    padding-left: 140px;
+    padding-right: 140px;
+}
 .top {
     display: flex;
     justify-content: space-between;
