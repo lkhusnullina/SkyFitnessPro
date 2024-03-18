@@ -1,27 +1,28 @@
 .header_block {
+    margin-top: 25px;
     margin-bottom: 75px;
     display: flex;
     justify-content: space-between;
 }
+
 .header_btn {
-    Width: 77px;
-    Height: 36px;
-    margin-top: 24px;
-    margin-left: 1223px;
+    width: 77px;
+    height: 36px;
+    border: none;
     border-radius: 46px;
-    Padding: 5px, 16px, 7px, 16px;
-    Gap: 8px;
     background-color: #140D40;
     color: #ffff;
-    font: StratosSkyeng;
+    font-weight: 'StratosSkyeng';
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     text-align: center;
 }
+
 .header_btn:hover {
     background-color: #2D1F79;
 }
+
 .header_btn:active {
     background-color: #3B29A1;
 }
