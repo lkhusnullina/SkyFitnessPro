@@ -4,6 +4,7 @@ import { ProtectedRoute } from "./components/protected-route/index.jsx";
 import { MainPage } from "./pages/MainPage/MainPage.jsx";
 import { AuthPage } from "./pages/AuthPage/AuthPage.jsx";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage.jsx";
+import { YogaPage } from "./pages/YogaPage/YogaPage.jsx";
 
 export const AppRoutes = () => {
   return (
@@ -12,6 +13,7 @@ export const AppRoutes = () => {
         <Route element={<ProtectedRoute isAllowed={Boolean(true)} />}>
           <Route index element={<MainPage />} />
           <Route path="/profile" element={<ProfilePage/>} />
+          <Route path="/yoga" element={<YogaPage/>} />
         </Route>
       </Route>
 
