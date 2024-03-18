@@ -7,6 +7,19 @@ export const ProfilePage = () => {
       <div className={styles.data_profile}>
         <p className={styles.login}>Логин: sergey.petrov96</p>
         <p className={styles.password}>Пароль: 4fkhdj880d</p>
+        <div className={styles.button_container}>
+          <button className={styles.change_login_btn}>Редактировать логин</button>
+          <button className={styles.change_password_btn}>Редактировать пароль</button>
+        </div>
+      </div>
+      <h2 className={styles.title_courses}>Мои курсы</h2>
+      <div className={styles.img_container}>
+        <img className={styles.img_courses} src="images/prof_card_2.png"/>
+        <button className={styles.btn_courses}>Перейти →</button>
+        <img className={styles.img_courses} src="images/prof_card_3.png"/>
+        <button className={styles.btn_courses}>Перейти →</button>
+        <img className={styles.img_courses} src="images/prof_card_28.png"/>
+        <button className={styles.btn_courses}>Перейти →</button>
       </div>
     </div>
   );
