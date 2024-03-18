@@ -13,13 +13,19 @@ export const ProfilePage = () => {
         </div>
       </div>
       <h2 className={styles.title_courses}>Мои курсы</h2>
-      <div className={styles.img_container}>
-        <img className={styles.img_courses} src="images/prof_card_2.png"/>
-        <button className={styles.btn_courses}>Перейти →</button>
-        <img className={styles.img_courses} src="images/prof_card_3.png"/>
-        <button className={styles.btn_courses}>Перейти →</button>
-        <img className={styles.img_courses} src="images/prof_card_28.png"/>
-        <button className={styles.btn_courses}>Перейти →</button>
+      <div className={styles.container_courses}>
+        <div className={styles.img_container}> 
+          <img className={styles.img_courses} alt="Йога" src="images/prof_card_2.png"/>
+          <button className={styles.btn_courses}>Перейти →</button>
+        </div>
+        <div className={styles.img_container}> 
+          <img className={styles.img_courses} alt="Стретчинг" src="images/prof_card_3.png"/>
+          <button className={styles.btn_courses}>Перейти →</button>
+        </div>
+        <div className={styles.img_container}> 
+          <img className={styles.img_courses} alt="Бодифлекс" src="images/prof_card_28.png"/>
+          <button className={styles.btn_courses}>Перейти →</button>
+        </div>
       </div>
     </div>
   );
