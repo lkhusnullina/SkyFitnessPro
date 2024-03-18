@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const MainPage = () => {
   return (
     <>
-      <section className={styles.section}>
+      <section id="top" className={styles.section}>
         <div className={styles.top}>
           <div className={styles.top__first}>
             <h3 className={styles.top__sub_title}>
