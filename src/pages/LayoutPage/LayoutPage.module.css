@@ -21,3 +21,12 @@
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
+
+.body {
+  background-color: #FAFAFA;
+}
+
+.body_dark {
+  background-color: #271A58;
+  ;
+}
