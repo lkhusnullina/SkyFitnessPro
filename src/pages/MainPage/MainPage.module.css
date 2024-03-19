@@ -9,6 +9,8 @@
     line-height: 23px;
     letter-spacing: -0.05px;
     margin-bottom: 17px;
+    color: #FFFFFF;
+    opacity: 50%;
 }
 
 .top__title {
@@ -17,6 +19,8 @@
     line-height: 55px;
     letter-spacing: -1.17px;
     width: 830px;
+    color: #F4F4FF;
+
 }
 
 .middle {
