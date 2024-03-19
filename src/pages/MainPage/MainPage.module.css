@@ -4,16 +4,17 @@
 }
 
 .top__sub_title {
+    margin-top: 35px;
     font-weight: 400;
     font-size: 20px;
     line-height: 23px;
     letter-spacing: -0.05px;
-    margin-bottom: 17px;
     color: #FFFFFF;
     opacity: 50%;
 }
 
 .top__title {
+    margin-top: 17px;
     font-weight: 400;
     font-size: 60px;
     line-height: 55px;
@@ -21,6 +22,11 @@
     width: 830px;
     color: #F4F4FF;
 
+}
+.top__second{
+    position: absolute;
+    left: 1136px;
+    top: 96px;
 }
 
 .middle {

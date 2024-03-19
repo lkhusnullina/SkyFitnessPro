@@ -29,7 +29,7 @@ export const MainPage = () => {
             <div className={styles.middle__card}>
               <img
                 className={styles.middle__img}
-                src="images/mainPagePictures/ioga.svg"
+                src="images/mainPagePictures/ioga.png"
                 alt="ioga"
               />
             </div>
@@ -38,7 +38,7 @@ export const MainPage = () => {
             <div className={styles.middle__card}>
               <img
                 className={styles.middle__img}
-                src="images/mainPagePictures/stretch.svg"
+                src="images/mainPagePictures/stretch.png"
                 alt="stretch"
               />
             </div>
@@ -47,7 +47,7 @@ export const MainPage = () => {
             <div className={styles.middle__card}>
               <img
                 className={styles.middle__img}
-                src="images/mainPagePictures/fitnes.svg"
+                src="images/mainPagePictures/fitnes.png"
                 alt="fitnes"
               />
             </div>
@@ -56,7 +56,7 @@ export const MainPage = () => {
             <div className={styles.middle__card}>
               <img
                 className={styles.middle__img}
-                src="images/mainPagePictures/step.svg"
+                src="images/mainPagePictures/aerobic.png"
                 alt="aerobic"
               />
             </div>
@@ -65,7 +65,7 @@ export const MainPage = () => {
             <div className={styles.middle__card}>
               <img
                 className={styles.middle__img}
-                src="images/mainPagePictures/body_flex.svg"
+                src="images/mainPagePictures/body-flex.png"
                 alt="body_flex"
               />
             </div>
