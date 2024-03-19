@@ -1,5 +1,5 @@
 import styles from "./MainPage.module.css";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom"
 
 export const MainPage = () => {
   return (
