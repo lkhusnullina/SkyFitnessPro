@@ -40,6 +40,11 @@
 .middle__card {
     width: 360px;
     height: 480px;
+    transition: .3s;
+
+}
+.middle__card:hover {
+   transform: scale(1.03);
 }
 
 .middle__img {
