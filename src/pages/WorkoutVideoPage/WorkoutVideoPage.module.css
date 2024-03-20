@@ -1,0 +1,128 @@
+.title {
+    margin-bottom: 40px;
+    font-size: 48px;
+    line-height: 56px;
+}
+
+.description {
+    margin-bottom: 40px;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.workout_block {
+    margin-top: 75px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 94px;
+}
+
+.workout_description {
+    margin-bottom: 30px;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.workout_element {
+    width: 428px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.workout_header {
+    margin-bottom: 40px;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.button_progress {
+    width: 275px;
+    height: 52px;
+    border: none;
+    border-radius: 46px;
+    background-color: #580EA2;
+    color: #ffff;
+    font-weight: 'StratosSkyeng';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.button_progress:hover {
+    background-color: #2D1F79;
+}
+
+.button_progress:active {
+    background-color: #3B29A1;
+}
+
+.progress_block {
+    width: 638px;
+    padding: 36px 44px;
+    border-radius: 30px;
+    background-color: #F2F2F2;
+}
+
+.progress_header {
+    margin-bottom: 40px;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+}
+
+.progress_percentages {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.progress_percent {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.progress_percent__line {
+    width: 278px;
+    height: 36px;
+    border-radius: 22px;
+    border: 2px solid #565EEF;
+    text-align: center;
+}
+
+/* progress {
+    width: 278px;
+    height: 36px;
+    border-radius: 22px;
+    border: 2px solid #565EEF;
+    text-align: center;
+    background: transparent;
+}
+
+progress::-webkit-progress-bar {
+    border-radius: 22px;
+    border: 2px solid #565EEF;
+    text-align: center;
+    background: transparent;
+}
+
+progress::-webkit-progress-value {
+    border-radius: 22px;
+    border: 2px solid #565EEF;
+    text-align: center;
+    background: transparent;
+}
+
+progress::-moz-progress-bar {
+    border-radius: 22px;
+    border: 2px solid #565EEF;
+    text-align: center;
+    background: transparent;
+}
+  */
