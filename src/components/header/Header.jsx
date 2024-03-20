@@ -10,7 +10,7 @@ function Header(){
         <div>
             <div className={styles.header_block}>
                 <img src={logoUrl} />
-                <button className={styles.header_btn}></button>
+                <button className={styles.header_btn}>Войти</button>
             </div>
         </div>
     )
