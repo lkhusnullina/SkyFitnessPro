@@ -1,14 +1,19 @@
+import { useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 
 function Header(){
+    const location = useLocation();
+    const home = location.pathname === "/";
+    console.log(home);
+    const logoUrl = home ? "images/header_logo.png" : "images/header_logo_black.png";
     return (
         <div>
             <div className={styles.header_block}>
-                <img className={styles.header_logo} src="images/logo.png" />
-                <button className={styles.header_btn}>Войти</button>
+                <img src={logoUrl} />
+                <button className={styles.header_btn}></button>
             </div>
         </div>
     )
   };
 
-  export default Header
+  export default Header 

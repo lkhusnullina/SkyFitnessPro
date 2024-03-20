@@ -1,0 +1,180 @@
+.title{
+    color: red
+}
+.container {
+    max-width: 1920px;
+    max-height: 100vh;
+    height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    /* overflow: scroll; */
+    overflow: none;
+  }
+  
+  .main {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  .yogaImg {
+    width: 1160px;
+    height: 310px;
+  }
+
+  .yogaTitle { 
+    width: 452px;
+    height: 48px;
+    font-family: StratosSkyeng;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 48px;
+    letter-spacing: 0em;
+    text-align: left;
+    padding-top: 75px;
+    padding-bottom: 40px;
+    
+  }
+
+  .description{
+    align-items: start;
+    display: flex;
+    margin-top: 40px;
+    gap: 87px
+  }
+
+  .points { 
+    width: Fixed (67px);
+    height: Fixed (67px);
+  }
+
+  .pointsText {
+    font-family: StratosSkyeng;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+    width: 244px;
+    height: 96px;
+  }
+
+  .pointsInfo {
+    display: flex;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .types {
+    width: 260px;
+    height: 48px;
+    font-family: StratosSkyeng;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 48px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 75px;
+  }
+
+  .yogaTypes{
+    font-family: StratosSkyeng;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: left;
+    
+    
+  }
+
+  .yogaAllTypes{
+    margin-left: 35px;
+    display: flex;
+    gap: 168px;
+    margin-top: 22px;
+    font-family: StratosSkyeng;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: left;
+  }
+
+  .typesColumn {
+    width: 254px;
+    height: 96px;
+  }
+
+  .yogaDescription {
+    width: 1160px;
+    height: 96px;
+    font-family: StratosSkyeng;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 75px;
+
+  }
+
+  .footerGroup {
+   width: 1160px;
+   height: 350px;
+   border-radius: 30px;
+   background-color: #F9EBFF;
+   margin-top: 75px;
+   display: flex;
+
+  }
+
+  .footerText {
+    width: 823px;
+    height: 120px;
+    font-family: StratosSkyeng;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: left;
+    padding-top: 46px;
+    padding-left: 52px;
+
+  }
+
+  .handImg {
+    width: 345.8px;
+   height: 337.53px;
+
+  }
+
+  .footerButton{
+    width: 275px;
+    height: 52px;
+    background-color: #580EA2;
+    border-radius: 46px;
+    color: white;
+    font-family: StratosSkyeng;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.05000000074505806px;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    margin-left: 52px;
+    margin-bottom: 64px;
+    align-items: center;
+  }
+
+  .footerInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }

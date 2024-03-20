@@ -1,0 +1,127 @@
+.pageContainer {
+  max-width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.modalForm {
+  max-height: 554px;
+  width: 444px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 36px 46px 47px 51px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modalFixedProgress {
+  position: fixed;
+  width: 444px;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  align-items: center;
+}
+
+.fixedImg {
+  margin-left: -20px;
+}
+
+.fixedTitle {
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
+  margin-top: 41px;
+  font-weight: 400;
+}
+
+.title {
+  font-size: 32px;
+  padding-bottom: 30px;
+  font-weight: 400;
+}
+
+.modalText {
+  font-size: 18px;
+  width: 364px;
+}
+
+.modalInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 38px;
+}
+
+.modalInput {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #d0cece;
+  padding: 6px 0px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.modalInput:focus {
+  outline: none;
+}
+
+.modalInputsResult {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.modalInput::placeholder {
+  font-style: normal;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #d0cece;
+}
+
+.primaryButton {
+  width: 278px;
+  height: 52px;
+  border-radius: 46px;
+  border: none;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.primaryButton {
+  color: #ffffff;
+  background-color: #580ea2;
+}
+
+.primaryButton:hover {
+  background-color: #3f007d;
+}
+
+.primaryButton:active {
+  background-color: #271a58;
+}
+
+.primaryButton:disabled {
+  background-color: #271a58;
+}
