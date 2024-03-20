@@ -104,9 +104,9 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-    border: 2px solid #565EEF;
     -webkit-border-top-left-radius: 22px; 
     -webkit-border-bottom-left-radius: 22px;
+    border: 2px solid #565EEF;
     background-color: #565EEF;
     text-align: center;
 }
@@ -116,6 +116,10 @@ progress::-moz-progress-bar {
     border: 2px solid #565EEF;
     text-align: center;
     background: transparent;
+}
+
+.progress_percent__value1::-webkit-progress-value::after{
+    content: '45';
 }
 
 .progress_percent__value1::-webkit-progress-value {
