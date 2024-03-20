@@ -1,3 +1,117 @@
-.title{
-    color: red
+.container{
+    background-color: #ffff;
+    padding: 140 0 140 0;
 }
+.title{
+    color: #000000;
+    background-color: #ffff;
+    width: 304px;
+    height: 56px;
+    margin-bottom: 40px;
+    font-family: StratosSkyeng;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 56px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.data_profile{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #000000;
+    background-color: #ffff;
+}
+.login, 
+.password{
+    /* width: 256px; */
+    height: 32px;
+    font-family: StratosSkyeng;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.button_container{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+}
+.change_login_btn,
+.change_password_btn{
+    width: 275px;
+    height: 52px;
+    border-radius: 46px; 
+    font-family: StratosSkyeng;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #580EA2;
+ }
+ .title_courses{
+    margin-top: 75px;
+    width: 304px;
+    height: 56px;
+    font-family: StratosSkyeng;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 56px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #000000;
+
+ }
+ .container_courses{
+    width: 1160px;
+    height: 480px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 40px;
+    flex-wrap: wrap;
+ }
+ .img_container{
+    position: relative;
+    width: 360px;
+    height: 480px;
+    border-radius: 29.997791290283203px;
+    margin-bottom: 40px;
+ }
+ .img_courses{
+    width: 360px;
+    height: 480px;
+    border-radius: 30px;
+    box-shadow: -10px 10px 15.998822212219238px 0px #0000001A;
+    box-shadow: 10px -10px 16px 0px #0000001A;
+ }
+ .img_courses_shadow{
+    width: 360px;
+    height: 470px;
+    border-radius: 30px;
+   
+ }
+ .btn_courses{
+    width: 136px;
+    height: 43px;
+    padding: 10 20 10 20;
+    margin-left: 30px;
+    margin-bottom: 27px;
+    border-radius: 80px;  
+    border: none;
+    background-color: #C7E957;
+    font-family: StratosSkyeng;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+    text-align: center;
+    color: #000000;
+    position: absolute;
+    top: 87%;
+    left: 23%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+ }
