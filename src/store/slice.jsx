@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const lessonsSlice = createSlice({
-  name: "lessons",
+const coursesSlice = createSlice({
+  name: "courses",
   initialState: {},
   reducers: {},
 });
 
-export const lessonsReducer = lessonsSlice.reducer;
+export const coursesReducer = coursesSlice.reducer;
