@@ -15,7 +15,7 @@ export const AppRoutes = () => {
           <Route index element={<MainPage />} />
           <Route path="/profile" element={<ProfilePage/>} />
           <Route path="/yoga" element={<YogaPage/>} />
-          <Route path="/1" element={<WorkoutVideoPage/>} />
+          <Route path="/workout" element={<WorkoutVideoPage/>} />
         </Route>
       </Route>
 
