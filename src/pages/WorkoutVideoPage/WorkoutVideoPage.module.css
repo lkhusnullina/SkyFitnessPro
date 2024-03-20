@@ -88,35 +88,27 @@
     line-height: 32px;
 }
 
-.progress_percent__line {
+progress {
     width: 278px;
     height: 36px;
     border-radius: 22px;
-    border: 2px solid #565EEF;
-    text-align: center;
-}
-
-/* progress {
-    width: 278px;
-    height: 36px;
-    border-radius: 22px;
-    border: 2px solid #565EEF;
     text-align: center;
     background: transparent;
 }
 
 progress::-webkit-progress-bar {
     border-radius: 22px;
-    border: 2px solid #565EEF;
     text-align: center;
     background: transparent;
+    border: 2px solid #565EEF;
 }
 
 progress::-webkit-progress-value {
-    border-radius: 22px;
     border: 2px solid #565EEF;
+    -webkit-border-top-left-radius: 22px; 
+    -webkit-border-bottom-left-radius: 22px;
+    background-color: #565EEF;
     text-align: center;
-    background: transparent;
 }
 
 progress::-moz-progress-bar {
@@ -125,4 +117,34 @@ progress::-moz-progress-bar {
     text-align: center;
     background: transparent;
 }
-  */
+
+.progress_percent__value1::-webkit-progress-value {
+    background-color: #565EEF;
+    border: 2px solid #565EEF;
+}
+
+.progress_percent__value1::-webkit-progress-bar {
+    border: 2px solid #565EEF;
+    background: #EDECFF;
+}
+
+.progress_percent__value2::-webkit-progress-value {
+    background-color: #FF6D00;
+    border: 2px solid #FF6D00;
+}
+
+.progress_percent__value2::-webkit-progress-bar {
+    border: 2px solid #FF6D00;
+    background: #FFF2E0;
+}
+
+.progress_percent__value3::-webkit-progress-value {
+    background-color: #9A48F1;
+    border: 2px solid #9A48F1;
+}
+
+.progress_percent__value3::-webkit-progress-bar {
+    border: 2px solid #9A48F1;
+    background: #F9EBFF;
+}
+ 
