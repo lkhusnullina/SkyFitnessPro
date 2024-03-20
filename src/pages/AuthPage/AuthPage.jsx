@@ -8,7 +8,7 @@ export const AuthPage = () => {
     <div className={styles.pageContainer}>
       <div className={styles.modalForm}>
         <div className={styles.modalLogo}>
-          <img src="../images/header_logo_auth.png" alt="logo" />
+          <img src="../images/header_logo_black.png" alt="logo" />
         </div>
 
         {isLoginMode ? (
