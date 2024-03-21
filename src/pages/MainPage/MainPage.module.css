@@ -24,22 +24,17 @@
 }
 .top__second{
     position: relative;
-    left: 50px;
-    top: 27px;
-    width: 212px;
-    height: 152px;
 }
-.top__svg{
+/* .top__svg{
     width: 100%;
     height: 100%;
-}
+} */
 
 .middle {
     display: flex;
     flex-wrap: wrap;
     column-gap: 37px;
     row-gap: 44px;
-    margin-top: 52px;
 }
 
 .middle__card {
