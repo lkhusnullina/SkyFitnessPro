@@ -25,7 +25,7 @@ export const MainPage = () => {
       </section>
       <section className={styles.section}>
         <div className={styles.middle}>
-          <Link to="#">
+          <Link to="/yoga">
             <div className={styles.middle__card}>
               <img
                 className={styles.middle__img}
@@ -34,7 +34,7 @@ export const MainPage = () => {
               />
             </div>
           </Link>
-          <Link to="#">
+          <Link to="/yoga">
             <div className={styles.middle__card}>
               <img
                 className={styles.middle__img}
@@ -43,7 +43,7 @@ export const MainPage = () => {
               />
             </div>
           </Link>
-          <Link to="#">
+          <Link to="/yoga">
             <div className={styles.middle__card}>
               <img
                 className={styles.middle__img}
@@ -52,7 +52,7 @@ export const MainPage = () => {
               />
             </div>
           </Link>
-          <Link to="#">
+          <Link to="/yoga">
             <div className={styles.middle__card}>
               <img
                 className={styles.middle__img}
@@ -61,7 +61,7 @@ export const MainPage = () => {
               />
             </div>
           </Link>
-          <Link to="#">
+          <Link to="/yoga">
             <div className={styles.middle__card}>
               <img
                 className={styles.middle__img}
