@@ -13,13 +13,13 @@ export const AppRoutes = () => {
       <Route path="/" element={<LayoutPage />}>
         <Route element={<ProtectedRoute isAllowed={Boolean(true)} />}>
           <Route index element={<MainPage />} />
-          <Route path="/profile" element={<ProfilePage/>} />
-          <Route path="/yoga" element={<YogaPage/>} />
-          <Route path="/workout" element={<WorkoutVideoPage/>} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/yoga" element={<YogaPage />} />
+          <Route path="/workout" element={<WorkoutVideoPage />} />
         </Route>
       </Route>
 
-      <Route path="/login" element={<AuthPage />} />
+      <Route path="/login" element={<AuthPage isLoginMode={true} />} />
       <Route path="/registration" element={<AuthPage />} />
     </Routes>
   );
