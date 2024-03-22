@@ -1,12 +1,17 @@
 import React from "react";
 import styles from "./ModalChangeUserData.module.css";
 
-function ModalChangeUserData() {
-  const isPasswordChange = true;
+function ModalChangeUserData({ isPasswordChange, closeModal }) {
   const isLoading = false;
 
+  const handleClickOutside = (event) => {
+    if (event.target.classList.contains(styles.pageContainer)) {
+      closeModal(); // Закрываем модальное окно при клике вне него
+    }
+  };
+
   return (
-    <div className={styles.pageContainer}>
+    <div className={styles.pageContainer} onClick={handleClickOutside}>
       <div className={styles.modalForm}>
         <div className={styles.modalLogo}>
           <img src="../images/header_logo_black.png" alt="logo" />

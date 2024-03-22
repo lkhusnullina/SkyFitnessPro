@@ -1,7 +1,7 @@
 import styles from "./AuthPage.module.css";
+import { Link } from "react-router-dom";
 
-export const AuthPage = () => {
-  const isLoginMode = false;
+export const AuthPage = ({ isLoginMode = false }) => {
   const isLoading = false;
 
   return (
@@ -31,10 +31,11 @@ export const AuthPage = () => {
               <button className={styles.primaryButton} disabled={isLoading}>
                 {isLoading ? "Загрузка..." : "Войти"}
               </button>
-
-              <button className={styles.secondaryButton}>
-                Зарегистрироваться
-              </button>
+              <Link to="/registration">
+                <button className={styles.secondaryButton}>
+                  Зарегистрироваться
+                </button>
+              </Link>
             </div>
           </>
         ) : (
