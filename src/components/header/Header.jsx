@@ -7,7 +7,7 @@ function Header(){
     console.log(home);
     const logoUrl = home ? "images/header_logo.png" : "images/header_logo_black.png";
     return (
-        <div>
+        <div id="top">
             <div className={styles.header_block}>
                 <img src={logoUrl} />
                 <Link to="/login">
