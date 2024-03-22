@@ -34,7 +34,7 @@ export const MainPage = () => {
               />
             </div>
           </Link>
-          <Link to="yoga">
+          <Link to="/yoga">
             <div className={styles.middle__card}>
               <img
                 className={styles.middle__img}
@@ -43,7 +43,7 @@ export const MainPage = () => {
               />
             </div>
           </Link>
-          <Link to="yoga">
+          <Link to="/yoga">
             <div className={styles.middle__card}>
               <img
                 className={styles.middle__img}
