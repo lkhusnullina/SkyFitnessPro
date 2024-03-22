@@ -22,16 +22,18 @@ export const WorkoutVideoPage = () => {
             <div className={styles.progress_percentages}>
                 <div className={styles.progress_percent}>
                     <div className={styles.progress_percent__name}>Наклоны вперед</div>
-                    <div className={styles.progress_percent__line}>45%</div>
+                    <progress className={styles.progress_percent__value1} value="45" max="100"></progress>
+                    <span className={styles.progress_percent__count}>45%</span>
                 </div>
                 <div className={styles.progress_percent}>
                     <div className={styles.progress_percent__name}>Наклоны назад</div>
-                    <div className={styles.progress_percent__line}>45%</div>
+                    <progress  className={styles.progress_percent__value2} value="45" max="100"></progress>
+                    <span className={styles.progress_percent__count}>45%</span>
                 </div>
                 <div className={styles.progress_percent}>
                     <div className={styles.progress_percent__name}>Поднятие ног, <br /> согнутых в коленях</div>
-                    <div className={styles.progress_percent__line}>45%</div>
-                    {/* <progress value="45" max="100"></progress> */}
+                    <progress className={styles.progress_percent__value3} value="45" max="100"></progress>
+                    <span className={styles.progress_percent__count}>45%</span>
                 </div>
             </div>
         </div>
