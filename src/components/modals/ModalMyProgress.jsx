@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ModalMyProgress.module.css";
 
-function ModalMyProgress() {
-  const isProgressFixed = true;
+function ModalMyProgress({ isOpen, closeModal }) {
+  const [isProgressFixed, setIsProgressFixed] = useState(false);
   const isLoading = false;
 
+  const handleClickOutside = (event) => {
+    if (event.target.classList.contains(styles.pageContainer)) {
+      closeModal(); 
+    }
+  };
+
   return (
-    <div className={styles.pageContainer}>
+    <div className={styles.pageContainer} onClick={handleClickOutside}>
       {isProgressFixed ? (
         <div className={styles.modalFixedProgress}>
           <h1 className={styles.fixedTitle}>Ваш прогресс засчитан!</h1>
@@ -56,14 +62,14 @@ function ModalMyProgress() {
           </div>
 
           <div className={styles.buttons}>
-            <button className={styles.primaryButton} disabled={isLoading}>
+            <button className={styles.primaryButton} disabled={isLoading} onClick={()=> setIsProgressFixed(true)}>
               {isLoading ? "Отправка..." : "Отправить"}
             </button>
           </div>
         </div>
       )}
-    </div>
-  );
+     </div>
+    ) 
 }
 
 export default ModalMyProgress;
