@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 
 function Header(){
@@ -10,7 +10,9 @@ function Header(){
         <div>
             <div className={styles.header_block}>
                 <img src={logoUrl} />
+                <Link to="/login">
                 <button className={styles.header_btn}>Войти</button>
+                </Link>
             </div>
         </div>
     )
