@@ -23,7 +23,7 @@ export const WorkoutVideoPage = () => {
                 <li>Наклон назад (10 повторений)</li>
                 <li>Поднятие ног, согнутых в коленях <br/>(5 повторений)</li>
             </ul>
-            <button className={styles.button_progress} onClick={() => setIsOpen(true)}>  </button>
+            <button className={styles.button_progress} onClick={() => setIsOpen(true)}>Заполнить свой прогресс</button>
         </div>
         <div className={styles.progress_block}>
             <div className={styles.progress_header}>Мой прогресс по тренировке 2:</div>
