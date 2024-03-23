@@ -7,8 +7,8 @@ const Video = () => {
       width="1160"
       height="639"
       src={src}
-    //   title="Youtube Player"
-      frameborder="0"
+      //title="Youtube Player"
+      frameBorder="0"
       allowFullScreen
     />
   );

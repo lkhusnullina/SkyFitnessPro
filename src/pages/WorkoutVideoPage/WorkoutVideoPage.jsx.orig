@@ -12,12 +12,12 @@ export const WorkoutVideoPage = () => {
 
   return (
     <div>
-      <h2 className={styles.title}></h2>
+      <h2 className={styles.title}>Йога</h2>
       <div className={styles.description}>Красота и здоровье / Йога на каждый день / 2 день</div>
       <Video/>
       <div className={styles.workout_block}>
         <div className={styles.workout_description}>
-          <h2 className={styles.workout_header}>Упражнения</h2>
+            <h2 className={styles.workout_header}>Упражнения</h2>
             <ul className={styles.workout_element}>
                 <li>Наклон вперед (10 повторений)</li>
                 <li>Наклон назад (10 повторений)</li>
@@ -40,8 +40,12 @@ export const WorkoutVideoPage = () => {
                 </div>
                 <div className={styles.progress_percent}>
                     <div className={styles.progress_percent__name}>Поднятие ног, <br /> согнутых в коленях</div>
+<<<<<<< HEAD
+                    <div className={styles.progress_percent__line}>45%</div>
+=======
                     <progress className={styles.progress_percent__value3} value="45" max="100"></progress>
                     <span className={styles.progress_percent__count}>45%</span>
+>>>>>>> dev
                 </div>
             </div>
         </div>
