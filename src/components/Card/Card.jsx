@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 function Card({ card, showButton, setIsModalOpen }){
 
   return (
-    <div onClick={()=> setIsModalOpen(true)} className={styles.card}>
+    <div className={styles.card}>
       { showButton ? (
-        <div id={card.id} className={styles.card_shadow}>
+        <div onClick={()=> setIsModalOpen(true)} id={card.id} className={styles.card_shadow}>
           <h3 className={styles.card_title}>{card.titleCard}</h3>
           <img
             className={styles.card_img}
