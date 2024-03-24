@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Cards } from '../constans';
 
 const coursesSlice = createSlice({
   name: "courses",
-  initialState: {},
+  initialState: {
+    cards: Cards
+  },
   reducers: {},
 });
 

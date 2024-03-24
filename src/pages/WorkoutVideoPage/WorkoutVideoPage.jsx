@@ -12,7 +12,7 @@ export const WorkoutVideoPage = () => {
 
   return (
     <div>
-      <h2 className={styles.title}></h2>
+      <h2 className={styles.title}>Йога</h2>
       <div className={styles.description}>Красота и здоровье / Йога на каждый день / 2 день</div>
       <Video/>
       <div className={styles.workout_block}>

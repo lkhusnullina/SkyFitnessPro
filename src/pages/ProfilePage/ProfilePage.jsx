@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styles from "./ProfilePage.module.css";
 import ModalChangeUserData from "../../components/modals/ModalChangeUserData";
+import Card from "../../components/Card/Card.jsx";
+import { Cards } from "../../constans.js";
 
-export const ProfilePage = () => {
+export const ProfilePage = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPasswordChange, setIsPasswordChange] = useState(false);
 
@@ -37,31 +39,10 @@ export const ProfilePage = () => {
         </div>
       </div>
       <h2 className={styles.title_courses}>Мои курсы</h2>
-      <div className={styles.container_courses}>
-        <div className={styles.img_container}>
-          <img
-            className={styles.img_courses}
-            alt="Йога"
-            src="images/prof_card_2.png"
-          />
-          <button className={styles.btn_courses}>Перейти →</button>
-        </div>
-        <div className={styles.img_container}>
-          <img
-            className={styles.img_courses}
-            alt="Стретчинг"
-            src="images/prof_card_3.png"
-          />
-          <button className={styles.btn_courses}>Перейти →</button>
-        </div>
-        <div className={styles.img_container}>
-          <img
-            className={styles.img_courses}
-            alt="Бодифлекс"
-            src="images/prof_card_28.png"
-          />
-          <button className={styles.btn_courses}>Перейти →</button>
-        </div>
+      <div className={styles.cards_block}>
+        {Cards?.map((card) => (
+              <Card key={card.id} card={card} showButton={true}/>
+          ))}
       </div>
       {isModalOpen && (
         <div className={styles.modalOverlay}>
