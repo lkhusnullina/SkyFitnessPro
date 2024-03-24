@@ -3,15 +3,21 @@ import styles from "./ProfilePage.module.css";
 import ModalChangeUserData from "../../components/modals/ModalChangeUserData";
 import Card from "../../components/Card/Card.jsx";
 import { Cards } from "../../constans.js";
+import ModalChooseLesson from "../../components/modals/ModalChooseLesson.jsx";
 
 export const ProfilePage = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
   const [isPasswordChange, setIsPasswordChange] = useState(false);
 
   const openModal = (changePassword) => {
     setIsPasswordChange(changePassword);
     setIsModalOpen(true);
   };
+
+  const closeProgressModal = () => {
+    setIsOpen(false)
+  }
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -41,7 +47,7 @@ export const ProfilePage = (props) => {
       <h2 className={styles.title_courses}>Мои курсы</h2>
       <div className={styles.cards_block}>
         {Cards?.map((card) => (
-              <Card key={card.id} card={card} showButton={true}/>
+              <Card key={card.id} card={card} showButton={true} setIsOpen={setIsOpen}/>
           ))}
       </div>
       {isModalOpen && (
@@ -51,6 +57,11 @@ export const ProfilePage = (props) => {
             closeModal={closeModal}
           />
         </div>
+      )}
+      {isOpen && (
+      <div className={styles.modalOverlay}>
+        <ModalChooseLesson closeProgressModal={closeProgressModal} />
+      </div>
       )}
     </div>
   );
