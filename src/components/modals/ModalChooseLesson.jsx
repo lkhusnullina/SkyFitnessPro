@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ModalChooseLesson.module.css";
 import { useNavigate } from "react-router-dom";
 
-function ModalChooseLesson({closeModal}) {
+function ModalChooseLesson({closeProgressModal}) {
   const navigate = useNavigate()
 
   const clickChooseLesson = () => {
@@ -11,7 +11,7 @@ function ModalChooseLesson({closeModal}) {
 
   const handleClickOutside = (event) => {
     if (event.target.classList.contains(styles.pageContainer)) {
-      closeModal();
+      closeProgressModal();
     }
   };
 
