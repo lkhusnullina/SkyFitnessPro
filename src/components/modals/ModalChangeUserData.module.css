@@ -116,10 +116,12 @@
 
 .errorList {
   height: 44px;
+  width: 270px;
   line-height: 0.1;
 }
 
 .error {
+  width: 280px;
   color: red;
   font-size: 12px;
   display: block;

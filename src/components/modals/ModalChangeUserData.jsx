@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ModalChangeUserData.module.css";
+import { Link } from "react-router-dom";
+import {
+  handleLoginChange,
+  handlePasswordChange,
+  handleRepeatPasswordChange,
+} from "../../utils/formValidation";
 
 function ModalChangeUserData({ isPasswordChange, closeModal }) {
   const [loginError, setLoginError] = useState([]);
@@ -13,61 +19,6 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
   const handleClickOutside = (event) => {
     if (event.target.classList.contains(styles.pageContainer)) {
       closeModal(); // Закрываем модальное окно при клике вне него
-    }
-  };
-
-  const handleLoginChange = (event) => {
-    const loginValue = event.target.value;
-    let errors = [];
-
-    if (!loginValue) {
-      errors.push(`Поле "логин" обязательно для заполнения`);
-    } else {
-      const loginPattern = /^[a-zA-Z0-9!@#$%^&*()_+=[\]{};':"\\|,.<>/?]+$/;
-
-      if (!loginPattern.test(loginValue)) {
-        errors.push("Должны быть только латинские буквы/цифры");
-      }
-
-      if (!loginValue.includes("@") || !loginValue.includes(".")) {
-        errors.push("Отсутствуют символы @ и .");
-      }
-    }
-
-    setLoginError(errors);
-  };
-
-  const handlePasswordChange = (event, repeatPasswordValue) => {
-    const passwordValue = event.target.value;
-    setPasswordValue(passwordValue);
-
-    let passwordError = "";
-
-    if (!passwordValue) {
-      passwordError = `Поле "пароль" обязательно для заполнения`;
-    } else if (passwordValue.length < 6) {
-      passwordError = "Пароль должен содержать минимум 6 символов";
-    } else {
-      passwordError = "";
-    }
-
-    setPasswordError(passwordError);
-
-    if (passwordValue === repeatPasswordValue) {
-      setRepeatPasswordError("");
-    } else {
-      setRepeatPasswordError("Пароли не совпадают");
-    }
-  };
-
-  const handleRepeatPasswordChange = (event) => {
-    const repeatPasswordValue = event.target.value;
-    setRepeatPasswordValue(repeatPasswordValue);
-
-    if (repeatPasswordValue !== passwordValue) {
-      setRepeatPasswordError("Пароли не совпадают");
-    } else {
-      setRepeatPasswordError("");
     }
   };
 
@@ -102,7 +53,9 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
     <div className={styles.pageContainer} onClick={handleClickOutside}>
       <div className={styles.modalForm}>
         <div className={styles.modalLogo}>
-          <img src="../images/header_logo_black.png" alt="logo" />
+          <Link to="/">
+            <img src="../images/header_logo_black.png" alt="logo" />
+          </Link>
         </div>
 
         {isPasswordChange ? (
@@ -114,7 +67,15 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
                 type="password"
                 name="password"
                 placeholder="Пароль"
-                onChange={handlePasswordChange}
+                onChange={(event) =>
+                  handlePasswordChange(
+                    event,
+                    repeatPasswordValue,
+                    setPasswordError,
+                    setRepeatPasswordError,
+                    setPasswordValue
+                  )
+                }
               />
               <span className={styles.error}>{passwordError}</span>
               <input
@@ -122,7 +83,14 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
                 type="password"
                 name="repeat-password"
                 placeholder="Повторите пароль"
-                onChange={handleRepeatPasswordChange}
+                onChange={(event) =>
+                  handleRepeatPasswordChange(
+                    event,
+                    passwordValue,
+                    setRepeatPasswordError,
+                    setRepeatPasswordValue
+                  )
+                }
               />
               <span className={styles.error}>{repeatPasswordError}</span>
             </div>
@@ -146,7 +114,7 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
                 type="text"
                 name="login"
                 placeholder="Логин"
-                onChange={handleLoginChange}
+                onChange={(event) => handleLoginChange(event, setLoginError)}
               />
               <div className={styles.errorList}>
                 {loginError.map((error, index) => (

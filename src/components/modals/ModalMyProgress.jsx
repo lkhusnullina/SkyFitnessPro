@@ -19,6 +19,7 @@ function ModalMyProgress({ closeModal }) {
 
   const handleItemChange = (event, fieldName) => {
     const itemValue = event.target.value;
+    event.target.value = event.target.value.replace(/\D/g, "").slice(0, 2);
 
     let errors = { ...itemErrors };
     if (!itemValue) {
