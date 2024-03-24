@@ -15,7 +15,6 @@ function ModalChooseLesson({closeModal}) {
     }
   };
 
-
   return (
     <div className={styles.pageContainer} onClick={handleClickOutside}>
       <div className={styles.modalForm}>
