@@ -3,6 +3,7 @@ import styles from "./ProfilePage.module.css";
 import ModalChangeUserData from "../../components/modals/ModalChangeUserData";
 import Card from "../../components/Card/Card.jsx";
 import { Cards } from "../../constans.js";
+import ModalChooseLesson from "../../components/modals/ModalChooseLesson.jsx";
 
 export const ProfilePage = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,7 +42,7 @@ export const ProfilePage = (props) => {
       <h2 className={styles.title_courses}>Мои курсы</h2>
       <div className={styles.cards_block}>
         {Cards?.map((card) => (
-              <Card key={card.id} card={card} showButton={true}/>
+              <Card key={card.id} card={card} showButton={true} setIsModalOpen={setIsModalOpen}/>
           ))}
       </div>
       {isModalOpen && (
@@ -52,6 +53,7 @@ export const ProfilePage = (props) => {
           />
         </div>
       )}
+      {isModalOpen && <ModalChooseLesson closeModal={closeModal} />}
     </div>
   );
 };

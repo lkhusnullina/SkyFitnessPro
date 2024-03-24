@@ -1,9 +1,17 @@
 import React from "react";
 import styles from "./ModalChooseLesson.module.css";
 
-function ModalChooseLesson() {
+function ModalChooseLesson({closeModal}) {
+
+  const handleClickOutside = (event) => {
+    if (event.target.classList.contains(styles.pageContainer)) {
+      closeModal();
+    }
+  };
+
+
   return (
-    <div className={styles.pageContainer}>
+    <div className={styles.pageContainer} onClick={handleClickOutside}>
       <div className={styles.modalForm}>
         <h1 className={styles.title}>Выберите тренировку</h1>
         <div className={styles.lessonsContainerScroll}>
