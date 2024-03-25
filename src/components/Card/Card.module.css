@@ -8,6 +8,7 @@
 
 .card:hover {
    transform: scale(1.03);
+   cursor: pointer;
 }
 
 .card_shadow {
@@ -43,6 +44,7 @@
     font-size: 20px;
     line-height: 23px;
     text-align: center;
+    cursor: pointer;
   
     position: absolute;
     top: 87%;
