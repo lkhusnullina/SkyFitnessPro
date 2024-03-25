@@ -89,7 +89,6 @@
 .modalInputsResult {
   display: flex;
   flex-direction: column;
-  gap: 17px;
 }
 
 .modalInput::placeholder {
@@ -124,4 +123,32 @@
 
 .primaryButton:disabled {
   background-color: #271a58;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  display: block;
+  height: 17px;
+  line-height: 1;
+  padding-top: 3px;
+}
+
+.errorForm {
+  text-align: center;
+  color: red;
+  display: block;
+  padding: 8px;
+}
+
+/* Скрываем стрелки в input для всех браузеров */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-clear-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Для Firefox */
 }

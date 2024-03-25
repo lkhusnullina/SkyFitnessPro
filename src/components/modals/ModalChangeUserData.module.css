@@ -17,7 +17,7 @@
   box-sizing: border-box;
   background-color: #fff;
   border-radius: 12px;
-  padding: 33px 47px 47px 41px;
+  padding: 33px 47px 10px 41px;
 }
 
 .title {
@@ -49,8 +49,6 @@
 .modalInputs {
   display: flex;
   flex-direction: column;
-  gap: 31px;
-  margin-bottom: 50px;
 }
 
 .modalInput {
@@ -79,7 +77,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
 }
 
 .primaryButton {
@@ -106,4 +103,37 @@
 
 .primaryButton:disabled {
   background-color: #271a58;
+}
+
+.errorItem {
+  color: red;
+  font-size: 12px;
+  display: block;
+  padding-top: 3px;
+  margin: 0;
+  line-height: 1;
+}
+
+.errorList {
+  height: 44px;
+  width: 270px;
+  line-height: 0.1;
+}
+
+.error {
+  width: 280px;
+  color: red;
+  font-size: 12px;
+  display: block;
+  height: 32px;
+  line-height: 1;
+  padding-top: 3px;
+}
+
+.errorForm {
+  text-align: center;
+  color: red;
+  display: block;
+  padding: 8px;
+  height: 38px;
 }
