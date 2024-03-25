@@ -1,9 +1,10 @@
 import styles from "./YogaPage.module.css";
+
 export const YogaPage = () => {
   return (
     <div className={styles.container}>
       <img className={styles.yogaImg} src="images/yoga.jpg" />
-      <h1 className={styles.yogaTitle}>Подойдет для вас, если: </h1>
+      <h2 className={styles.yogaTitle}>Подойдет для вас, если: </h2>
 
       <div className={styles.description}>
         <div className={styles.pointsInfo}>
@@ -28,17 +29,17 @@ export const YogaPage = () => {
         </div>
       </div>
 
-      <h1 className={styles.types}>Направления:</h1>
+      <h2 className={styles.types}>Направления:</h2>
       <div className={styles.yogaAllTypes}>
         <ul className={styles.typesColumn}>
-          <li сlassName={styles.yogaTypes}>Йога для новичков </li>
-          <li сlassName={styles.yogaTypes}>Классическая йога </li>
-          <li сlassName={styles.yogaTypes}>Йогатерапия</li>
+          <li>Йога для новичков </li>
+          <li>Классическая йога </li>
+          <li>Йогатерапия</li>
         </ul>
         <ul className={styles.typesColumn}>
-          <li сlassName={styles.yogaTypes}>Кундалини-йога </li>
-          <li сlassName={styles.yogaTypes}>Хатха-йога </li>
-          <li сlassName={styles.yogaTypes}>Аштанга-йога</li>
+          <li>Кундалини-йога </li>
+          <li>Хатха-йога </li>
+          <li>Аштанга-йога</li>
         </ul>
       </div>
 
