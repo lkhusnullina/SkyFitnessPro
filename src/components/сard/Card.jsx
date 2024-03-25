@@ -16,7 +16,7 @@ function Card({ card, showButton, setIsOpen}){
           <button className={styles.card_button}>Перейти →</button>
         </div>
       ) : (
-        <Link to={"/yoga"} id={card.id}>
+        <Link to={"/course"} id={card.id}>
           <h3 className={styles.card_title}>{card.titleCard}</h3>
           <img
             className={styles.card_img}

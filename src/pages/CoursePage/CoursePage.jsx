@@ -1,9 +1,9 @@
-import styles from "./YogaPage.module.css";
+import styles from "./CoursePage.module.css";
 
-export const YogaPage = () => {
+export const CoursePage = () => {
   return (
     <div className={styles.container}>
-      <img className={styles.yogaImg} src="images/yoga.jpg" />
+      <img className={styles.yogaImg} src="images/banner.png" />
       <h2 className={styles.yogaTitle}>Подойдет для вас, если: </h2>
 
       <div className={styles.description}>

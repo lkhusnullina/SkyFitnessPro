@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styles from "./ProfilePage.module.css";
-import ModalChangeUserData from "../../components/modals/ModalChangeUserData";
-import Card from "../../components/Card/Card.jsx";
+import ModalChangeUserData from "../../components/modals/ModalChangeUserData/ModalChangeUserData.jsx";
+import Card from "../../components/сard/Card.jsx";
 import { Cards } from "../../constans.js";
-import ModalChooseLesson from "../../components/modals/ModalChooseLesson.jsx";
+import ModalChooseLesson from "../../components/modals/ModalChooseLesson/ModalChooseLesson.jsx";
 
 export const ProfilePage = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

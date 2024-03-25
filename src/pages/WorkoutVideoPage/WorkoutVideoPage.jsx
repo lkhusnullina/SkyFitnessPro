@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ModalMyProgress from "../../components/modals/ModalMyProgress";
+import ModalMyProgress from "../../components/modals/ModalMyProgress/ModalMyProgress.jsx";
 import Video from "../../components/workoutVideo/WorkoutVideo";
 import styles from "./WorkoutVideoPage.module.css";
 

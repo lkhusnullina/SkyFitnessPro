@@ -8,7 +8,7 @@ function Header(){
       ? "images/header_logo.png"
       : "images/header_logo_black.png";
   
-    const noUser = location.pathname === "/yoga";
+    const noUser = location.pathname === "/course";
     const userProfile =
       location.pathname === "/profile" || location.pathname === "/workout";
   

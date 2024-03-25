@@ -5,7 +5,7 @@ import {
   handleLoginChange,
   handlePasswordChange,
   handleRepeatPasswordChange,
-} from "../../utils/formValidation";
+} from "../../../utils/formValidation";
 
 function ModalChangeUserData({ isPasswordChange, closeModal }) {
   const [loginError, setLoginError] = useState([]);

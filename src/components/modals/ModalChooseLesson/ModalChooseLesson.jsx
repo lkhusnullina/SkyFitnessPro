@@ -52,4 +52,4 @@ function ModalChooseLesson({closeProgressModal}) {
   );
 }
 
-export default ModalChooseLesson;
+export default ModalChooseLesson

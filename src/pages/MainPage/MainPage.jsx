@@ -1,5 +1,5 @@
 import styles from "./MainPage.module.css";
-import Card from "../../components/Card/Card.jsx";
+import Card from "../../components/сard/Card.jsx";
 import { useSelector } from "react-redux";
 
 export const MainPage = () => {
