@@ -1,12 +1,15 @@
-import styles from "./Card.module.css";
-import { Link } from "react-router-dom";
+import styles from './Card.module.css'
+import { Link } from 'react-router-dom'
 
-function Card({ card, showButton, setIsOpen}){
-
+function Card({ card, showButton, setIsOpen }) {
   return (
     <div className={styles.card}>
-      { showButton ? (
-        <div onClick={() => setIsOpen(true)} id={card.id} className={styles.card_shadow}>
+      {showButton ? (
+        <div
+          onClick={() => setIsOpen(true)}
+          id={card.id}
+          className={styles.card_shadow}
+        >
           <h3 className={styles.card_title}>{card.titleCard}</h3>
           <img
             className={styles.card_img}
@@ -16,7 +19,7 @@ function Card({ card, showButton, setIsOpen}){
           <button className={styles.card_button}>Перейти →</button>
         </div>
       ) : (
-        <Link to={"/course"} id={card.id}>
+        <Link to={'/course'} id={card.id}>
           <h3 className={styles.card_title}>{card.titleCard}</h3>
           <img
             className={styles.card_img}
@@ -26,7 +29,7 @@ function Card({ card, showButton, setIsOpen}){
         </Link>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card

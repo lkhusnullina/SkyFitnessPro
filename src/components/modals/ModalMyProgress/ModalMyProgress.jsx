@@ -1,55 +1,55 @@
-import React, { useState } from "react";
-import styles from "./ModalMyProgress.module.css";
+import React, { useState } from 'react'
+import styles from './ModalMyProgress.module.css'
 
 function ModalMyProgress({ closeModal }) {
-  const [isProgressFixed, setIsProgressFixed] = useState(false);
+  const [isProgressFixed, setIsProgressFixed] = useState(false)
   const [itemErrors, setItemErrors] = useState({
-    forwardBends: "",
-    backwardBends: "",
-    kneeRaises: "",
-  });
-  const [errorMessage, setErrorMessage] = useState("");
-  const isLoading = false;
+    forwardBends: '',
+    backwardBends: '',
+    kneeRaises: '',
+  })
+  const [errorMessage, setErrorMessage] = useState('')
+  const isLoading = false
 
   const handleClickOutside = (event) => {
     if (event.target.classList.contains(styles.pageContainer)) {
-      closeModal();
+      closeModal()
     }
-  };
+  }
 
   const handleItemChange = (event, fieldName) => {
-    const itemValue = event.target.value;
-    event.target.value = event.target.value.replace(/\D/g, "").slice(0, 2);
+    const itemValue = event.target.value
+    event.target.value = event.target.value.replace(/\D/g, '').slice(0, 2)
 
-    let errors = { ...itemErrors };
+    let errors = { ...itemErrors }
     if (!itemValue) {
-      errors[fieldName] = "Поле обязательно для заполнения";
+      errors[fieldName] = 'Поле обязательно для заполнения'
     } else {
-      errors[fieldName] = "";
+      errors[fieldName] = ''
     }
-    setItemErrors(errors);
-  };
+    setItemErrors(errors)
+  }
 
   const integerValidation = (event) => {
-    event.target.value = event.target.value.replace(/[^\d]+/g, "");
-  };
+    event.target.value = event.target.value.replace(/[^\d]+/g, '')
+  }
 
   const handleProgressFixed = () => {
     const areInputsFilled = Array.from(
-      document.querySelectorAll('input[type="number"]')
-    ).every((input) => input.value.trim() !== "");
+      document.querySelectorAll('input[type="number"]'),
+    ).every((input) => input.value.trim() !== '')
 
     if (
       areInputsFilled &&
-      Object.values(itemErrors).every((error) => error === "")
+      Object.values(itemErrors).every((error) => error === '')
     ) {
-      setIsProgressFixed(true);
-      setErrorMessage("");
-      console.log("Отправка данных прошла успешно!");
+      setIsProgressFixed(true)
+      setErrorMessage('')
+      console.log('Отправка данных прошла успешно!')
     } else {
-      setErrorMessage("Форма заполнена некорректно");
+      setErrorMessage('Форма заполнена некорректно')
     }
-  };
+  }
 
   return (
     <div className={styles.pageContainer} onClick={handleClickOutside}>
@@ -77,7 +77,7 @@ function ModalMyProgress({ closeModal }) {
                 pattern="\d+"
                 placeholder="Введите значение"
                 onInput={integerValidation}
-                onChange={(event) => handleItemChange(event, "forwardBends")}
+                onChange={(event) => handleItemChange(event, 'forwardBends')}
               />
               <span className={styles.error}>{itemErrors.forwardBends}</span>
             </div>
@@ -92,7 +92,7 @@ function ModalMyProgress({ closeModal }) {
                 pattern="\d+"
                 placeholder="Введите значение"
                 onInput={integerValidation}
-                onChange={(event) => handleItemChange(event, "backwardBends")}
+                onChange={(event) => handleItemChange(event, 'backwardBends')}
               />
               <span className={styles.error}>{itemErrors.backwardBends}</span>
             </div>
@@ -107,7 +107,7 @@ function ModalMyProgress({ closeModal }) {
                 pattern="\d+"
                 placeholder="Введите значение"
                 onInput={integerValidation}
-                onChange={(event) => handleItemChange(event, "kneeRaises")}
+                onChange={(event) => handleItemChange(event, 'kneeRaises')}
               />
               <span className={styles.error}>{itemErrors.kneeRaises}</span>
             </div>
@@ -119,14 +119,14 @@ function ModalMyProgress({ closeModal }) {
               disabled={isLoading}
               onClick={handleProgressFixed}
             >
-              {isLoading ? "Отправка..." : "Отправить"}
+              {isLoading ? 'Отправка...' : 'Отправить'}
             </button>
           </div>
           <span className={styles.errorForm}>{errorMessage}</span>
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default ModalMyProgress;
+export default ModalMyProgress

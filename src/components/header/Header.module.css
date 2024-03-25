@@ -1,41 +1,40 @@
 .header_block {
-    margin-top: 24px;
-    margin-bottom: 66px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  margin-top: 24px;
+  margin-bottom: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .header_btn {
-    width: 77px;
-    height: 36px;
-    border: none;
-    border-radius: 46px;
-    background-color: #140D40;
-    color: #ffff;
-    font-weight: 'StratosSkyeng';
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    cursor: pointer;
+  width: 77px;
+  height: 36px;
+  border: none;
+  border-radius: 46px;
+  background-color: #140d40;
+  color: #ffff;
+  font-weight: 'StratosSkyeng';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .header_btn:hover {
-    background-color: #2D1F79;
+  background-color: #2d1f79;
 }
 
 .header_btn:active {
-    background-color: #3B29A1;
+  background-color: #3b29a1;
 }
 
 .header_user {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .header_userName {
-    font-size: 24px;
-    line-height: 32px;
+  font-size: 24px;
+  line-height: 32px;
 }
-

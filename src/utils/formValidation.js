@@ -1,26 +1,26 @@
 // валидация логина
 export const handleLoginChange = (event, setLoginError) => {
-  const loginValue = event.target.value;
-  let errors = [];
+  const loginValue = event.target.value
+  let errors = []
 
   if (!loginValue) {
-    errors.push(`Поле "логин" обязательно для заполнения`);
+    errors.push(`Поле "логин" обязательно для заполнения`)
   } else if (loginValue.length < 5) {
-    errors.push(`Поле "логин" должно содержать не менее 5 символов`);
+    errors.push(`Поле "логин" должно содержать не менее 5 символов`)
   } else {
-    const loginPattern = /^[a-zA-Z0-9!@#$%^&*()_+=[\]{};':"\\|,.<>/?]+$/;
+    const loginPattern = /^[a-zA-Z0-9!@#$%^&*()_+=[\]{};':"\\|,.<>/?]+$/
 
     if (!loginPattern.test(loginValue)) {
-      errors.push("Должны быть только латинские буквы/цифры");
+      errors.push('Должны быть только латинские буквы/цифры')
     }
 
-    if (!loginValue.includes("@") || !loginValue.includes(".")) {
-      errors.push("Отсутствуют символы @ и .");
+    if (!loginValue.includes('@') || !loginValue.includes('.')) {
+      errors.push('Отсутствуют символы @ и .')
     }
   }
 
-  setLoginError(errors);
-};
+  setLoginError(errors)
+}
 
 // валидация пароля
 export const handlePasswordChange = (
@@ -28,41 +28,41 @@ export const handlePasswordChange = (
   repeatPasswordValue,
   setPasswordError,
   setRepeatPasswordError,
-  setPasswordValue
+  setPasswordValue,
 ) => {
-  const passwordValue = event.target.value.trim();
-  setPasswordValue(passwordValue);
+  const passwordValue = event.target.value.trim()
+  setPasswordValue(passwordValue)
 
-  let passwordError = "";
+  let passwordError = ''
 
   if (!passwordValue) {
-    passwordError = `Поле "пароль" обязательно для заполнения`;
+    passwordError = `Поле "пароль" обязательно для заполнения`
   } else if (passwordValue.length < 6) {
-    passwordError = "Пароль должен содержать минимум 6 символов (без пробелов)";
+    passwordError = 'Пароль должен содержать минимум 6 символов (без пробелов)'
   }
 
-  setPasswordError(passwordError);
+  setPasswordError(passwordError)
 
   if (passwordValue === repeatPasswordValue) {
-    setRepeatPasswordError("");
+    setRepeatPasswordError('')
   } else {
-    setRepeatPasswordError("Пароли не совпадают");
+    setRepeatPasswordError('Пароли не совпадают')
   }
-};
+}
 
 // валидация повторного пароля
 export const handleRepeatPasswordChange = (
   event,
   passwordValue,
   setRepeatPasswordError,
-  setRepeatPasswordValue
+  setRepeatPasswordValue,
 ) => {
-  const repeatPasswordValue = event.target.value.trim();
-  setRepeatPasswordValue(repeatPasswordValue);
+  const repeatPasswordValue = event.target.value.trim()
+  setRepeatPasswordValue(repeatPasswordValue)
 
   if (repeatPasswordValue !== passwordValue) {
-    setRepeatPasswordError("Пароли не совпадают");
+    setRepeatPasswordError('Пароли не совпадают')
   } else {
-    setRepeatPasswordError("");
+    setRepeatPasswordError('')
   }
-};
+}

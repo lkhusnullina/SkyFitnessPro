@@ -1,27 +1,27 @@
-import { useState } from "react";
-import styles from "./ProfilePage.module.css";
-import ModalChangeUserData from "../../components/modals/ModalChangeUserData/ModalChangeUserData.jsx";
-import Card from "../../components/сard/Card.jsx";
-import { Cards } from "../../constans.js";
-import ModalChooseLesson from "../../components/modals/ModalChooseLesson/ModalChooseLesson.jsx";
+import { useState } from 'react'
+import styles from './ProfilePage.module.css'
+import ModalChangeUserData from '../../components/modals/ModalChangeUserData/ModalChangeUserData.jsx'
+import Card from '../../components/сard/Card.jsx'
+import { Cards } from '../../constans.js'
+import ModalChooseLesson from '../../components/modals/ModalChooseLesson/ModalChooseLesson.jsx'
 
 export const ProfilePage = (props) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-  const [isPasswordChange, setIsPasswordChange] = useState(false);
+  const [isPasswordChange, setIsPasswordChange] = useState(false)
 
   const openModal = (changePassword) => {
-    setIsPasswordChange(changePassword);
-    setIsModalOpen(true);
-  };
+    setIsPasswordChange(changePassword)
+    setIsModalOpen(true)
+  }
 
   const closeProgressModal = () => {
     setIsOpen(false)
   }
 
   const closeModal = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
 
   return (
     <div className={styles.container}>
@@ -47,8 +47,13 @@ export const ProfilePage = (props) => {
       <h2 className={styles.title_courses}>Мои курсы</h2>
       <div className={styles.cards_block}>
         {Cards?.map((card) => (
-              <Card key={card.id} card={card} showButton={true} setIsOpen={setIsOpen}/>
-          ))}
+          <Card
+            key={card.id}
+            card={card}
+            showButton={true}
+            setIsOpen={setIsOpen}
+          />
+        ))}
       </div>
       {isModalOpen && (
         <div className={styles.modalOverlay}>
@@ -59,10 +64,10 @@ export const ProfilePage = (props) => {
         </div>
       )}
       {isOpen && (
-      <div className={styles.modalOverlay}>
-        <ModalChooseLesson closeProgressModal={closeProgressModal} />
-      </div>
+        <div className={styles.modalOverlay}>
+          <ModalChooseLesson closeProgressModal={closeProgressModal} />
+        </div>
       )}
     </div>
-  );
-};
+  )
+}

@@ -1,19 +1,19 @@
-import React from "react";
-import styles from "./ModalChooseLesson.module.css";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import styles from './ModalChooseLesson.module.css'
+import { useNavigate } from 'react-router-dom'
 
-function ModalChooseLesson({closeProgressModal}) {
+function ModalChooseLesson({ closeProgressModal }) {
   const navigate = useNavigate()
 
   const clickChooseLesson = () => {
-    navigate("/workout")
+    navigate('/workout')
   }
 
   const handleClickOutside = (event) => {
     if (event.target.classList.contains(styles.pageContainer)) {
-      closeProgressModal();
+      closeProgressModal()
     }
-  };
+  }
 
   return (
     <div className={styles.pageContainer} onClick={handleClickOutside}>
@@ -49,7 +49,7 @@ function ModalChooseLesson({closeProgressModal}) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default ModalChooseLesson
