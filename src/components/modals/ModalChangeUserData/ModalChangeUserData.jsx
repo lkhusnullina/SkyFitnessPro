@@ -1,37 +1,37 @@
-import React, { useEffect, useState } from "react";
-import styles from "./ModalChangeUserData.module.css";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import styles from './ModalChangeUserData.module.css'
+import { Link } from 'react-router-dom'
 import {
   handleLoginChange,
   handlePasswordChange,
   handleRepeatPasswordChange,
-} from "../../../utils/formValidation";
+} from '../../../utils/formValidation'
 
 function ModalChangeUserData({ isPasswordChange, closeModal }) {
-  const [loginError, setLoginError] = useState([]);
-  const [passwordError, setPasswordError] = useState("");
-  const [repeatPasswordError, setRepeatPasswordError] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [repeatPasswordValue, setRepeatPasswordValue] = useState("");
-  const isLoading = false;
+  const [loginError, setLoginError] = useState([])
+  const [passwordError, setPasswordError] = useState('')
+  const [repeatPasswordError, setRepeatPasswordError] = useState('')
+  const [passwordValue, setPasswordValue] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [repeatPasswordValue, setRepeatPasswordValue] = useState('')
+  const isLoading = false
 
   const handleClickOutside = (event) => {
     if (event.target.classList.contains(styles.pageContainer)) {
-      closeModal(); // Закрываем модальное окно при клике вне него
+      closeModal() // Закрываем модальное окно при клике вне него
     }
-  };
+  }
 
   useEffect(() => {
     if (repeatPasswordError && repeatPasswordValue === passwordValue) {
-      setRepeatPasswordError("");
+      setRepeatPasswordError('')
     }
-  }, [passwordValue, repeatPasswordValue]);
+  }, [passwordValue, repeatPasswordValue])
 
   const handleChangeData = () => {
     if (loginError.length > 0) {
-      setErrorMessage("Форма заполнена некорректно");
-      return;
+      setErrorMessage('Форма заполнена некорректно')
+      return
     }
 
     if (
@@ -41,13 +41,13 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
         repeatPasswordError ||
         passwordError)
     ) {
-      setErrorMessage("Форма заполнена некорректно");
-      return;
+      setErrorMessage('Форма заполнена некорректно')
+      return
     }
 
-    console.log("Смена данных прошла успешно!");
-    setErrorMessage("");
-  };
+    console.log('Смена данных прошла успешно!')
+    setErrorMessage('')
+  }
 
   return (
     <div className={styles.pageContainer} onClick={handleClickOutside}>
@@ -73,7 +73,7 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
                     repeatPasswordValue,
                     setPasswordError,
                     setRepeatPasswordError,
-                    setPasswordValue
+                    setPasswordValue,
                   )
                 }
               />
@@ -88,7 +88,7 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
                     event,
                     passwordValue,
                     setRepeatPasswordError,
-                    setRepeatPasswordValue
+                    setRepeatPasswordValue,
                   )
                 }
               />
@@ -100,7 +100,7 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
                 disabled={isLoading}
                 onClick={handleChangeData}
               >
-                {isLoading ? "Сохранение..." : "Сохранить"}
+                {isLoading ? 'Сохранение...' : 'Сохранить'}
               </button>
               <span className={styles.errorForm}>{errorMessage}</span>
             </div>
@@ -129,14 +129,14 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
               disabled={isLoading}
               onClick={handleChangeData}
             >
-              {isLoading ? "Сохранение..." : "Сохранить"}
+              {isLoading ? 'Сохранение...' : 'Сохранить'}
             </button>
             <span className={styles.errorForm}>{errorMessage}</span>
           </>
         )}
       </div>
     </div>
-  );
+  )
 }
 
-export default ModalChangeUserData;
+export default ModalChangeUserData

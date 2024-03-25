@@ -1,14 +1,14 @@
 @font-face {
-  font-family: "StratosSkyeng";
+  font-family: 'StratosSkyeng';
   src:
-    url("../public/assets/fonts/StratosSkyeng.woff2") format("woff2"),
-    local("Arial");
+    url('../public/assets/fonts/StratosSkyeng.woff2') format('woff2'),
+    local('Arial');
   font-weight: 400;
   font-style: normal;
 }
 
 * {
-  font-family: "StratosSkyeng";
+  font-family: 'StratosSkyeng';
   padding: 0;
   margin: 0;
   box-sizing: border-box;

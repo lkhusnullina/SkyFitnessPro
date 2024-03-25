@@ -1,4 +1,4 @@
-.yogaTitle { 
+.yogaTitle {
   width: 452px;
   height: 48px;
   font-size: 40px;
@@ -12,7 +12,7 @@
   align-items: flex-start;
   display: flex;
   margin-top: 40px;
-  gap: 87px
+  gap: 87px;
 }
 
 .pointsText {
@@ -66,7 +66,7 @@
   width: 1160px;
   height: 350px;
   border-radius: 30px;
-  background-color: #F9EBFF;
+  background-color: #f9ebff;
   margin-top: 75px;
   display: flex;
 }
@@ -87,13 +87,13 @@
   height: 337.53px;
 }
 
-.footerButton{
+.footerButton {
   width: 275px;
   height: 52px;
-  background-color: #580EA2;
+  background-color: #580ea2;
   border-radius: 46px;
   border: none;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 18px;
   line-height: 24px;
   /* letter-spacing: -0.05000000074505806px; */

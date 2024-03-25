@@ -1,41 +1,41 @@
-import styles from "./AuthPage.module.css";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import styles from './AuthPage.module.css'
+import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import {
   handleLoginChange,
   handlePasswordChange,
   handleRepeatPasswordChange,
-} from "../../utils/formValidation";
+} from '../../utils/formValidation'
 
 export const AuthPage = ({ isLoginMode = false }) => {
-  const [loginError, setLoginError] = useState([]);
-  const [passwordError, setPasswordError] = useState("");
-  const [repeatPasswordError, setRepeatPasswordError] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [repeatPasswordValue, setRepeatPasswordValue] = useState("");
-  const isLoading = false;
+  const [loginError, setLoginError] = useState([])
+  const [passwordError, setPasswordError] = useState('')
+  const [repeatPasswordError, setRepeatPasswordError] = useState('')
+  const [passwordValue, setPasswordValue] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [repeatPasswordValue, setRepeatPasswordValue] = useState('')
+  const isLoading = false
 
   useEffect(() => {
     if (repeatPasswordError && repeatPasswordValue === passwordValue) {
-      setRepeatPasswordError("");
+      setRepeatPasswordError('')
     }
-  }, [passwordValue, repeatPasswordValue]);
+  }, [passwordValue, repeatPasswordValue])
 
   const handleRegister = () => {
     if (loginError.length > 0 || passwordError || !passwordValue) {
-      setErrorMessage("Форма заполнена некорректно");
-      return;
+      setErrorMessage('Форма заполнена некорректно')
+      return
     }
 
     if (!isLoginMode && repeatPasswordError) {
-      setErrorMessage("Форма заполнена некорректно");
-      return;
+      setErrorMessage('Форма заполнена некорректно')
+      return
     }
 
-    console.log("Вход/Регистрация прошла успешно!");
-    setErrorMessage("");
-  };
+    console.log('Вход/Регистрация прошла успешно!')
+    setErrorMessage('')
+  }
 
   return (
     <div className={styles.pageContainer}>
@@ -75,7 +75,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
                     repeatPasswordValue,
                     setPasswordError,
                     setRepeatPasswordError,
-                    setPasswordValue
+                    setPasswordValue,
                   )
                 }
                 required
@@ -88,7 +88,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
                 disabled={isLoading}
                 onClick={handleRegister}
               >
-                {isLoading ? "Загрузка..." : "Войти"}
+                {isLoading ? 'Загрузка...' : 'Войти'}
               </button>
               <Link to="/registration">
                 <button className={styles.secondaryButton}>
@@ -129,7 +129,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
                     repeatPasswordValue,
                     setPasswordError,
                     setRepeatPasswordError,
-                    setPasswordValue
+                    setPasswordValue,
                   )
                 }
                 required
@@ -145,7 +145,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
                     event,
                     passwordValue,
                     setRepeatPasswordError,
-                    setRepeatPasswordValue
+                    setRepeatPasswordValue,
                   )
                 }
                 required
@@ -157,7 +157,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
               disabled={isLoading}
               onClick={handleRegister}
             >
-              {isLoading ? "Регистрация..." : "Зарегистрироваться"}
+              {isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
             </button>
             {errorMessage && (
               <span className={styles.errorForm}>{errorMessage}</span>
@@ -166,5 +166,5 @@ export const AuthPage = ({ isLoginMode = false }) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}

@@ -1,4 +1,4 @@
-import styles from "./CoursePage.module.css";
+import styles from './CoursePage.module.css'
 
 export const CoursePage = () => {
   return (
@@ -64,5 +64,5 @@ export const CoursePage = () => {
         <img className={styles.handImg} src="images/hand.svg" />
       </div>
     </div>
-  );
-};
+  )
+}

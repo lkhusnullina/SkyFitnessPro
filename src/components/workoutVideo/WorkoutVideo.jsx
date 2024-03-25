@@ -1,9 +1,8 @@
-
-const src = "https://www.youtube.com/embed/v-xTLFDhoD0";
+const src = 'https://www.youtube.com/embed/v-xTLFDhoD0'
 
 const Video = () => {
   return (
-    <iframe 
+    <iframe
       width="1160"
       height="639"
       src={src}
@@ -11,7 +10,7 @@ const Video = () => {
       frameBorder="0"
       allowFullScreen
     />
-  );
-};
+  )
+}
 
-export default Video;
+export default Video

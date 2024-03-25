@@ -1,68 +1,68 @@
 .top__block {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .top__left {
-    position: relative;
+  position: relative;
 }
 
 .top__sub_title {
-    position: absolute;
-    top: 105px;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    letter-spacing: -0.05px;
-    color: #FFFFFF;
-    opacity: 50%;
+  position: absolute;
+  top: 105px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: -0.05px;
+  color: #ffffff;
+  opacity: 50%;
 }
 
 .top__title {
-    width: 830px;
-    margin-top: 17px;
-    font-weight: 400;
-    font-size: 60px;
-    line-height: 55px;
-    letter-spacing: -1.17px;
-    color: #F4F4FF;
+  width: 830px;
+  margin-top: 17px;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 55px;
+  letter-spacing: -1.17px;
+  color: #f4f4ff;
 }
 
 .top__right {
-    position: relative;
+  position: relative;
 }
 
 .cards_block {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 37px;
-    row-gap: 44px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 37px;
+  row-gap: 44px;
 }
 
 .footer {
-    margin: 34px auto 60px auto;
-    text-align: center;
+  margin: 34px auto 60px auto;
+  text-align: center;
 }
 
 .footer__button {
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 32px;
-    letter-spacing: -0.1px;
-    width: 147px;
-    height: 48px;
-    background-color: #C7E957;
-    border-radius: 49px;
-    padding: 14px 24px;
-    border: none;
-    cursor: pointer;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.1px;
+  width: 147px;
+  height: 48px;
+  background-color: #c7e957;
+  border-radius: 49px;
+  padding: 14px 24px;
+  border: none;
+  cursor: pointer;
 }
 
 .footer__button:hover {
-    background-color: #DAF289;
-    transition: .4s ease-in-out;
+  background-color: #daf289;
+  transition: 0.4s ease-in-out;
 }
 .footer__button:active {
-    background-color: #EBFFAB;
-    transition: .4s ease-in-out;
+  background-color: #ebffab;
+  transition: 0.4s ease-in-out;
 }

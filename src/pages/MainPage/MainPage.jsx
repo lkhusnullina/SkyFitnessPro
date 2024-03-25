@@ -1,9 +1,9 @@
-import styles from "./MainPage.module.css";
-import Card from "../../components/сard/Card.jsx";
-import { useSelector } from "react-redux";
+import styles from './MainPage.module.css'
+import Card from '../../components/сard/Card.jsx'
+import { useSelector } from 'react-redux'
 
 export const MainPage = () => {
-  const cards = useSelector((state) => state.courses.cards);
+  const cards = useSelector((state) => state.courses.cards)
 
   return (
     <div>
@@ -29,7 +29,7 @@ export const MainPage = () => {
       <section className={styles.section}>
         <div className={styles.cards_block}>
           {cards?.map((card) => (
-            <Card key={card.id} card={card} showButton={false}/>
+            <Card key={card.id} card={card} showButton={false} />
           ))}
         </div>
       </section>
@@ -37,14 +37,11 @@ export const MainPage = () => {
         <div className={styles.footer}>
           <a href="#top">
             <button className={styles.footer__button}>
-              <img
-                src="/images/mainPagePictures/text_button.svg"
-                alt="on up"
-              />
+              <img src="/images/mainPagePictures/text_button.svg" alt="on up" />
             </button>
           </a>
         </div>
       </section>
     </div>
-  );
-};
+  )
+}

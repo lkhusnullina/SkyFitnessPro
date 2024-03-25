@@ -1,12 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Cards } from '../constans';
+import { createSlice } from '@reduxjs/toolkit'
+import { Cards } from '../constans'
 
 const coursesSlice = createSlice({
-  name: "courses",
+  name: 'courses',
   initialState: {
-    cards: Cards
+    cards: Cards,
   },
   reducers: {},
-});
+})
 
-export const coursesReducer = coursesSlice.reducer;
+export const coursesReducer = coursesSlice.reducer
