@@ -1,6 +1,7 @@
 import ModalChangeUserData from '../modals/ModalChangeUserData/ModalChangeUserData.jsx'
 import { useState } from 'react'
 import styles from './profileData.module.css'
+import { BigButton } from '../buttons/bigButton.jsx';
 
 export const ProfileData = () => {
    const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,18 +23,8 @@ export const ProfileData = () => {
                <p className={styles.login}>Логин: sergey.petrov96</p>
                <p className={styles.password}>Пароль: 4fkhdj880d</p>
                <div className={styles.button_container}>
-                  <button
-                     className={styles.change_login_btn}
-                     onClick={() => openModal(false)}
-                  >
-                     Редактировать логин
-                  </button>
-                  <button
-                     className={styles.change_password_btn}
-                     onClick={() => openModal(true)}
-                  >
-                     Редактировать пароль
-                  </button>
+                  <BigButton value='Редактировать логин' onClick={() => openModal(false)} />
+                  <BigButton value='Редактировать пароль' onClick={() => openModal(true)} />
                </div>
             </div>
          {isModalOpen && (
