@@ -1,22 +1,3 @@
-.progress_block {
-  width: 638px;
-  padding: 36px 44px;
-  border-radius: 30px;
-  background-color: #f2f2f2;
-}
-
-.progress_header {
-  margin-bottom: 40px;
-  font-size: 24px;
-  line-height: 32px;
-  text-align: center;
-}
-
-.progress_percentages {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
 
 .progress_percent {
   position: relative;
@@ -26,74 +7,11 @@
   line-height: 32px;
 }
 
-.progress_percent__count {
-  position: absolute;
-  top: 2px;
-  right: 170px;
-  display: block;
-  color: #ffffff;
+.progress_percent__name {
+  width: 227px;
 }
 
-/* progress {
-  width: 278px;
-  height: 36px;
-  border-radius: 22px;
-  text-align: center;
-  background: transparent;
-  color: red;
-}
 
-progress::-webkit-progress-bar {
-  border-radius: 22px;
-  text-align: center;
-  background: transparent;
-  border: 2px solid #565eef;
-}
-
-progress::-webkit-progress-value {
-  -webkit-border-top-left-radius: 22px;
-  -webkit-border-bottom-left-radius: 22px;
-  border: 2px solid #565eef;
-  background-color: #565eef;
-  text-align: center;
-}
-
-progress::-moz-progress-bar {
-  border-radius: 22px;
-  border: 2px solid #565eef;
-  text-align: center;
-  background: transparent;
-}
-
-.progress_percent__value1::-webkit-progress-value {
-  background-color: #565eef;
-  border: 2px solid #565eef;
-}
-
-.progress_percent__value1::-webkit-progress-bar {
-  border: 2px solid #565eef;
-  background: #edecff;
-}
-
-.progress_percent__value2::-webkit-progress-value {
-  background-color: #ff6d00;
-  border: 2px solid #ff6d00;
-}
-
-.progress_percent__value2::-webkit-progress-bar {
-  border: 2px solid #ff6d00;
-  background: #fff2e0;
-}
-
-.progress_percent__value3::-webkit-progress-value {
-  background-color: #9a48f1;
-  border: 2px solid #9a48f1;
-}
-
-.progress_percent__value3::-webkit-progress-bar {
-  border: 2px solid #9a48f1;
-  background: #f9ebff;
-} */
 
 input {
   cursor: pointer;
@@ -156,3 +74,4 @@ input::-moz-range-progress {
   background-color: var(--progress-color);
   height: var(--progress-height);
 }
+
