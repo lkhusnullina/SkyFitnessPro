@@ -10,3 +10,12 @@ text-align: left;
 
 
 }
+
+.block{
+    position: relative;
+}
+.block__title{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
