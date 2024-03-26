@@ -9,6 +9,7 @@ import {
 
 export const AuthPage = ({ isLoginMode = false }) => {
   const [loginError, setLoginError] = useState([])
+  const [loginValue, setLoginValue] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [repeatPasswordError, setRepeatPasswordError] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
@@ -23,7 +24,12 @@ export const AuthPage = ({ isLoginMode = false }) => {
   }, [passwordValue, repeatPasswordValue])
 
   const handleRegister = () => {
-    if (loginError.length > 0 || passwordError || !passwordValue) {
+    if (
+      loginError.length > 0 ||
+      passwordError ||
+      !passwordValue ||
+      !loginValue
+    ) {
       setErrorMessage('Форма заполнена некорректно')
       return
     }
@@ -54,7 +60,9 @@ export const AuthPage = ({ isLoginMode = false }) => {
                 type="text"
                 name="login"
                 placeholder="Логин"
-                onChange={(event) => handleLoginChange(event, setLoginError)}
+                onChange={(event) =>
+                  handleLoginChange(event, setLoginError, setLoginValue)
+                }
                 required
               />
               <div className={styles.errorList}>
@@ -108,7 +116,9 @@ export const AuthPage = ({ isLoginMode = false }) => {
                 type="text"
                 name="login"
                 placeholder="Логин"
-                onChange={(event) => handleLoginChange(event, setLoginError)}
+                onChange={(event) =>
+                  handleLoginChange(event, setLoginError, setLoginValue)
+                }
                 required
               />
               <div className={styles.errorList}>
