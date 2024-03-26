@@ -16,7 +16,7 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
   const [errorMessage, setErrorMessage] = useState('')
   const [repeatPasswordValue, setRepeatPasswordValue] = useState('')
   const isLoading = false
-
+   
   const handleClickOutside = (event) => {
     if (event.target.classList.contains(styles.pageContainer)) {
       closeModal() // Закрываем модальное окно при клике вне него

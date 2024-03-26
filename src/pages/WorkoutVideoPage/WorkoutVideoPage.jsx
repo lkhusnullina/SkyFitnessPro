@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ModalMyProgress from '../../components/modals/ModalMyProgress/ModalMyProgress.jsx'
 import Video from '../../components/workoutVideo/WorkoutVideo'
 import styles from './WorkoutVideoPage.module.css'
+import { BigButton } from '../../components/buttons/bigButton.jsx'
 
 export const WorkoutVideoPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -28,12 +29,13 @@ export const WorkoutVideoPage = () => {
               (5 повторений)
             </li>
           </ul>
-          <button
+          <BigButton value='Заполнить свой прогресс' onClick={() => setIsOpen(true)} />
+          {/* <button
             className={styles.button_progress}
             onClick={() => setIsOpen(true)}
           >
             Заполнить свой прогресс
-          </button>
+          </button> */}
         </div>
         <div className={styles.progress_block}>
           <div className={styles.progress_header}>
