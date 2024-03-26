@@ -3,19 +3,12 @@ import { useState } from 'react'
 import styles from './profileData.module.css'
 import { BigButton } from '../buttons/bigButton.jsx';
 
-export const ProfileData = () => {
-   const [isModalOpen, setIsModalOpen] = useState(false);
-   const [isPasswordChange, setIsPasswordChange] = useState(false)
-
+export const ProfileData = ({setIsModalOpen, setIsPasswordChange}) => {
+   
    const openModal = (changePassword) => {
    setIsPasswordChange(changePassword)
    setIsModalOpen(true)
    }
-
-   const closeModal = () => {
-   setIsModalOpen(false)
-   }
-
       return (
          <>
          <h1 className={styles.title}>Мой профиль</h1>
@@ -27,14 +20,6 @@ export const ProfileData = () => {
                   <BigButton value='Редактировать пароль' onClick={() => openModal(true)} />
                </div>
             </div>
-         {isModalOpen && (
-            <div className={styles.modalOverlay}>
-            <ModalChangeUserData
-               isPasswordChange={isPasswordChange}
-               closeModal={closeModal}
-            />
-            </div>
-         )}
       </>
    )
 };
