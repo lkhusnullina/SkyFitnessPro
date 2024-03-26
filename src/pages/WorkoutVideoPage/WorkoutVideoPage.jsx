@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ModalMyProgress from '../../components/modals/ModalMyProgress/ModalMyProgress.jsx'
 import Video from '../../components/workoutVideo/WorkoutVideo'
 import styles from './WorkoutVideoPage.module.css'
+import Lessons from '../../components/lessons/Lessons.jsx'
 
 export const WorkoutVideoPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -18,23 +19,7 @@ export const WorkoutVideoPage = () => {
       </div>
       <Video />
       <div className={styles.workout_block}>
-        <div className={styles.workout_description}>
-          <h2 className={styles.workout_header}>Упражнения</h2>
-          <ul className={styles.workout_element}>
-            <li>Наклон вперед (10 повторений)</li>
-            <li>Наклон назад (10 повторений)</li>
-            <li>
-              Поднятие ног, согнутых в коленях <br />
-              (5 повторений)
-            </li>
-          </ul>
-          <button
-            className={styles.button_progress}
-            onClick={() => setIsOpen(true)}
-          >
-            Заполнить свой прогресс
-          </button>
-        </div>
+        <Lessons setIsOpen={setIsOpen}/>
         <div className={styles.progress_block}>
           <div className={styles.progress_header}>
             Мой прогресс по тренировке 2:

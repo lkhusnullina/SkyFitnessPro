@@ -1,7 +1,6 @@
 import styles from './Lessons.module.css';
 
-export const Lessons = ({ setIsOpen }) => {
-    
+ function Lessons({ setIsOpen }){
     return (
         <div className={styles.workout_description}>
           <h2 className={styles.workout_header}>Упражнения</h2>
@@ -19,3 +18,5 @@ export const Lessons = ({ setIsOpen }) => {
         </div>
     )
 }
+
+export default Lessons
