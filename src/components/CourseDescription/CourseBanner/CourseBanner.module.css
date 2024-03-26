@@ -1,5 +1,13 @@
-.name {
-width: 528px;
+
+
+.block{
+    position: relative;
+}
+.block__title{
+ position: absolute;
+top: 30px;
+left: 30px;
+ width: 528px;
 height: 181px;
 font-family: StratosSkyeng;
 font-size: 64px;
@@ -8,14 +16,4 @@ line-height: 72px;
 letter-spacing: -0.800000011920929px;
 text-align: left;
 
-
-}
-
-.block{
-    position: relative;
-}
-.block__title{
-    position: absolute;
-    top: 30px;
-    left: 30px;
 }
