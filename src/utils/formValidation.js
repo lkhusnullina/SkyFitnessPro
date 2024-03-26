@@ -1,5 +1,5 @@
 // валидация логина
-export const handleLoginChange = (event, setLoginError, setLoginValue) => {
+export const handleLoginChange = (event, setLoginError) => {
   const loginValue = event.target.value;
   let errors = [];
 
@@ -20,7 +20,6 @@ export const handleLoginChange = (event, setLoginError, setLoginValue) => {
   }
 
   setLoginError(errors);
-  setLoginValue(loginValue);
 };
 
 // валидация пароля
