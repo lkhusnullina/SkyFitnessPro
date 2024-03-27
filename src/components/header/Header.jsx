@@ -17,7 +17,7 @@ function Header() {
   ) : userProfile ? (
     <div className={styles.header_user}>
       <img src="images/avatar.svg" alt="avatar" />
-      <div className={styles.header_userName}>Сергей</div>
+      <Link to="/profile" className={styles.header_userName}>Сергей</Link>
       <img src="images/arrow.svg" alt="arrow" />
     </div>
   ) : (
