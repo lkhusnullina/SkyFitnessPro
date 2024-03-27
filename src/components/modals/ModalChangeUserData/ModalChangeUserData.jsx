@@ -9,13 +9,14 @@ import {
 
 function ModalChangeUserData({ isPasswordChange, closeModal }) {
   const [loginError, setLoginError] = useState([])
+  const [loginValue, setLoginValue] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [repeatPasswordError, setRepeatPasswordError] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [repeatPasswordValue, setRepeatPasswordValue] = useState('')
   const isLoading = false
-
+   
   const handleClickOutside = (event) => {
     if (event.target.classList.contains(styles.pageContainer)) {
       closeModal() // Закрываем модальное окно при клике вне него
@@ -29,18 +30,15 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
   }, [passwordValue, repeatPasswordValue])
 
   const handleChangeData = () => {
-    if (loginError.length > 0) {
+    if (
+      isPasswordChange &&
+      (!repeatPasswordValue || repeatPasswordError || passwordError)
+    ) {
       setErrorMessage('Форма заполнена некорректно')
       return
     }
 
-    if (
-      isPasswordChange &&
-      (!repeatPasswordValue ||
-        !repeatPasswordValue ||
-        repeatPasswordError ||
-        passwordError)
-    ) {
+    if (!isPasswordChange && (loginError.length > 0 || !loginValue)) {
       setErrorMessage('Форма заполнена некорректно')
       return
     }
@@ -114,7 +112,9 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
                 type="text"
                 name="login"
                 placeholder="Логин"
-                onChange={(event) => handleLoginChange(event, setLoginError)}
+                onChange={(event) => {
+                  handleLoginChange(event, setLoginError, setLoginValue)
+                }}
               />
               <div className={styles.errorList}>
                 {loginError.map((error, index) => (

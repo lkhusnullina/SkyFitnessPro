@@ -3,6 +3,7 @@ import ModalMyProgress from '../../components/modals/ModalMyProgress/ModalMyProg
 import Video from '../../components/workoutVideo/WorkoutVideo'
 import styles from './WorkoutVideoPage.module.css'
 import Lessons from '../../components/lessons/Lessons.jsx'
+import { BigButton } from '../../components/buttons/bigButton.jsx'
 import { Progress } from '../../components/progress/Progress.jsx'
 
 export const WorkoutVideoPage = () => {
@@ -14,14 +15,17 @@ export const WorkoutVideoPage = () => {
 
   return (
     <div>
-      <h2 className={styles.title}>Йога</h2>
+      <h2 className={styles.title}></h2>
       <div className={styles.description}>
-        Красота и здоровье / Йога на каждый день / 2 день
+           /     / 2 
       </div>
       <Video />
       <div className={styles.workout_block}>
         <Lessons setIsOpen={setIsOpen}/>
         <Progress/>
+          <BigButton value='  ' onClick={() => setIsOpen(true)} />
+          {/* <button
+          </button> */}
       </div>
       {isOpen && <ModalMyProgress isOpen={isOpen} closeModal={closeModal} />}
     </div>

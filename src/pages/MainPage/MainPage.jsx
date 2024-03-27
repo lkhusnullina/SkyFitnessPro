@@ -20,7 +20,7 @@ export const MainPage = () => {
           <div className={styles.top__right}>
             <img
               className={styles.top__sticker}
-              src="images/mainPagePictures/change_your_body_logo.svg"
+              src="images/sticker.svg"
               alt="change your body"
             />
           </div>
@@ -32,13 +32,9 @@ export const MainPage = () => {
             <Card key={card.id} card={card} showButton={false} />
           ))}
         </div>
-      </section>
-      <section className={styles.section}>
         <div className={styles.footer}>
           <a href="#top">
-            <button className={styles.footer__button}>
-              <img src="/images/mainPagePictures/text_button.svg" alt="on up" />
-            </button>
+            <button className={styles.footer__button}>Наверх ↑</button>
           </a>
         </div>
       </section>
