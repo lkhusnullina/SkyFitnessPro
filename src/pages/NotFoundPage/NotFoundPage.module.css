@@ -1,0 +1,14 @@
+.notFoundPage__container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 70px;
+    background-color: #271a58;
+}
+
+.notFoundPage__title {
+    margin-top: 50px;
+    font-size: 50px;
+    color: #ffffff;
+}
