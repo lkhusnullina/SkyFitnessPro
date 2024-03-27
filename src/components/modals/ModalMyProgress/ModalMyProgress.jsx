@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from './ModalMyProgress.module.css'
+import { BigButton } from '../../buttons/bigButton'
 
 function ModalMyProgress({ closeModal }) {
   const [isProgressFixed, setIsProgressFixed] = useState(false)
@@ -10,6 +11,8 @@ function ModalMyProgress({ closeModal }) {
   })
   const [errorMessage, setErrorMessage] = useState('')
   const isLoading = false
+
+  const buttonValue = isLoading ? 'Отправка...' : 'Отправить'
 
   const handleClickOutside = (event) => {
     if (event.target.classList.contains(styles.pageContainer)) {
@@ -114,13 +117,7 @@ function ModalMyProgress({ closeModal }) {
           </div>
 
           <div className={styles.buttons}>
-            <button
-              className={styles.primaryButton}
-              disabled={isLoading}
-              onClick={handleProgressFixed}
-            >
-              {isLoading ? 'Отправка...' : 'Отправить'}
-            </button>
+            <BigButton value={buttonValue} onClick={handleProgressFixed} disabled={isLoading}/>
           </div>
           <span className={styles.errorForm}>{errorMessage}</span>
         </div>

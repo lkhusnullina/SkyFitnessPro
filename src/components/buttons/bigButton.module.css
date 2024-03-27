@@ -20,30 +20,15 @@
  .button:active {
    background-color: #271a58;
  }
- /* .primaryButton {
-   width: 278px;
-   height: 52px;
-   border-radius: 46px;
-   border: none;
-   font-size: 18px;
-   line-height: 24px;
-   cursor: pointer;
- }
- 
- .primaryButton {
-   color: #ffffff;
-   background-color: #580ea2;
- }
- 
- .primaryButton:hover {
-   background-color: #3f007d;
- }
- 
- .primaryButton:active {
-   background-color: #271a58;
- }
- 
- .primaryButton:disabled {
-   background-color: #271a58;
- } */
- 
+ .button:disabled {
+  background-color: #271a58;
+}
+ .secondaryButton {
+  width: 278px;
+  height: 52px;
+  border-radius: 46px;
+  border: none;
+  font-size: 18px;
+  line-height: 24px;
+  cursor: pointer;
+}

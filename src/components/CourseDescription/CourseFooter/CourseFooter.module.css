@@ -25,22 +25,9 @@
   }
   
   .footerButton {
-    width: 275px;
-    height: 52px;
-    background-color: #580ea2;
-    border-radius: 46px;
-    border: none;
-    color: #ffffff;
-    font-size: 18px;
-    line-height: 24px;
-    /* letter-spacing: -0.05000000074505806px; */
-    text-align: left;
-    display: flex;
-    justify-content: center;
+     width: 275px;
     margin-left: 52px;
     margin-bottom: 64px;
-    align-items: center;
-    cursor: pointer;
   }
   
   .footerInfo {

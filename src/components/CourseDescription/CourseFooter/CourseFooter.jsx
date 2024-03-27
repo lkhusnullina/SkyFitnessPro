@@ -1,6 +1,10 @@
+import { BigButton } from '../../buttons/bigButton'
 import styles from './CourseFooter.module.css'
 
 const Footer = () => {
+  const buyCourse = () => {
+   alert("Благодарим за приобретение курса. Теперь он отображается на странице вашего профиля. Вы готовы начать работу над собой и достичь своей мечты, стать более здоровым и уверенным в себе человеком? Наша команда уверена, что вместе мы сможем достичь невероятных результатов! Удачных тренировок!");
+  }
     return (
         <div className={styles.footerGroup}>
         <div className={styles.footerInfo}>
@@ -9,9 +13,9 @@ const Footer = () => {
             выбором направления и тренера, с которым тренировки принесут
             здоровье и радость!
           </p>
-          <button className={styles.footerButton}>
-            Записаться на тренировку
-          </button>
+          <div className={styles.footerButton}>
+            <BigButton value='Записаться на тренировку' onClick={buyCourse} />
+          </div>
         </div>
         <img className={styles.handImg} src="images/hand.svg" />
       </div>

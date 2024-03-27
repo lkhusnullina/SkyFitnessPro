@@ -6,6 +6,7 @@ import {
   handlePasswordChange,
   handleRepeatPasswordChange,
 } from '../../../utils/formValidation'
+import { BigButton } from '../../buttons/bigButton'
 
 function ModalChangeUserData({ isPasswordChange, closeModal }) {
   const [loginError, setLoginError] = useState([])
@@ -17,6 +18,8 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
   const [repeatPasswordValue, setRepeatPasswordValue] = useState('')
   const isLoading = false
    
+  const buttonValue = isLoading ? 'Сохранение...' : 'Сохранить'
+
   const handleClickOutside = (event) => {
     if (event.target.classList.contains(styles.pageContainer)) {
       closeModal() // Закрываем модальное окно при клике вне него
@@ -93,13 +96,7 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
               <span className={styles.error}>{repeatPasswordError}</span>
             </div>
             <div className={styles.buttons}>
-              <button
-                className={styles.primaryButton}
-                disabled={isLoading}
-                onClick={handleChangeData}
-              >
-                {isLoading ? 'Сохранение...' : 'Сохранить'}
-              </button>
+              <BigButton value={buttonValue} onClick={handleChangeData}/>
               <span className={styles.errorForm}>{errorMessage}</span>
             </div>
           </>
@@ -124,13 +121,7 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
                 ))}
               </div>
             </div>
-            <button
-              className={styles.primaryButton}
-              disabled={isLoading}
-              onClick={handleChangeData}
-            >
-              {isLoading ? 'Сохранение...' : 'Сохранить'}
-            </button>
+            <BigButton value={buttonValue} onClick={handleChangeData} disabled={isLoading}/>
             <span className={styles.errorForm}>{errorMessage}</span>
           </>
         )}
