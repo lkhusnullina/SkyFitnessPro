@@ -1,0 +1,77 @@
+
+.progress_percent {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.progress_percent__name {
+  width: 227px;
+}
+
+
+
+input {
+  cursor: pointer;
+  width: 278px;
+  border-radius: 22px;
+  text-align: center;
+  border: 2px solid #565eef;
+
+  --progress-height: 36px;
+  --progress-color: #565eef;
+  --progress-bg-color: #edecff;
+
+  margin: 0;
+  height: var(--progress-height);
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+input::-webkit-slider-runnable-track {
+  position: relative;
+  height: var(--progress-height);
+  background: var(--progress-bg-color);
+}
+
+input::-webkit-slider-thumb {
+  --thumb-height: 1px;
+  --thumb-width: 1px;
+  position: relative;
+  -webkit-appearance: none;
+  width: var(--thumb-width, var(--thumb-height));
+  box-shadow: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
+    100vmax var(--progress-color);
+}
+
+input::-webkit-slider-runnable-track {
+  background: var(--progress-bg-color);
+}
+
+/* FF */
+input::-moz-range-track {
+  width: 100%;
+  height: var(--progress-height);
+  background: var(--progress-bg-color);
+  border: none;
+  border-radius: 0px;
+}
+
+input::-moz-range-thumb {
+  border: none;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+input::-moz-range-progress {
+  background-color: var(--progress-color);
+  height: var(--progress-height);
+}
+
