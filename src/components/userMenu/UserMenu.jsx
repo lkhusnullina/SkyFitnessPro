@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import styles from './UserMenu.module.css'
 import { Link, useNavigate } from 'react-router-dom'
+import { BigButton } from '../buttons/bigButton'
 
 function UserMenu() {
   const navigate = useNavigate()
-  const [open, setOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleVisibility = () => {
-    setOpen(!open)
+    setIsOpen(!isOpen)
   }
 
   const handleLogout = () => {
@@ -22,18 +23,18 @@ function UserMenu() {
         <div className={styles.header_userName}>Сергей</div>
         <img src="images/arrow.svg" alt="arrow" />
       </div>
-      {open && (
-        <ul className={styles.menu}>
-          <li>
-            <Link to="/">Главная</Link>
-          </li>
-          <li>
-            <Link to="/profile">Мой профиль</Link>
-          </li>
-          <li>
-            <button onClick={handleLogout}>Выйти</button>
-          </li>
-        </ul>
+      {isOpen && (
+        <div className={styles.menu}>
+          <Link className={styles.menu_block} to="/">
+            <div className={styles.menu_link}>На главную</div>
+          </Link>
+          <Link className={styles.menu_block} to="/profile">
+            <div className={styles.menu_link}>Профиль</div>
+          </Link>
+          <div className={styles.menu_block} onClick={handleLogout}>
+            <div className={styles.menu_link}>Выйти</div>
+          </div>
+        </div>
       )}
     </>
   )
