@@ -1,3 +1,4 @@
+import { BigButton } from '../buttons/bigButton';
 import styles from './Lessons.module.css';
 
  function Lessons({ setIsOpen }){
@@ -9,12 +10,7 @@ import styles from './Lessons.module.css';
             <li>Наклон назад (10 повторений)</li>
             <li>Поднятие ног, согнутых в коленях (5 повторений)</li>
           </ul>
-          <button
-            className={styles.button_progress}
-            onClick={() => setIsOpen(true)}
-          >
-            Заполнить свой прогресс
-          </button>
+          <BigButton value='Заполнить свой прогресс' onClick={() => setIsOpen(true)} />
         </div>
     )
 }
