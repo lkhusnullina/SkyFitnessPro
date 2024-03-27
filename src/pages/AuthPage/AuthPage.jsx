@@ -6,6 +6,7 @@ import {
   handlePasswordChange,
   handleRepeatPasswordChange,
 } from '../../utils/formValidation'
+import { BigButton } from '../../components/buttons/bigButton'
 
 export const AuthPage = ({ isLoginMode = false }) => {
   const [loginError, setLoginError] = useState([])
@@ -16,6 +17,9 @@ export const AuthPage = ({ isLoginMode = false }) => {
   const [errorMessage, setErrorMessage] = useState('')
   const [repeatPasswordValue, setRepeatPasswordValue] = useState('')
   const isLoading = false
+
+  const logButtonValue = isLoading ? 'Загрузка...' : 'Войти'
+  const regButtonValue = isLoading ? 'Регистрация...' : 'Зарегистрироваться'
 
   useEffect(() => {
     if (repeatPasswordError && repeatPasswordValue === passwordValue) {
@@ -91,13 +95,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
               <span className={styles.error}>{passwordError}</span>
             </div>
             <div className={styles.buttons}>
-              <button
-                className={styles.primaryButton}
-                disabled={isLoading}
-                onClick={handleRegister}
-              >
-                {isLoading ? 'Загрузка...' : 'Войти'}
-              </button>
+              <BigButton value={logButtonValue} onClick={handleRegister} disabled={isLoading} />
               <Link to="/registration">
                 <button className={styles.secondaryButton}>
                   Зарегистрироваться
@@ -162,13 +160,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
               />
               <span className={styles.error}>{repeatPasswordError}</span>
             </div>
-            <button
-              className={styles.primaryButton}
-              disabled={isLoading}
-              onClick={handleRegister}
-            >
-              {isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
-            </button>
+            <BigButton value={regButtonValue} onClick={handleRegister} disabled={isLoading} />
             {errorMessage && (
               <span className={styles.errorForm}>{errorMessage}</span>
             )}
