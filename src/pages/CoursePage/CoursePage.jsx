@@ -4,13 +4,12 @@ import Footer from '../../components/CourseDescription/CourseFooter/CourseFooter
 import Points from '../../components/CourseDescription/CoursePoints/CoursePoints'
 import Types from '../../components/CourseDescription/CourseTypes/CourseTypes'
 import styles from './CoursePage.module.css'
-import {db, firebaseApp, auth} from '../../firebase'
-import { getCourseByTd } from '../../api'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../../firebase'
+import { getAllCourses } from '../../api'
+import { onAuthStateChanged } from 'firebase/auth'
 
 export const CoursePage = () => {
 
-  // const auth = getAuth(firebaseApp)
 //Отслеживаем состояние авторизации
 onAuthStateChanged(auth, user => {
   if (user !== null) {
@@ -19,15 +18,8 @@ onAuthStateChanged(auth, user => {
     console.log("no user");
   }
 })
-  const id = "ab1c3f"
-  // const data = 
-  getCourseByTd(id)
-  // .then(res =>{
-  //   const course = Array.from(res)
-  //   return course
-  // })
-  // console.log(course);
-  
+
+  getAllCourses()
 
   return (
     <div className={styles.container}>

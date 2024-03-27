@@ -1,4 +1,3 @@
-import 'firebase/firestore';
 
 const host = 'https://fitness-project-bc4c2-default-rtdb.asia-southeast1.firebasedatabase.app/'
 
@@ -8,6 +7,7 @@ export async function getAllCourses(){
       throw new Error("Произошла ошибка");
    } 
    const data = await response.json()
+
    console.log(data);
 }
 
@@ -17,6 +17,7 @@ export async function getCourseByTd(id){
       throw new Error("Произошла ошибка");
    } 
    const data = await response.json()
+   
    console.log(data);
 }
 
