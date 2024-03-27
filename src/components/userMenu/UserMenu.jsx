@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import styles from './UserMenu.module.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { BigButton } from '../buttons/bigButton'
 
 function UserMenu() {
   const navigate = useNavigate()
@@ -17,7 +16,7 @@ function UserMenu() {
   }
 
   return (
-    <>
+    <div className={styles.header_user_container}>
       <div className={styles.header_user} onClick={toggleVisibility}>
         <img src="images/avatar.svg" alt="avatar" />
         <div className={styles.header_userName}>Сергей</div>
@@ -31,12 +30,15 @@ function UserMenu() {
           <Link className={styles.menu_block} to="/profile">
             <div className={styles.menu_link}>Профиль</div>
           </Link>
-          <div className={styles.menu_block} onClick={handleLogout}>
+          <Link className={styles.menu_block} onClick={(e) => {
+            e.preventDefault();
+            handleLogout();
+          }}>
             <div className={styles.menu_link}>Выйти</div>
-          </div>
+          </Link>
         </div>
       )}
-    </>
+    </div>
   )
 }
 export default UserMenu

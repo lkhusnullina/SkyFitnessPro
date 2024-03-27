@@ -5,6 +5,10 @@
   gap: 15px;
 }
 
+.header_user_container {
+  position: relative;
+}
+
 .header_userName {
   font-size: 24px;
   line-height: 32px;
@@ -12,11 +16,12 @@
 }
 
 .menu {
+  z-index: 9999;
   position: absolute;
   width: 200px;
   height: 200px;
-  top: 80px;
-  right: 520px;
+  top: 60px;
+  right: -15px;
   padding: 10px;
 
   display: flex;
