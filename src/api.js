@@ -8,7 +8,7 @@ export async function getAllCourses(){
    } 
    const data = await response.json()
 
-   console.log(data);
+   //console.log(data);
 }
 
 export async function getCourseByTd(id){
@@ -18,7 +18,7 @@ export async function getCourseByTd(id){
    } 
    const data = await response.json()
    
-   console.log(data);
+   //console.log(data);
 }
 
 export async function getAllWorkouts(){
@@ -27,5 +27,5 @@ export async function getAllWorkouts(){
       throw new Error("Произошла ошибка");
    } 
    const data = await response.json()
-   console.log(data);
+   //console.log(data);
 }
