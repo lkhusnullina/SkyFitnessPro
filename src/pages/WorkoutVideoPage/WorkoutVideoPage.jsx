@@ -4,6 +4,7 @@ import Video from '../../components/workoutVideo/WorkoutVideo'
 import styles from './WorkoutVideoPage.module.css'
 import Lessons from '../../components/lessons/Lessons.jsx'
 import { Progress } from '../../components/progress/Progress.jsx'
+import { getAllWorkouts } from '../../api.js'
 
 export const WorkoutVideoPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,6 +13,7 @@ export const WorkoutVideoPage = () => {
     setIsOpen(false)
   }
 
+  getAllWorkouts()
   return (
     <div>
       <h2 className={styles.title}></h2>

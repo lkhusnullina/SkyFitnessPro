@@ -1,6 +1,18 @@
+import { getCourseByTd } from '../../../api'
 import styles from './CourseTypes.module.css'
 
 const Types = () => {
+  async function types() {
+    const id  = "ab1c3f"    
+    const response = await fetch(`https://fitness-project-bc4c2-default-rtdb.asia-southeast1.firebasedatabase.app/courses/${id}.json`)
+    const course = await response.json()
+    const typesCourse = course.directions
+     
+      console.log(typesCourse)
+      return typesCourse
+    
+  }
+
     return (
         <>
         <h2 className={styles.types}>Направления:</h2>

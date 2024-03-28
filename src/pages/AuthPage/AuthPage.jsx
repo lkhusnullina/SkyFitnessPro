@@ -7,8 +7,11 @@ import {
   handleRepeatPasswordChange,
 } from '../../utils/formValidation'
 import { BigButton } from '../../components/buttons/bigButton'
+import { firebaseApp, db, auth, } from '../../firebase'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from'firebase/auth'
 
 export const AuthPage = ({ isLoginMode = false }) => {
+
   const [loginError, setLoginError] = useState([])
   const [loginValue, setLoginValue] = useState('')
   const [passwordError, setPasswordError] = useState('')
@@ -46,6 +49,40 @@ export const AuthPage = ({ isLoginMode = false }) => {
     console.log('Вход/Регистрация прошла успешно!')
     setErrorMessage('')
   }
+
+  // const email = loginValue
+  // const password = passwordValue 
+  // // Зарегистрироваться
+  // createUserWithEmailAndPassword(auth, email, password)
+  //   .then((userCredential) => {
+  //     // Signed up 
+  //     const user = userCredential.user;
+  //     // ...
+  //   })
+  //   .catch((error) => {
+  //     const errorCode = error.code;
+  //     const errorMessage = error.message;
+  //     // ..
+  //   });
+
+  //   // Авторизоваться
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((userCredential) => {
+  //       // Signed in 
+  //       const user = userCredential.user;
+  //       // ...
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //     });
+
+  //     // Выйти
+  //     signOut(auth).then(() => {
+  //       // Sign-out successful.
+  //     }).catch((error) => {
+  //       // An error happened.
+  //     });
 
   return (
     <div className={styles.pageContainer}>
