@@ -7,17 +7,14 @@ import styles from './CoursePage.module.css'
 import { auth } from '../../firebase'
 import { getAllCourses } from '../../api'
 import { onAuthStateChanged } from 'firebase/auth'
+import { useGetAllCoursesQuery } from '../../service/getCourses.js'
 
 export const CoursePage = () => {
+  // const { data: courses } = useGetAllCoursesQuery();
+  // console.log(courses)
+  
 
-//Отслеживаем состояние авторизации
-onAuthStateChanged(auth, user => {
-  if (user !== null) {
-    console.log("logged in!")
-  } else {
-    console.log("no user");
-  }
-})
+  
 
   getAllCourses()
 
@@ -25,12 +22,10 @@ onAuthStateChanged(auth, user => {
     <div className={styles.container}>
       <Banner />
       <h2 className={styles.yogaTitle}>Подойдет для вас, если: </h2>
-
       <Points />
       <Types />
       <Description />
       <Footer />
-
     </div>
   )
 }

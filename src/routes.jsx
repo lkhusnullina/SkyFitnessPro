@@ -9,6 +9,16 @@ import { WorkoutVideoPage } from './pages/WorkoutVideoPage/WorkoutVideoPage.jsx'
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage.jsx'
 
 export const AppRoutes = () => {
+
+  //Отслеживаем состояние авторизации
+  onAuthStateChanged(auth, (user) => {
+    if (user !== null) {
+      console.log('logged in!')
+    } else {
+      console.log('no user')
+    }
+  })
+
   return (
     <Routes>
       <Route path="/" element={<LayoutPage />}>
