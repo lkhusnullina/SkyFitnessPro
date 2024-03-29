@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import styles from './Header.module.css'
+import UserMenu from '../userMenu/UserMenu'
 
 function Header() {
   const location = useLocation()
@@ -15,15 +16,11 @@ function Header() {
   const userUrl = noUser ? (
     <div></div>
   ) : userProfile ? (
-    <div className={styles.header_user}>
-      <img src="images/avatar.svg" alt="avatar" />
-      <Link to="/profile" className={styles.header_userName}>Сергей</Link> 
-      <img src="images/arrow.svg" alt="arrow" />
-    </div>
+    <UserMenu />
   ) : (
     <Link to="/login">
-      <button className={styles.header_btn}>Войти</button>
-      {/* вместо сергея передавать почту в компоненте юзерменю*/}
+      <button className={styles.header_btn}></button>
+      {/*       */}
     </Link>
   )
 

@@ -1,0 +1,47 @@
+.header_user {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header_user_container {
+  position: relative;
+}
+
+.header_userName {
+  font-size: 24px;
+  line-height: 32px;
+  text-decoration: none;
+}
+
+.menu {
+  z-index: 9999;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 60px;
+  right: -15px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #976bc4;
+  border-radius: 20px;
+}
+
+.menu_block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu_link {
+  cursor: pointer;
+  padding: 10px;
+  color: #000000;
+  font-size: 20px;
+}

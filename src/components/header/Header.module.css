@@ -27,15 +27,3 @@
 .header_btn:active {
   background-color: #3b29a1;
 }
-
-.header_user {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.header_userName {
-  font-size: 24px;
-  line-height: 32px;
-  text-decoration: none;
-}
