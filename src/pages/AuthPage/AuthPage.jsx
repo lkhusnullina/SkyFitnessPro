@@ -8,10 +8,12 @@ import {
 } from '../../utils/formValidation'
 import { BigButton } from '../../components/buttons/bigButton'
 import { firebaseApp, db, auth, } from '../../firebase'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from'firebase/auth'
+import {  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from'firebase/auth'
+import { useDispatch } from 'react-redux'
+import { setAuth } from '../../store/authSlice'
 
 export const AuthPage = ({ isLoginMode = false }) => {
-
+  const dispatch = useDispatch();
   const [loginError, setLoginError] = useState([])
   const [loginValue, setLoginValue] = useState('')
   const [passwordError, setPasswordError] = useState('')
@@ -46,43 +48,67 @@ export const AuthPage = ({ isLoginMode = false }) => {
       return
     }
 
-    console.log('Вход/Регистрация прошла успешно!')
+    const email = loginValue
+    const password = passwordValue 
+
+    if (isLoginMode) {
+      // Авторизоваться
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // localStorage.setItem('user', JSON.stringify({ 
+        //   uid: user.uid,
+        //   email: user.email,
+        //   accessToken: user.accessToken,
+        //   refreshToken: user.stsTokenManager.refreshToken
+        // }));
+        dispatch(
+          setAuth({
+            uid: user.uid,
+            email: user.email,
+            accessToken: user.accessToken,
+            refreshToken: user.stsTokenManager.refreshToken
+          })
+        )
+        console.log(user);
+        console.log(userCredential);
+        //навигация на главную страницу useNavigate,
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+
+      
+    } else {
+      // Зарегистрироваться
+      createUserWithEmailAndPassword(getAuth(), email, password)
+      .then((userCredential) => {
+        // Signed up 
+        console.log(userCredential);
+        const user = userCredential.user;
+        console.log(user);
+        console.log('Вход/Регистрация прошла успешно!')
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+    }
     setErrorMessage('')
   }
 
-  // const email = loginValue
-  // const password = passwordValue 
-  // // Зарегистрироваться
-  // createUserWithEmailAndPassword(auth, email, password)
-  //   .then((userCredential) => {
-  //     // Signed up 
-  //     const user = userCredential.user;
-  //     // ...
-  //   })
-  //   .catch((error) => {
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     // ..
-  //   });
-
-  //   // Авторизоваться
-  //   signInWithEmailAndPassword(auth, email, password)
-  //     .then((userCredential) => {
-  //       // Signed in 
-  //       const user = userCredential.user;
-  //       // ...
-  //     })
-  //     .catch((error) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //     });
-
-  //     // Выйти
-  //     signOut(auth).then(() => {
-  //       // Sign-out successful.
-  //     }).catch((error) => {
-  //       // An error happened.
-  //     });
+  
+  // Выйти
+  // signOut(auth).then(() => {
+  //   // Sign-out successful.
+  // }).catch((error) => {
+  //   // An error happened.
+  // });
+      
+    
 
   return (
     <div className={styles.pageContainer}>

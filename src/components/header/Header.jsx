@@ -17,12 +17,13 @@ function Header() {
   ) : userProfile ? (
     <div className={styles.header_user}>
       <img src="images/avatar.svg" alt="avatar" />
-      <Link to="/profile" className={styles.header_userName}>Сергей</Link>
+      <Link to="/profile" className={styles.header_userName}>Сергей</Link> 
       <img src="images/arrow.svg" alt="arrow" />
     </div>
   ) : (
     <Link to="/login">
       <button className={styles.header_btn}>Войти</button>
+      {/* вместо сергея передавать почту в компоненте юзерменю*/}
     </Link>
   )
 
