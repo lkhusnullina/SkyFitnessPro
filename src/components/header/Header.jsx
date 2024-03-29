@@ -19,8 +19,8 @@ function Header() {
     <UserMenu />
   ) : (
     <Link to="/login">
-      <button className={styles.header_btn}></button>
-      {/*       */}
+      <button className={styles.header_btn}>Войти</button>
+      {/*в компоненте юзерменю передавать емайл вместо сергея*/}
     </Link>
   )
 
