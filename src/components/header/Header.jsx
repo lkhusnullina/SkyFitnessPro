@@ -19,7 +19,8 @@ function Header() {
     <UserMenu />
   ) : (
     <Link to="/login">
-      <button className={styles.header_btn}>Войти</button>
+      <button className={styles.header_btn}></button>
+      {/*       */}
     </Link>
   )
 
