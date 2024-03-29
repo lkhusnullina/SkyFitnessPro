@@ -1,5 +1,5 @@
 import styles from './AuthPage.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import {
   handleLoginChange,
@@ -14,6 +14,7 @@ import { setAuth } from '../../store/authSlice'
 
 export const AuthPage = ({ isLoginMode = false }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loginError, setLoginError] = useState([])
   const [loginValue, setLoginValue] = useState('')
   const [passwordError, setPasswordError] = useState('')
@@ -57,12 +58,6 @@ export const AuthPage = ({ isLoginMode = false }) => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        // localStorage.setItem('user', JSON.stringify({ 
-        //   uid: user.uid,
-        //   email: user.email,
-        //   accessToken: user.accessToken,
-        //   refreshToken: user.stsTokenManager.refreshToken
-        // }));
         dispatch(
           setAuth({
             uid: user.uid,
@@ -73,7 +68,8 @@ export const AuthPage = ({ isLoginMode = false }) => {
         )
         console.log(user);
         console.log(userCredential);
-        //навигация на главную страницу useNavigate,
+        //навигация на главную страницу 
+        navigate('/')
       })
       .catch((error) => {
         const errorCode = error.code;
