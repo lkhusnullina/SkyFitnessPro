@@ -1,7 +1,7 @@
 import { BigButton } from '../../buttons/bigButton'
-import styles from './CourseFooter.module.css'
+import styles from './ApplicationCourse.module.css'
 
-const Footer = () => {
+const ApplicationCourse = () => {
   const buyCourse = () => {
    alert("Благодарим за приобретение курса. Теперь он отображается на странице вашего профиля. Вы готовы начать работу над собой и достичь своей мечты, стать более здоровым и уверенным в себе человеком? Наша команда уверена, что вместе мы сможем достичь невероятных результатов! Удачных тренировок!");
   }
@@ -17,10 +17,10 @@ const Footer = () => {
             <BigButton value='Записаться на тренировку' onClick={buyCourse} />
           </div>
         </div>
-        <img className={styles.handImg} src="images/hand.svg" />
+        <img className={styles.handImg} src="/images/hand.svg" />
       </div>
         
     )
   }
   
-  export default Footer
+  export default ApplicationCourse

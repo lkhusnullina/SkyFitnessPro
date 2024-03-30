@@ -1,0 +1,37 @@
+.footerGroup {
+  width: 1160px;
+  height: 350px;
+  border-radius: 30px;
+  background-color: #f9ebff;
+  margin-top: 75px;
+  display: flex;
+  margin-bottom: 95px;
+}
+
+.footerText {
+  width: 823px;
+  height: 120px;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+  text-align: left;
+  padding-top: 46px;
+  padding-left: 52px;
+}
+
+.handImg {
+  width: 345.8px;
+  height: 337.53px;
+}
+
+.footerButton {
+  width: 275px;
+  margin-left: 52px;
+  margin-bottom: 64px;
+}
+
+.footerInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

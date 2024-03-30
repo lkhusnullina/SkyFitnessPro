@@ -1,0 +1,25 @@
+.directions_title {
+  width: 260px;
+  height: 48px;
+  margin-top: 75px;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: left;
+}
+
+.directions_block {
+  margin-top: 22px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+  gap: 168px;
+}
+
+.directions_list {
+  margin-left: 35px;
+  height: 96px;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}

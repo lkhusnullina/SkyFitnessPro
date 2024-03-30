@@ -11,19 +11,19 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage.jsx'
 export const AppRoutes = () => {
 
   //Отслеживаем состояние авторизации
-  onAuthStateChanged(auth, (user) => {
-    if (user !== null) {
-      console.log('logged in!')
-    } else {
-      console.log('no user')
-    }
-  })
+  // onAuthStateChanged(auth, (user) => {
+  //   if (user !== null) {
+  //     console.log('logged in!')
+  //   } else {
+  //     console.log('no user')
+  //   }
+  // })
 
   return (
     <Routes>
       <Route path="/" element={<LayoutPage />}>
         <Route index element={<MainPage />} />
-        <Route path="/course" element={<CoursePage />} />
+        <Route path="/course/:id" element={<CoursePage />} />
         <Route element={<ProtectedRoute isAllowed={Boolean(true)} />}>
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/workout" element={<WorkoutVideoPage />} />

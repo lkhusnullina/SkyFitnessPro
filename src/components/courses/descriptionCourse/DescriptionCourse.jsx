@@ -1,8 +1,8 @@
-import styles from './CourseDescription.module.css'
+import styles from './DescriptionCourse.module.css'
 
-const Description = () => {
+const DescriptionCourse = () => {
     return (
-        <p className={styles.yogaDescription}>
+        <p className={styles.description_course}>
         Благодаря комплексному воздействию упражнений происходит проработка всех
         групп мышц, тренировка суставов, улучшается циркуляция крови. Кроме
         того, упражнения дарят отличное настроение, заряжают бодростью и
@@ -12,4 +12,4 @@ const Description = () => {
     )
   }
   
-  export default Description
+  export default DescriptionCourse

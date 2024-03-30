@@ -3,7 +3,7 @@ const user = JSON.parse(localStorage.getItem('user'));
 
 export const getCourses = createApi({
   reducerPath: 'getCourses',
-  tagTypes: ['Courses'],
+  tagTypes: ['Courses', 'Workouts'],
   baseQuery: fetchBaseQuery({
     baseUrl:
       'https://fitness-project-bc4c2-default-rtdb.asia-southeast1.firebasedatabase.app/',
@@ -15,8 +15,8 @@ export const getCourses = createApi({
       }),
       providesTags: ['Courses'],
     }),
-    addCourseId: builder.query({
-        query: ({id}) => ({
+    getCourseId: builder.query({
+        query: (id) => ({
             url: `courses/${id}.json`,
             method: 'GET',
         }),
@@ -31,5 +31,5 @@ export const getCourses = createApi({
   }),
 })
 
-export const { useGetAllCoursesQuery, useAddCourseIdQuery} = getCourses
+export const { useGetAllCoursesQuery, useGetCourseIdQuery} = getCourses
 export default getCourses.reducer

@@ -6,8 +6,8 @@ function Header() {
   const location = useLocation()
   const home = location.pathname === '/'
   const logoUrl = home
-    ? 'images/header_logo.png'
-    : 'images/header_logo_black.png'
+    ? '/images/header_logo.png'
+    : '/images/header_logo_black.png'
 
   const noUser = location.pathname === '/course'
   const userProfile =

@@ -1,31 +1,35 @@
-import Banner from '../../components/CourseDescription/CourseBanner/CourseBanner'
-import Description from '../../components/CourseDescription/CourseDescription/CourseDescription'
-import Footer from '../../components/CourseDescription/CourseFooter/CourseFooter'
-import Points from '../../components/CourseDescription/CoursePoints/CoursePoints'
-import Types from '../../components/CourseDescription/CourseTypes/CourseTypes'
+import { useSelector } from 'react-redux'
 import styles from './CoursePage.module.css'
-import { auth } from '../../firebase'
-import { getAllCourses } from '../../api'
-import { onAuthStateChanged } from 'firebase/auth'
-import { useGetAllCoursesQuery } from '../../service/getCourses.js'
+import { useParams } from 'react-router-dom'
+import { useGetCourseIdQuery } from '../../service/getCourses'
+import DirectionsCourse from '../../components/courses/directionsCourse/DirectionsCourse'
+import FittingCourse from '../../components/courses/fittingCourse/FittingCourse'
+import DescriptionCourse from '../../components/courses/descriptionCourse/DescriptionCourse'
+import ApplicationCourse from '../../components/courses/applicationCourse/ApplicationCourse'
+import BannerCourse from '../../components/courses/bannerCourse/BannerCourse'
 
 export const CoursePage = () => {
-  // const { data: courses } = useGetAllCoursesQuery();
-  // console.log(courses)
-  
+  const params = useParams();
+  const id = params.id;
 
+  const courses = useSelector((state) => state.courses.courses);
+  const pictures = useSelector((state) => state.courses.pictures);
+  let course = courses.find(p => p._id === id);
+  if (!course) {
+    const { data: crs } = useGetCourseIdQuery(id);
+    course = crs;
+  }
   
-
-  getAllCourses()
+  if (!course) return;
 
   return (
-    <div className={styles.container}>
-      <Banner />
-      <h2 className={styles.yogaTitle}>Подойдет для вас, если: </h2>
-      <Points />
-      <Types />
-      <Description />
-      <Footer />
+    <div>
+      <BannerCourse course={course} picture={pictures}/>
+      <h2 className={styles.courses_title}>Подойдет для вас, если: </h2>
+      <FittingCourse />
+      <DirectionsCourse course={course}/>
+      <DescriptionCourse />
+      <ApplicationCourse/>
     </div>
   )
 }
