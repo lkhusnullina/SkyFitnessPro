@@ -86,6 +86,8 @@ export const AuthPage = ({ isLoginMode = false }) => {
         const user = userCredential.user;
         console.log(user);
         console.log('Вход/Регистрация прошла успешно!')
+        //навигация на страницу авторизации
+          navigate('/login')
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -95,16 +97,6 @@ export const AuthPage = ({ isLoginMode = false }) => {
     }
     setErrorMessage('')
   }
-
-  
-  // Выйти
-  // signOut(auth).then(() => {
-  //   // Sign-out successful.
-  // }).catch((error) => {
-  //   // An error happened.
-  // });
-      
-    
 
   return (
     <div className={styles.pageContainer}>

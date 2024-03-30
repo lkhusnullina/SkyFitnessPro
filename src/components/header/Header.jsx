@@ -23,7 +23,13 @@ function Header() {
       {/*в компоненте юзерменю передавать емайл вместо сергея*/}
     </Link>
   )
-
+    
+      // Выйти
+  // signOut(auth).then(() => {
+  //   // Sign-out successful.
+  // }).catch((error) => {
+  //   // An error happened.
+  // });
   return (
     <div id="top">
       <div className={styles.header_block}>
