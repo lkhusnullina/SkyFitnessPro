@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 
 export const MainPage = () => {
   const cards = useSelector((state) => state.courses.cards)
+  
 
   return (
     <div>

@@ -3,32 +3,36 @@ import { createSlice } from '@reduxjs/toolkit'
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    uid: null,
+    id: null,
     email: null,
     accessToken: null,
     refreshToken: null,
+    authUser: null,
   },
   reducers: {
     setAuth(state, action) {
         //const { uid, email, accessToken, refreshToken} = action.payload
-        state.uid = action.payload
-        // state.email = email;
-        // state.accessToken = accessToken;
-        // state.refreshToken = refreshToken;
+        state.id = action.payload.id
+        state.email = action.payload.email;
+        state.accToken = action.payload.accessToken;
+        state.refToken = action.payload.refreshToken;
         localStorage.setItem('user', JSON.stringify(state));
-        console.log(localStorage.getItem('user'));
-        console.log(state.uid);
+        console.log(JSON.parse(localStorage.getItem('user')));
+        console.log(state.id);
     },
     removeAuth(state) {
       //const { uid, email, accessToken, refreshToken} = action.payload
-      state.uid = null;
+      state.id = null;
       state.email = null;
       state.accessToken = null;
       state.refreshToken = null;
-      //localStorage.clear();
-      localStorage.removeItem('user');
+      localStorage.clear();
+      //localStorage.removeItem('user');
+    },
+    setAuthUser(state, action) {
+      state.authUser = action.payload;
     }
   },
 })
-export const { setAuth, removeAuth } = authSlice.actions
+export const { setAuth, removeAuth, setAuthUser } = authSlice.actions
 export const authReducer = authSlice.reducer

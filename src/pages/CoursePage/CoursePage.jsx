@@ -9,8 +9,10 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { useSelector } from 'react-redux'
 
 export const CoursePage = () => {
-  const uid = useSelector(state => state.auth.uid)
+  const uid = useSelector(state => state.auth.id)
   console.log(uid);
+  const mail = useSelector(state => state.auth.email)
+  console.log(mail);
 //Отслеживаем состояние авторизации
 onAuthStateChanged(auth, user => {
   if (user !== null) {

@@ -8,6 +8,7 @@ import { CoursePage } from './pages/CoursePage/CoursePage.jsx'
 import { WorkoutVideoPage } from './pages/WorkoutVideoPage/WorkoutVideoPage.jsx'
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage.jsx'
 import { useSelector } from 'react-redux'
+import { useAuth } from './utils/authHook.js'
 // import { useDispatch } from 'react-redux'
 // import { useEffect } from 'react'
 // import { setIsAllowed } from './store/slice.jsx'
@@ -24,6 +25,7 @@ export const AppRoutes = () => {
   // console.log(email);
   // const isAllowed = email
   // console.log(isAllowed);
+  // useAuth()
   
   return (
     <Routes>

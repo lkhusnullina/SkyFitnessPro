@@ -20,9 +20,9 @@ export const ProfilePage = (props) => {
     setIsModalOpen(false)
     }
 
-  const click = () => {
-    console.log('По кнопке кликнули');
-  }
+  // const click = () => {
+  //   console.log('По кнопке кликнули');
+  // }
   return (
     <div className={styles.container}>
       <ProfileData setIsPasswordChange={setIsPasswordChange} setIsModalOpen={setIsModalOpen} />

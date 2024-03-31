@@ -12,7 +12,11 @@ import {  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, s
 import { useDispatch } from 'react-redux'
 import { setAuth } from '../../store/authSlice'
 
-export const AuthPage = ({ isLoginMode = false }) => {
+export const AuthPage = (
+  { isLoginMode = false }
+  ) => {
+  // const isLoginMode = Boolean(localStorage.getItem('user'))
+  //console.log(localStorage.getItem('user'));
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState([])
@@ -22,6 +26,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
   const [passwordValue, setPasswordValue] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [repeatPasswordValue, setRepeatPasswordValue] = useState('')
+  const [errorAuthMessage, setErrorAuthMessage] = useState('')
   const isLoading = false
   
   const logButtonValue = isLoading ? 'Загрузка...' : 'Войти'
@@ -59,23 +64,24 @@ export const AuthPage = ({ isLoginMode = false }) => {
         // Signed in 
         const user = userCredential.user;
         dispatch(
-          setAuth( user.uid
-          //   {
-          //   uid: user.uid,
-          //   email: user.email,
-          //   accessToken: user.accessToken,
-          //   refreshToken: user.stsTokenManager.refreshToken
-          // }
+          setAuth( 
+            {
+            id: user.uid,
+            email: user.email,
+            accessToken: user.accessToken,
+            refreshToken: user.stsTokenManager.refreshToken
+          }
           )
         )
-        console.log(user);
-        console.log(userCredential);
+       // console.log(user);
+        //console.log(userCredential);
         //навигация на главную страницу 
         navigate('/')
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        alert("Извините, мы не смогли найти ваш аккаунт. Пожалуйста, перепроверьте введённые данные.")
       });
 
       
