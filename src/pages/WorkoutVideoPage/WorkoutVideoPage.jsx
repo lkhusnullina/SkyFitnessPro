@@ -4,19 +4,21 @@ import Video from '../../components/workoutVideo/WorkoutVideo'
 import styles from './WorkoutVideoPage.module.css'
 import Lessons from '../../components/lessons/Lessons.jsx'
 import { Progress } from '../../components/progress/Progress.jsx'
-import { getAllWorkouts } from '../../api.js'
+// import { getAllWorkouts } from '../../api.js'
+import { useGetAllWorkoutsQuery } from '../../service/getCourses.js'
 
 export const WorkoutVideoPage = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const { data: workouts } = useGetAllWorkoutsQuery()
+  console.log(workouts);
 
   const closeModal = () => {
     setIsOpen(false)
   }
 
-  getAllWorkouts()
   return (
     <div>
-      <h2 className={styles.title}></h2>
+      <h2 className={styles.title}>Йога</h2>
       <div className={styles.description}>
         Красота и здоровье / Йога на каждый день / 2 день
       </div>

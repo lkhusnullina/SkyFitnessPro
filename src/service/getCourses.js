@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-const user = JSON.parse(localStorage.getItem('user'));
 
 export const getCourses = createApi({
   reducerPath: 'getCourses',
@@ -16,20 +15,32 @@ export const getCourses = createApi({
       providesTags: ['Courses'],
     }),
     getCourseId: builder.query({
-        query: (id) => ({
-            url: `courses/${id}.json`,
-            method: 'GET',
-        }),
-        providesTags: ['Courses'],
-    })
-    // getAllWorkouts: builder.query({
-    //     query: () => ({
-    //       url: 'workouts.json',
-    //     }),
-    //     providesTags: ['Courses'],
-    //   }),
+      query: (id) => ({
+        url: `courses/${id}.json`,
+        method: 'GET',
+      }),
+      providesTags: ['Courses'],
+    }),
+    getAllWorkouts: builder.query({
+      query: () => ({
+        url: 'workouts.json',
+      }),
+      providesTags: ['Workouts'],
+    }),
+    getWorkoutsId: builder.query({
+      query: (id) => ({
+        url: `workouts/${id}.json`,
+        method: 'GET',
+      }),
+      providesTags: ['Workouts'],
+    }),
   }),
 })
 
-export const { useGetAllCoursesQuery, useGetCourseIdQuery} = getCourses
+export const {
+  useGetAllCoursesQuery,
+  useGetCourseIdQuery,
+  useGetAllWorkoutsQuery,
+  useGetWorkoutsIdQuery,
+} = getCourses
 export default getCourses.reducer

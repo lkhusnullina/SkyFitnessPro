@@ -14,7 +14,7 @@ export const CoursePage = () => {
   const courses = useSelector((state) => state.courses.courses);
   const pictures = useSelector((state) => state.courses.pictures);
   let course = courses.find(p => p._id === id);
-  
+  console.log(course);
   if (!course) {
     const { data: crs } = useGetCourseIdQuery(id);
     course = crs;
@@ -27,9 +27,9 @@ export const CoursePage = () => {
     <div>
       <BannerCourse course={course} picture={picture}/>
       <h2 className={styles.courses_title}>Подойдет для вас, если: </h2>
-      <FittingCourse />
+      <FittingCourse course={course}/>
       <DirectionsCourse course={course}/>
-      <DescriptionCourse />
+      <DescriptionCourse course={course}/>
       <ApplicationCourse/>
     </div>
   )

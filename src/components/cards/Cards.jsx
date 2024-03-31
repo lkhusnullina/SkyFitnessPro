@@ -14,7 +14,7 @@ function Cards({showButton, setIsOpen}) {
 
   return (
     <div className={styles.cards_block}>
-      {crs.map((course, i) => (
+      {crs.map((course) => (
         <Card key={course._id} card={course} showButton={showButton} setIsOpen={setIsOpen} picture={pictures.find(p => p.altCard == course.nameEN)}/>
       ))}
     </div>
