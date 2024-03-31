@@ -1,8 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
 import styles from './Header.module.css'
 import UserMenu from '../userMenu/UserMenu'
+import { useSelector } from 'react-redux'
 
 function Header() {
+  
+  const isAllowed = useSelector(store => store.courses.isAllowed)
   const location = useLocation()
   const home = location.pathname === '/'
   const logoUrl = home

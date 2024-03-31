@@ -1,16 +1,22 @@
 import { useState } from 'react'
 import styles from './UserMenu.module.css'
 import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { removeAuth } from '../../store/authSlice'
+import { useAuth } from '../../utils/authHook'
+
 
 function UserMenu() {
   const navigate = useNavigate()
+  const dispatch = useDispatch
   const [isOpen, setIsOpen] = useState(false)
-
+  useAuth()
   const toggleVisibility = () => {
     setIsOpen(!isOpen)
   }
 
   const handleLogout = () => {
+    dispatch(removeAuth(null))
     // logout();
     navigate('/login')
   }

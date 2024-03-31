@@ -7,7 +7,7 @@ import {
   handleRepeatPasswordChange,
 } from '../../utils/formValidation'
 import { BigButton } from '../../components/buttons/bigButton'
-import { firebaseApp, db, auth, } from '../../firebase'
+import { auth, } from '../../firebase'
 import {  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from'firebase/auth'
 import { useDispatch } from 'react-redux'
 import { setAuth } from '../../store/authSlice'
@@ -23,7 +23,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
   const [errorMessage, setErrorMessage] = useState('')
   const [repeatPasswordValue, setRepeatPasswordValue] = useState('')
   const isLoading = false
-
+  
   const logButtonValue = isLoading ? 'Загрузка...' : 'Войти'
   const regButtonValue = isLoading ? 'Регистрация...' : 'Зарегистрироваться'
 
@@ -59,12 +59,14 @@ export const AuthPage = ({ isLoginMode = false }) => {
         // Signed in 
         const user = userCredential.user;
         dispatch(
-          setAuth({
-            uid: user.uid,
-            email: user.email,
-            accessToken: user.accessToken,
-            refreshToken: user.stsTokenManager.refreshToken
-          })
+          setAuth( user.uid
+          //   {
+          //   uid: user.uid,
+          //   email: user.email,
+          //   accessToken: user.accessToken,
+          //   refreshToken: user.stsTokenManager.refreshToken
+          // }
+          )
         )
         console.log(user);
         console.log(userCredential);

@@ -5,7 +5,6 @@ import Card from '../../components/сard/Card.jsx'
 import { Cards } from '../../constans.js'
 import ModalChooseLesson from '../../components/modals/ModalChooseLesson/ModalChooseLesson.jsx'
 import { ProfileData } from '../../components/profileData/profileData.jsx'
-import { BigButton } from '../../components/buttons/bigButton.jsx'
 import ModalChangeUserData from '../../components/modals/ModalChangeUserData/ModalChangeUserData.jsx'
 
 export const ProfilePage = (props) => {

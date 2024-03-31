@@ -7,30 +7,24 @@ import { ProfilePage } from './pages/ProfilePage/ProfilePage.jsx'
 import { CoursePage } from './pages/CoursePage/CoursePage.jsx'
 import { WorkoutVideoPage } from './pages/WorkoutVideoPage/WorkoutVideoPage.jsx'
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage.jsx'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from './firebase.js'
-import { useDispatch, useSelector } from 'react-redux'
-import { setIsAllowed } from './store/slice.jsx'
-import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+// import { useDispatch } from 'react-redux'
+// import { useEffect } from 'react'
+// import { setIsAllowed } from './store/slice.jsx'
 
 export const AppRoutes = () => {
-
-  const dispatch = useDispatch()
-  //Отслеживаем состояние авторизации
-  useEffect(() => {
-    onAuthStateChanged(auth, user => {
-      if (user !== null) {
-        dispatch(setIsAllowed(true))
-        console.log("logged in!")
-      } else {
-        dispatch(setIsAllowed(false))
-        console.log("no user");
-      }
-    })
-  }, [dispatch])
-
-  const isAllowed = useSelector(store => store.courses.isAllowed);
-  console.log(isAllowed);
+  //const dispatch = useDispatch
+  // useEffect(() => {
+  //   const isAllowed = Boolean(localStorage.getItem('user'))
+  //   dispatch(setIsAllowed(isAllowed))
+  //   console.log(isAllowed);
+  // },[dispatch])
+  const isAllowed = Boolean(localStorage.getItem('user'))
+  // const email = useSelector(state => state.auth.email)
+  // console.log(email);
+  // const isAllowed = email
+  // console.log(isAllowed);
+  
   return (
     <Routes>
       <Route path="/" element={<LayoutPage />}>
