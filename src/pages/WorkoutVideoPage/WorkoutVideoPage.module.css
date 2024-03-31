@@ -11,13 +11,6 @@
   line-height: 40px;
 }
 
-.workout_block {
-  margin-top: 75px;
-  margin-bottom: 40px;
-  display: flex;
-  gap: 94px;
-}
-
 .workout_description {
   margin-bottom: 30px;
   font-size: 32px;

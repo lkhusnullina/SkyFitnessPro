@@ -6,7 +6,7 @@ function ModalChooseLesson({ closeProgressModal }) {
   const navigate = useNavigate()
 
   const clickChooseLesson = () => {
-    navigate('/workout')
+    navigate('/workout/t3cpno')
   }
 
   const handleClickOutside = (event) => {

@@ -2,11 +2,12 @@ import { useState } from 'react'
 import ModalMyProgress from '../../components/modals/ModalMyProgress/ModalMyProgress.jsx'
 import Video from '../../components/workoutVideo/WorkoutVideo'
 import styles from './WorkoutVideoPage.module.css'
-import Lessons from '../../components/lessons/Lessons.jsx'
-import { Progress } from '../../components/progress/Progress.jsx'
+// import Lessons from '../../components/lessons/Lessons.jsx'
+// import { Progress } from '../../components/progress/Progress.jsx'
 import { useGetWorkoutsIdQuery } from '../../service/getCourses.js'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import Exercises from '../../components/exercises/Exercises.jsx'
 
 export const WorkoutVideoPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,18 +25,14 @@ export const WorkoutVideoPage = () => {
     setIsOpen(false)
   }
 
-  //если у урока нет workout.exercises то оставляем пустое место Lessons и Progress не отрисовываем
-  // можно вынести в отдельный компонент Lessons и Progress и делать проверку
+  //сделать проверку на отрисовку компонента Exercises
 
   return (
     <div>
       <h2 className={styles.title}>Курс</h2>
       <div className={styles.description}>{workout.name}</div>
       <Video workout={workout} />
-      <div className={styles.workout_block}>
-        <Lessons workout={workout} setIsOpen={setIsOpen} />
-        <Progress workout={workout}/>
-      </div>
+      <Exercises workout={workout} setIsOpen={setIsOpen}/>
       {isOpen && <ModalMyProgress isOpen={isOpen} closeModal={closeModal} />}
     </div>
   )
