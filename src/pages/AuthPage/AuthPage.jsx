@@ -7,12 +7,15 @@ import {
   handleRepeatPasswordChange,
 } from '../../utils/formValidation'
 import { BigButton } from '../../components/buttons/bigButton'
-import { firebaseApp, db, auth, } from '../../firebase'
+import { auth, } from '../../firebase'
 import {  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from'firebase/auth'
 import { useDispatch } from 'react-redux'
 import { setAuth } from '../../store/authSlice'
 
-export const AuthPage = ({ isLoginMode = false }) => {
+export const AuthPage = (
+  { isLoginMode = false }
+  ) => {
+  // const isLoginMode = Boolean(localStorage.getItem('user'))
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState([])
@@ -22,8 +25,9 @@ export const AuthPage = ({ isLoginMode = false }) => {
   const [passwordValue, setPasswordValue] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [repeatPasswordValue, setRepeatPasswordValue] = useState('')
+  const [errorAuthMessage, setErrorAuthMessage] = useState('')
   const isLoading = false
-
+  
   const logButtonValue = isLoading ? 'Загрузка...' : 'Войти'
   const regButtonValue = isLoading ? 'Регистрация...' : 'Зарегистрироваться'
 
@@ -59,21 +63,25 @@ export const AuthPage = ({ isLoginMode = false }) => {
         // Signed in 
         const user = userCredential.user;
         dispatch(
-          setAuth({
-            uid: user.uid,
+          setAuth( 
+            {
+            password: password,
+            id: user.uid,
             email: user.email,
             accessToken: user.accessToken,
             refreshToken: user.stsTokenManager.refreshToken
-          })
+          }
+          )
         )
-        console.log(user);
-        console.log(userCredential);
+       console.log(user);
+        //console.log(userCredential);
         //навигация на главную страницу 
         navigate('/')
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        alert("Извините, мы не смогли найти ваш аккаунт. Пожалуйста, перепроверьте введённые данные.")
       });
 
       
@@ -86,6 +94,8 @@ export const AuthPage = ({ isLoginMode = false }) => {
         const user = userCredential.user;
         console.log(user);
         console.log('Вход/Регистрация прошла успешно!')
+        //навигация на страницу авторизации
+          navigate('/login')
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -95,16 +105,6 @@ export const AuthPage = ({ isLoginMode = false }) => {
     }
     setErrorMessage('')
   }
-
-  
-  // Выйти
-  // signOut(auth).then(() => {
-  //   // Sign-out successful.
-  // }).catch((error) => {
-  //   // An error happened.
-  // });
-      
-    
 
   return (
     <div className={styles.pageContainer}>

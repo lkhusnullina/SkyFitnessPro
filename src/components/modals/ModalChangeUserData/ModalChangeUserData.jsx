@@ -7,8 +7,18 @@ import {
   handleRepeatPasswordChange,
 } from '../../../utils/formValidation'
 import { BigButton } from '../../buttons/bigButton'
+import { useDispatch } from 'react-redux'
+import {
+  getAuth,
+  updatePassword,
+  updateLogin,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+} from 'firebase/auth';
+import { auth } from '../../../firebase'
 
 function ModalChangeUserData({ isPasswordChange, closeModal }) {
+  const dispatch = useDispatch()
   const [loginError, setLoginError] = useState([])
   const [loginValue, setLoginValue] = useState('')
   const [passwordError, setPasswordError] = useState('')
@@ -45,8 +55,15 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
       setErrorMessage('Форма заполнена некорректно')
       return
     }
-
     console.log('Смена данных прошла успешно!')
+    // async function changePass(){
+    //   //const oldPassword = JSON.parse(localStorage.getItem('user')).password
+  
+    //   const newPassword = passwordValue
+    //   await updatePassword(auth.currentUser, newPassword);
+    // }
+    // changePass();
+    // console.log(auth.currentUser);
     setErrorMessage('')
   }
 

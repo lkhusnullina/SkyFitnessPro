@@ -18,15 +18,13 @@ export const CoursePage = () => {
   if (!course) {
     const { data: crs } = useGetCourseIdQuery(id);
     course = crs;
-  }
   if (!course) return;
-
   const picture = pictures.find(p => p.altCard == course.nameEN);
 
   return (
     <div>
       <BannerCourse course={course} picture={picture}/>
-      <h2 className={styles.courses_title}>Подойдет для вас, если: </h2>
+      <h2 className={styles.courses_title}>  , : </h2>
       <FittingCourse course={course}/>
       <DirectionsCourse course={course}/>
       <DescriptionCourse course={course}/>

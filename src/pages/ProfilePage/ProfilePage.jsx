@@ -18,14 +18,14 @@ export const ProfilePage = (props) => {
     setIsModalOpen(false)
     }
 
-  const click = () => {
-    console.log('По кнопке кликнули');
-  }
+  // const click = () => {
+  //   console.log('  ');
+  // }
 
   return (
     <div className={styles.container}>
       <ProfileData setIsPasswordChange={setIsPasswordChange} setIsModalOpen={setIsModalOpen} />
-      <h2 className={styles.title_courses}>Мои курсы</h2>
+      <h2 className={styles.title_courses}> </h2>
       <Cards showButton={true} setIsOpen={setIsOpen}/>
       {isOpen && (
         <div className={styles.modalOverlay}>
