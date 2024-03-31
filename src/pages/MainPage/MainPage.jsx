@@ -19,7 +19,7 @@ export const MainPage = () => {
           <div className={styles.top__right}>
             <img
               className={styles.top__sticker}
-              src="images/sticker.svg"
+              src="/images/sticker.svg"
               alt="change your body"
             />
           </div>
