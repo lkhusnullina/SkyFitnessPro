@@ -8,7 +8,6 @@ function Card({ card, showButton, setIsOpen, picture }) {
         <div
           onClick={() => setIsOpen(true)}
           id={card._id}
-          className={styles.card_shadow}
         >
           <h3 className={styles.card_title}>{card.nameRU}</h3>
           <img

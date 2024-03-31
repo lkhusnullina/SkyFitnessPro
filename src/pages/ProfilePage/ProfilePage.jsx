@@ -26,8 +26,7 @@ export const ProfilePage = (props) => {
     <div className={styles.container}>
       <ProfileData setIsPasswordChange={setIsPasswordChange} setIsModalOpen={setIsModalOpen} />
       <h2 className={styles.title_courses}>Мои курсы</h2>
-      <Cards showButton={true}/>
- 
+      <Cards showButton={true} setIsOpen={setIsOpen}/>
       {isOpen && (
         <div className={styles.modalOverlay}>
           <ModalChooseLesson closeProgressModal={closeProgressModal} />
