@@ -1,11 +1,11 @@
 const src = 'https://www.youtube.com/embed/v-xTLFDhoD0'
 
-const Video = () => {
+const Video = ({workout}) => {
   return (
     <iframe
       width="1160"
       height="639"
-      src={src}
+      src={workout.video}
       //title="Youtube Player"
       frameBorder="0"
       allowFullScreen

@@ -1,9 +1,7 @@
 import styles from './MainPage.module.css'
-import Card from '../../components/сard/Card.jsx'
-import { useSelector } from 'react-redux'
+import Cards from '../../components/cards/Cards.jsx'
 
 export const MainPage = () => {
-  const cards = useSelector((state) => state.courses.cards)
 
   return (
     <div>
@@ -27,11 +25,7 @@ export const MainPage = () => {
         </div>
       </section>
       <section className={styles.section}>
-        <div className={styles.cards_block}>
-          {cards?.map((card) => (
-            <Card key={card.id} card={card} showButton={false} />
-          ))}
-        </div>
+        <Cards showButton={false}/>
         <div className={styles.footer}>
           <a href="#top">
             <button className={styles.footer__button}>Наверх ↑</button>

@@ -1,17 +1,17 @@
 import styles from './ProgressBar.module.css'
 
-export const ProgressBar = ({ progress, lessons }) => {
+export const ProgressBar = ({ progress, quantity, name }) => {
   return (
     <div className={styles.progress_percent}>
-      <div className={styles.progress_percent__name}>{lessons}</div>
+      <div className={styles.progress_percent__name}>{name}</div>
       <input
         className={styles.progress_input}
         type="range"
         name="range"
         min="0"
-        max="100"
+        max={quantity}
         step="1"
-        defaultValue={progress}
+        defaultValue={quantity}
       />
     </div>
   )
