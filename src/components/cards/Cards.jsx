@@ -7,8 +7,8 @@ import styles from './Cards.module.css'
 function Cards({showButton, setIsOpen}) {
   const dispatch = useDispatch();
   const pictures = useSelector((state) => state.courses.pictures);
-  const { data: courses } = useGetAllCoursesQuery()
-  if (!courses) return
+  const { data: courses } = useGetAllCoursesQuery();
+  if (!courses) return;
   const crs = Object.values(courses);
   dispatch(setCourses({ courses: crs }));
 

@@ -26,7 +26,7 @@ export const AppRoutes = () => {
         <Route path="/course/:id" element={<CoursePage />} />
         <Route element={<ProtectedRoute isAllowed={Boolean(true)} />}>
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/workout" element={<WorkoutVideoPage />} />
+          <Route path="/workout/:id" element={<WorkoutVideoPage />} />
         </Route>
       </Route>
       <Route path="/login" element={<AuthPage isLoginMode={true} />} />
