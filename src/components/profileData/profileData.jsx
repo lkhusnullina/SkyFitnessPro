@@ -5,9 +5,9 @@ import { BigButton } from '../buttons/bigButton.jsx';
 import { useSelector } from 'react-redux';
 
 export const ProfileData = ({setIsModalOpen, setIsPasswordChange}) => {
-   const password = useSelector(state => state.auth.password)
+   const password = JSON.parse(localStorage.getItem('user')).password
    console.log(password);
-   const mail = useSelector(state => state.auth.email)
+   const mail = JSON.parse(localStorage.getItem('user')).email
    console.log(mail);
    const openModal = (changePassword) => {
    setIsPasswordChange(changePassword)

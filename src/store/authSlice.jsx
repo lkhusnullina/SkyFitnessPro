@@ -20,7 +20,6 @@ const authSlice = createSlice({
         state.refToken = action.payload.refreshToken;
         localStorage.setItem('user', JSON.stringify(state));
         console.log(JSON.parse(localStorage.getItem('user')));
-        console.log(state.id);
     },
     removeAuth(state) {
       //const { uid, email, accessToken, refreshToken} = action.payload

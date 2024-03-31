@@ -9,21 +9,24 @@ import { WorkoutVideoPage } from './pages/WorkoutVideoPage/WorkoutVideoPage.jsx'
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage.jsx'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './firebase.js'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const AppRoutes = () => {
-
+  //const isAllowed = Boolean(localStorage.getItem('user'))
   const [isAllowed, setIsAllowed] = useState(null)
   //Отслеживаем состояние авторизации
-  onAuthStateChanged(auth, user => {
-     if (user !== null) {
-     console.log("logged in!")
-     setIsAllowed(true)
-     } else {
-     console.log("no user");
-     setIsAllowed(false)
-     }
-  })
+  useEffect(() => {
+    onAuthStateChanged(auth, user => {
+      if (user !== null) {
+      console.log("logged in!")
+      setIsAllowed(true)
+      } else {
+      console.log("no user");
+      setIsAllowed(false)
+      }
+   })
+  }, [isAllowed])
+
   return (
     <Routes>
       <Route path="/" element={<LayoutPage />}>

@@ -8,19 +8,20 @@ import { auth } from '../../firebase'
 import { setAuthUser } from '../../store/authSlice'
 
 function Header() {
-  const [authUser, setAuthUser] = useState(null)
-
-  useEffect(() => {
-     const listen = onAuthStateChanged(auth, (user) => {
-        if(user) {
-          setAuthUser(user)
-        }
-        else {
-          setAuthUser(null)
-        }
-     })
-     return () => {listen()}
-  }, [])
+  //const [authUser, setAuthUser] = useState(null)
+  const user = JSON.parse(localStorage.getItem('user'))
+  const isAuthUser = Boolean(user)
+  // useEffect(() => {
+  //    const listen = onAuthStateChanged(auth, (user) => {
+  //       if(user) {
+  //         setAuthUser(user)
+  //       }
+  //       else {
+  //         setAuthUser(null)
+  //       }
+  //    })
+  //    return () => {listen()}
+  // }, [])
   //console.log(authUser);
   const location = useLocation()
   const home = location.pathname === '/'
@@ -29,11 +30,11 @@ function Header() {
     : 'images/header_logo_black.png'
 
   //const noUser = location.pathname === '/course'
-  const userProfile = Boolean(authUser)
+  //const userProfile = Boolean(authUser)
    // location.pathname === '/profile' || location.pathname === '/workout'
 
-  const userUrl = userProfile ? (
-    <UserMenu user={authUser} />
+  const userUrl = isAuthUser ? (
+    <UserMenu user={user} />
   ) : (
     <Link to="/login">
       <button className={styles.header_btn}>Войти</button>
