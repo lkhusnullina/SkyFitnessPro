@@ -31,7 +31,7 @@ function Header() {
     <UserMenu user={isAuthUser} />
   ) : (
     <Link to="/login">
-      <button className={styles.header_btn}></button>
+      <button className={styles.header_btn}>Войти</button>
     </Link>
   )
  
