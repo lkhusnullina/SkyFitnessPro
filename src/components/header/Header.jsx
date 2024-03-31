@@ -24,14 +24,14 @@ function Header() {
   const location = useLocation()
   const home = location.pathname === '/'
   const logoUrl = home
-    ? 'images/header_logo.png'
-    : 'images/header_logo_black.png'
+    ? '/images/header_logo.png'
+    : '/images/header_logo_black.png'
     
   const userUrl = isAuthUser ? (
     <UserMenu user={isAuthUser} />
   ) : (
     <Link to="/login">
-      <button className={styles.header_btn}>Войти</button>
+      <button className={styles.header_btn}></button>
     </Link>
   )
  

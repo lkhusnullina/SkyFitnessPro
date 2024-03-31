@@ -1,30 +1,29 @@
 import styles from './Card.module.css'
 import { Link } from 'react-router-dom'
 
-function Card({ card, showButton, setIsOpen }) {
+function Card({ card, showButton, setIsOpen, picture }) {
   return (
     <div className={styles.card}>
       {showButton ? (
         <div
           onClick={() => setIsOpen(true)}
-          id={card.id}
-          className={styles.card_shadow}
+          id={card._id}
         >
-          <h3 className={styles.card_title}>{card.titleCard}</h3>
+          <h3 className={styles.card_title}>{card.nameRU}</h3>
           <img
             className={styles.card_img}
-            src={`/${card.imgCard}`}
-            alt={card.altCard}
+            src={picture.imgSrc}
+            alt={picture.altCard}
           />
           <button className={styles.card_button}>Перейти →</button>
         </div>
       ) : (
-        <Link to={'/course'} id={card.id}>
-          <h3 className={styles.card_title}>{card.titleCard}</h3>
+        <Link to={`/course/${card._id}`} id={card._id}>
+          <h3 className={styles.card_title}>{card.nameRU}</h3>
           <img
             className={styles.card_img}
-            src={`/${card.imgCard}`}
-            alt={card.altCard}
+            src={picture.imgSrc}
+            alt={picture.altCard}
           />
         </Link>
       )}

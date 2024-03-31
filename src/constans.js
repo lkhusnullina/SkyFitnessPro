@@ -1,32 +1,27 @@
-export const Cards = [
+export const Pictures = [
   {
     id: 1,
-    titleCard: 'Йога',
-    imgCard: 'images/courseCard.png',
-    altCard: 'yoga',
+    imgSrc: '/images/salad-dot.png',
+    altCard: 'StepAirobic',
   },
   {
     id: 2,
-    titleCard: 'Стретчинг',
-    imgCard: 'images/courseCard.png',
-    altCard: 'stretch',
+    imgSrc: '/images/purple-lines.png',
+    altCard: 'Yoga'
   },
   {
     id: 3,
-    titleCard: 'Танцевальный фитнес',
-    imgCard: 'images/courseCard.png',
-    altCard: 'fitnes',
+    imgSrc: '/images/blue-arch.png',
+    altCard: 'Stretching',
   },
   {
     id: 4,
-    titleCard: 'Степ-аэробика',
-    imgCard: 'images/courseCard.png',
-    altCard: 'aerobic',
+    imgSrc: '/images/light-blue.png',
+    altCard: 'BodyFlex',
   },
   {
     id: 5,
-    titleCard: 'Бодифлекс',
-    imgCard: 'images/courseCard.png',
-    altCard: 'body_flex',
+    imgSrc: '/images/orange-plus.png',
+    altCard: 'DanceFitness',
   },
 ]

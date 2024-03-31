@@ -1,10 +1,7 @@
-.yogaTitle {
-  width: 452px;
-  height: 48px;
+.courses_title {
+  margin-top: 75px;
+  margin-bottom: 40px;
   font-size: 40px;
-  line-height: 48px;
-  text-align: left;
-  padding-top: 75px;
-  padding-bottom: 40px;
+  line-height: 48px;  
 }
 

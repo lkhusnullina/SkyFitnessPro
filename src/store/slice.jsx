@@ -1,12 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { Cards } from '../constans'
+import { Pictures } from '../constans'
 
 const coursesSlice = createSlice({
   name: 'courses',
   initialState: {
-    cards: Cards,
+    pictures: Pictures,
+    courses: [],
   },
   reducers: {
+    setCourses(state, action) {
+      state.courses = action.payload.courses;
+    }
+  },
   },
 })
 export const coursesReducer = coursesSlice.reducer
+export const {setCourses} = coursesSlice.actions;

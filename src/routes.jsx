@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react'
 export const AppRoutes = () => {
   //const isAllowed = Boolean(localStorage.getItem('user'))
   const [isAllowed, setIsAllowed] = useState(null)
-  //Отслеживаем состояние авторизации
+  //  
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       if (user !== null) {
@@ -31,10 +31,10 @@ export const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<LayoutPage />}>
         <Route index element={<MainPage />} />
-        <Route path="/course" element={<CoursePage />} />
+        <Route path="/course/:id" element={<CoursePage />} />
         <Route element={<ProtectedRoute isAllowed={isAllowed} />}>
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/workout" element={<WorkoutVideoPage />} />
+          <Route path="/workout/:id" element={<WorkoutVideoPage />} />
         </Route>
       </Route>
       <Route path="/login" element={<AuthPage isLoginMode={true} />} />
