@@ -16,7 +16,6 @@ export const AuthPage = (
   { isLoginMode = false }
   ) => {
   // const isLoginMode = Boolean(localStorage.getItem('user'))
-  //console.log(localStorage.getItem('user'));
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState([])
@@ -66,6 +65,7 @@ export const AuthPage = (
         dispatch(
           setAuth( 
             {
+            password: password,
             id: user.uid,
             email: user.email,
             accessToken: user.accessToken,
@@ -73,7 +73,7 @@ export const AuthPage = (
           }
           )
         )
-       // console.log(user);
+       console.log(user);
         //console.log(userCredential);
         //навигация на главную страницу 
         navigate('/')

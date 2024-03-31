@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
 import styles from './Header.module.css'
 import UserMenu from '../userMenu/UserMenu'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../../firebase'
+import { setAuthUser } from '../../store/authSlice'
 
 function Header() {
   const [authUser, setAuthUser] = useState(null)
@@ -20,7 +21,7 @@ function Header() {
      })
      return () => {listen()}
   }, [])
-  //const isAllowed = useSelector(store => store.courses.isAllowed)
+  //console.log(authUser);
   const location = useLocation()
   const home = location.pathname === '/'
   const logoUrl = home
@@ -28,7 +29,7 @@ function Header() {
     : 'images/header_logo_black.png'
 
   //const noUser = location.pathname === '/course'
-  const userProfile = authUser
+  const userProfile = Boolean(authUser)
    // location.pathname === '/profile' || location.pathname === '/workout'
 
   const userUrl = userProfile ? (

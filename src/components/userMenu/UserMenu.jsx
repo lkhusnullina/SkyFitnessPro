@@ -22,6 +22,7 @@ function UserMenu({user}) {
     }).catch((error) => {
       console.log(error);
     });
+    
   }
 
   return (
@@ -29,7 +30,7 @@ function UserMenu({user}) {
       <div className={styles.header_user} onClick={toggleVisibility}>
         <img src="images/avatar.svg" alt="avatar" />
         <div className={styles.header_userName}>{user.email}</div>
-        <img src="images/arrow.svg" alt="arrow" />
+        <img className={styles.header_img_arrow} src="images/arrow.svg" alt="arrow" />
       </div>
       {isOpen && (
         <div className={styles.menu}>
@@ -40,7 +41,10 @@ function UserMenu({user}) {
             <div className={styles.menu_link}>Профиль</div>
           </Link>
           <Link className={styles.menu_block} onClick={handleLogout}>
-            <div className={styles.menu_link}>Выйти</div>
+            <div className={styles.menu_link} onClick={() => {
+              localStorage.clear()
+              navigate('/login')
+            }}>Выйти</div>
           </Link>
         </div>
       )}

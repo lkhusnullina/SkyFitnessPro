@@ -44,4 +44,8 @@
   padding: 10px;
   color: #000000;
   font-size: 20px;
+  text-decoration: none;
+}
+.header_img_arrow {
+  cursor: pointer;
 }
