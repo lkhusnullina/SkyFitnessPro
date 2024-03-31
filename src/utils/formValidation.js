@@ -49,6 +49,7 @@ export const handlePasswordChange = (
   } else {
     setRepeatPasswordError('Пароли не совпадают')
   }
+  //return passwordValue
 }
 
 // валидация повторного пароля

@@ -21,16 +21,15 @@ const authSlice = createSlice({
         localStorage.setItem('user', JSON.stringify(state));
         console.log(JSON.parse(localStorage.getItem('user')));
     },
-    removeAuth(state) {
-      //const { uid, email, accessToken, refreshToken} = action.payload
-      state.pass = null;
-      state.id = null;
-      state.email = null;
-      state.accessToken = null;
-      state.refreshToken = null;
-      localStorage.clear();
-      //localStorage.removeItem('user');
-    },
+    // removeAuth(state) {
+    //   state.pass = null;
+    //   state.id = null;
+    //   state.email = null;
+    //   state.accessToken = null;
+    //   state.refreshToken = null;
+    //   localStorage.clear();
+    //   localStorage.removeItem('user');
+    // },
     setAuthUser(state, action) {
       state.authUser = action.payload;
     }

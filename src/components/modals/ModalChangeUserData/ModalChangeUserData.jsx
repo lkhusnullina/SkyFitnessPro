@@ -7,8 +7,11 @@ import {
   handleRepeatPasswordChange,
 } from '../../../utils/formValidation'
 import { BigButton } from '../../buttons/bigButton'
+import { useDispatch } from 'react-redux'
+
 
 function ModalChangeUserData({ isPasswordChange, closeModal }) {
+  const dispatch = useDispatch()
   const [loginError, setLoginError] = useState([])
   const [loginValue, setLoginValue] = useState('')
   const [passwordError, setPasswordError] = useState('')
@@ -45,7 +48,6 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
       setErrorMessage('Форма заполнена некорректно')
       return
     }
-
     console.log('Смена данных прошла успешно!')
     setErrorMessage('')
   }

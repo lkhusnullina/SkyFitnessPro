@@ -1,40 +1,34 @@
 import { Link, useLocation } from 'react-router-dom'
 import styles from './Header.module.css'
 import UserMenu from '../userMenu/UserMenu'
-import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../../firebase'
-import { setAuthUser } from '../../store/authSlice'
 
 function Header() {
-  //const [authUser, setAuthUser] = useState(null)
-  const user = JSON.parse(localStorage.getItem('user'))
-  const isAuthUser = Boolean(user)
-  // useEffect(() => {
-  //    const listen = onAuthStateChanged(auth, (user) => {
-  //       if(user) {
-  //         setAuthUser(user)
-  //       }
-  //       else {
-  //         setAuthUser(null)
-  //       }
-  //    })
-  //    return () => {listen()}
-  // }, [])
-  //console.log(authUser);
+  //const isAuthUser = JSON.parse(localStorage.getItem('user'))
+
+  const [isAuthUser, setIsAuthUser] = useState(null)
+  useEffect(() => {
+     const listen = onAuthStateChanged(auth, (user) => {
+        if(user) {
+          setIsAuthUser(user)
+        }
+        else {
+          setIsAuthUser(null)
+        }
+     })
+     return () => {listen()}
+  }, [])
+  //console.log(isAuthUser);
   const location = useLocation()
   const home = location.pathname === '/'
   const logoUrl = home
     ? 'images/header_logo.png'
     : 'images/header_logo_black.png'
-
-  //const noUser = location.pathname === '/course'
-  //const userProfile = Boolean(authUser)
-   // location.pathname === '/profile' || location.pathname === '/workout'
-
+    
   const userUrl = isAuthUser ? (
-    <UserMenu user={user} />
+    <UserMenu user={isAuthUser} />
   ) : (
     <Link to="/login">
       <button className={styles.header_btn}>Войти</button>
