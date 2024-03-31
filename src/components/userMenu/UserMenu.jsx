@@ -27,9 +27,9 @@ function UserMenu({user}) {
   return (
     <div className={styles.header_user_container}>
       <div className={styles.header_user} onClick={toggleVisibility}>
-        <img className={styles.header_img_user}src="images/avatar.svg" alt="avatar" />
+        <img className={styles.header_img_user}src="/images/avatar.svg" alt="avatar" />
         <div className={styles.header_userName}>{user.email}</div>
-        <img className={styles.header_img_arrow} src="images/arrow.svg" alt="arrow" />
+        <img className={styles.header_img_arrow} src="/images/arrow.svg" alt="arrow" />
       </div>
       {isOpen && (
         <div className={styles.menu}>

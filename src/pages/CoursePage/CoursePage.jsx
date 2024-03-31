@@ -24,11 +24,11 @@ export const CoursePage = () => {
   return (
     <div>
       <BannerCourse course={course} picture={picture}/>
-      <h2 className={styles.courses_title}>  , : </h2>
+      <h2 className={styles.courses_title}>Подойдет для вас, если:</h2>
       <FittingCourse course={course}/>
       <DirectionsCourse course={course}/>
       <DescriptionCourse course={course}/>
       <ApplicationCourse/>
     </div>
   )
-}
+}}

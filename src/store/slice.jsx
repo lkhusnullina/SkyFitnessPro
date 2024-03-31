@@ -12,7 +12,7 @@ const coursesSlice = createSlice({
       state.courses = action.payload.courses;
     }
   },
-  },
+  
 })
 export const coursesReducer = coursesSlice.reducer
 export const {setCourses} = coursesSlice.actions;
