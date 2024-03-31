@@ -10,8 +10,8 @@ function Cards({showButton, setIsOpen}) {
   const { data: courses } = useGetAllCoursesQuery();
   if (!courses) return;
   const crs = Object.values(courses);
-  dispatch(setCourses({ courses: crs }));
-
+  if(!crs) dispatch(setCourses({ courses: crs }));
+  
   return (
     <div className={styles.cards_block}>
       {crs.map((course) => (
