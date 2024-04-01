@@ -15,6 +15,8 @@ export const WorkoutVideoPage = () => {
   const id = params.id
   const workouts = useSelector((state) => state.workouts.workouts)
   let workout = workouts.find((p) => p._id === id)
+
+
   if (!workout) {
     const { data: wkt } = useGetWorkoutsIdQuery(id)
     workout = wkt
@@ -27,13 +29,15 @@ export const WorkoutVideoPage = () => {
 
   //сделать проверку на отрисовку компонента Exercises
 
+  // сделать проверку и прокинуть воркаут в модалку и прописать там названия 
+
   return (
     <div>
       <h2 className={styles.title}>Курс</h2>
       <div className={styles.description}>{workout.name}</div>
       <Video workout={workout} />
-      <Exercises workout={workout} setIsOpen={setIsOpen}/>
-      {isOpen && <ModalMyProgress isOpen={isOpen} closeModal={closeModal} />}
+      {workout.exercises ? <Exercises workout={workout} setIsOpen={setIsOpen}/> : <div className={styles.emptyBlock}></div> }
+      {isOpen && <ModalMyProgress workout={workout} isOpen={isOpen} closeModal={closeModal} />}
     </div>
   )
 }
