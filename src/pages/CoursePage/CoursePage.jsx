@@ -14,11 +14,12 @@ export const CoursePage = () => {
   const courses = useSelector((state) => state.courses.courses);
   const pictures = useSelector((state) => state.courses.pictures);
   let course = courses.find(p => p._id === id);
-  console.log(course);
   if (!course) {
     const { data: crs } = useGetCourseIdQuery(id);
     course = crs;
+  }
   if (!course) return;
+
   const picture = pictures.find(p => p.altCard == course.nameEN);
 
   return (
@@ -31,4 +32,4 @@ export const CoursePage = () => {
       <ApplicationCourse/>
     </div>
   )
-}}
+}
