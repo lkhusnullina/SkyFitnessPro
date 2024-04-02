@@ -1,12 +1,15 @@
 import styles from './Card.module.css'
 import { Link } from 'react-router-dom'
 
-function Card({ card, showButton, setIsOpen, picture }) {
+function Card({ card, showButton, setIsOpen, setIdWorkout, picture }) {
   return (
     <div className={styles.card}>
       {showButton ? (
         <div
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            setIsOpen(true)
+            setIdWorkout(card._id)
+          }}
           id={card._id}
         >
           <h3 className={styles.card_title}>{card.nameRU}</h3>

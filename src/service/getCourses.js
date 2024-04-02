@@ -42,5 +42,6 @@ export const {
   useGetCourseIdQuery,
   useGetAllWorkoutsQuery,
   useGetWorkoutsIdQuery,
+  useLazyGetWorkoutsIdQuery
 } = getCourses
 export default getCourses.reducer

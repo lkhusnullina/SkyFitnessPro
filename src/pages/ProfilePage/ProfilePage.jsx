@@ -9,6 +9,7 @@ export const ProfilePage = (props) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isPasswordChange, setIsPasswordChange] = useState(false);
+  const [idWorkout, setIdWorkout] = useState(null);
  
   const closeProgressModal = () => {
     setIsOpen(false)
@@ -26,10 +27,10 @@ export const ProfilePage = (props) => {
     <div className={styles.container}>
       <ProfileData setIsPasswordChange={setIsPasswordChange} setIsModalOpen={setIsModalOpen} />
       <h2 className={styles.title_courses}>Мои курсы</h2>
-      <Cards showButton={true} setIsOpen={setIsOpen}/>
+      <Cards showButton={true} setIsOpen={setIsOpen} setIdWorkout={setIdWorkout}/>
       {isOpen && (
         <div className={styles.modalOverlay}>
-          <ModalChooseLesson closeProgressModal={closeProgressModal} />
+          <ModalChooseLesson closeProgressModal={closeProgressModal} idWorkout={idWorkout}/>
         </div>
       )}
         {isModalOpen && (

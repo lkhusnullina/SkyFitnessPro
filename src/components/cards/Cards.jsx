@@ -5,7 +5,7 @@ import Card from '../сard/Card'
 import styles from './Cards.module.css'
 import { useEffect } from 'react'
 
-function Cards({showButton, setIsOpen}) {
+function Cards({showButton, setIsOpen, setIdWorkout}) {
   const dispatch = useDispatch();
   const pictures = useSelector((state) => state.courses.pictures);
   const { data: allCourses } = useGetAllCoursesQuery();
@@ -20,7 +20,7 @@ function Cards({showButton, setIsOpen}) {
   return (
     <div className={styles.cards_block}>
       {courses.map((course) => (
-        <Card key={course._id} card={course} showButton={showButton} setIsOpen={setIsOpen} picture={pictures.find(p => p.altCard == course.nameEN)}/>
+        <Card key={course._id} card={course} showButton={showButton} setIsOpen={setIsOpen} setIdWorkout={setIdWorkout} picture={pictures.find(p => p.altCard == course.nameEN)}/>
       ))}
     </div>
   )
