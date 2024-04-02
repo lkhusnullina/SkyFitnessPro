@@ -95,3 +95,22 @@
   letter-spacing: -0.05px;
   line-height: 18px;
 }
+
+.markDone {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #06b16e;
+  border-radius: 50%;
+}
+
+.done {
+  position: absolute;
+  z-index: 1;
+  background-image: url(/public/images/done.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 21px;
+  height: 15px;
+  transform: translate(23%, -14%);
+}

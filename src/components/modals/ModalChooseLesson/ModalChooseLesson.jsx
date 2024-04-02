@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from './ModalChooseLesson.module.css'
 import { useNavigate } from 'react-router-dom'
+import { useGetAllCoursesQuery } from '../../../service/getCourses'
 
 function ModalChooseLesson({ closeProgressModal }) {
   const navigate = useNavigate()
 
-  const clickChooseLesson = () => {
-    navigate('/workout/t3cpno')
-  }
+  const { data: courses } = useGetAllCoursesQuery()
+  if (!courses) return null
 
   const handleClickOutside = (event) => {
     if (event.target.classList.contains(styles.pageContainer)) {
@@ -21,30 +21,20 @@ function ModalChooseLesson({ closeProgressModal }) {
         <h1 className={styles.title}>Выберите тренировку</h1>
         <div className={styles.lessonsContainerScroll}>
           <div className={styles.lessonsContainer}>
-            <div onClick={clickChooseLesson} className={styles.lessonContainer}>
-              <h2 className={styles.lessonTitle}>Утренняя практика</h2>
-              <p className={styles.lesson}>Йога на каждый день / 1 день</p>
-            </div>
-            <div onClick={clickChooseLesson} className={styles.lessonContainer}>
-              <h2 className={styles.lessonTitle}>Красота и здоровье</h2>
-              <p className={styles.lesson}>Йога на каждый день / 2 день</p>
-            </div>
-            <div onClick={clickChooseLesson} className={styles.lessonContainer}>
-              <h2 className={styles.lessonTitle}>Асаны стоя</h2>
-              <p className={styles.lesson}>Йога на каждый день / 3 день</p>
-            </div>
-            <div onClick={clickChooseLesson} className={styles.lessonContainer}>
-              <h2 className={styles.lessonTitle}>Растягиваем мышцы бедра</h2>
-              <p className={styles.lesson}>Йога на каждый день / 4 день</p>
-            </div>
-            <div onClick={clickChooseLesson} className={styles.lessonContainer}>
-              <h2 className={styles.lessonTitle}>Гибкость спины</h2>
-              <p className={styles.lesson}>Йога на каждый день / 5 день</p>
-            </div>
-            <div onClick={clickChooseLesson} className={styles.lessonContainer}>
-              <h2 className={styles.lessonTitle}>Утренняя практика</h2>
-              <p className={styles.lesson}>Йога на каждый день / 6 день</p>
-            </div>
+            {Object.values(courses).map((course) =>
+              course.workouts.map((workoutId) => (
+                <div
+                  onClick={() => navigate(`/workout/${workoutId}`)}
+                  key={workoutId}
+                  className={styles.lessonContainer}
+                >
+                  {/* <div className={styles.markDone}>
+                    <div className={styles.done}></div>
+                  </div> */}
+                  {workoutId}
+                </div>
+              )),
+            )}
           </div>
         </div>
       </div>
