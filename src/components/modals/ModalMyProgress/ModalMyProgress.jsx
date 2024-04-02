@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import styles from './ModalMyProgress.module.css'
 import { BigButton } from '../../buttons/bigButton'
 
-function ModalMyProgress({ closeModal }) {
+function ModalMyProgress({ closeModal, workout }) {
+  const list = Object.values(workout.exercises)
+  console.log(`lists : ${JSON.stringify(list)}`);
   const [isProgressFixed, setIsProgressFixed] = useState(false)
   const [itemErrors, setItemErrors] = useState({
     forwardBends: '',
@@ -70,10 +72,10 @@ function ModalMyProgress({ closeModal }) {
           <h1 className={styles.title}>Мой прогресс</h1>
           <div className={styles.modalInputs}>
             <div className={styles.modalInputsResult}>
-              <p className={styles.modalText}>
-                Сколько раз вы сделали наклоны вперед?
-              </p>
-              <input
+              {list?.map((item) => {
+                return <>
+                 <p key={item.id} className={styles.modalText}>Сколько раз вы делали {item.name}?</p>
+                <input
                 className={styles.modalInput}
                 name="forwardBends"
                 type="number"
@@ -83,39 +85,10 @@ function ModalMyProgress({ closeModal }) {
                 onChange={(event) => handleItemChange(event, 'forwardBends')}
               />
               <span className={styles.error}>{itemErrors.forwardBends}</span>
-            </div>
-            <div className={styles.modalInputsResult}>
-              <p className={styles.modalText}>
-                Сколько раз вы сделали наклоны назад?
-              </p>
-              <input
-                className={styles.modalInput}
-                name="backwardBends"
-                type="number"
-                pattern="\d+"
-                placeholder="Введите значение"
-                onInput={integerValidation}
-                onChange={(event) => handleItemChange(event, 'backwardBends')}
-              />
-              <span className={styles.error}>{itemErrors.backwardBends}</span>
-            </div>
-            <div className={styles.modalInputsResult}>
-              <p className={styles.modalText}>
-                Сколько раз вы сделали поднятие ног, согнутых в коленях?
-              </p>
-              <input
-                className={styles.modalInput}
-                type="number"
-                name="kneeRaises"
-                pattern="\d+"
-                placeholder="Введите значение"
-                onInput={integerValidation}
-                onChange={(event) => handleItemChange(event, 'kneeRaises')}
-              />
-              <span className={styles.error}>{itemErrors.kneeRaises}</span>
+                </>
+              })} 
             </div>
           </div>
-
           <div className={styles.buttons}>
             <BigButton value={buttonValue} onClick={handleProgressFixed} disabled={isLoading}/>
           </div>

@@ -28,18 +28,27 @@ export const WorkoutVideoPage = () => {
     setIsOpen(false)
   }
 
-  //    workout.exercises     Lessons  Progress  
-  //      Lessons  Progress   
+  //если у урока нет workout.exercises то оставляем пустое место Lessons и Progress не отрисовываем
+  // можно вынести в отдельный компонент Lessons и Progress и делать проверку
 
-  //            
+  // сделать проверку и прокинуть воркаут в модалку и прописать там названия 
 
   return (
     <div>
-    <h2 className={styles.title}></h2>
-    <div className={styles.description}>{workout.name}</div>
-    <Video workout={workout} />
+<<<<<<< HEAD
+      <h2 className={styles.title}>Курс</h2>
+      <div className={styles.description}>{workout.name}</div>
+      <Video workout={workout} />
       {workout.exercises ? <Exercises workout={workout} setIsOpen={setIsOpen}/> : <div className={styles.emptyBlock}></div> }
       {isOpen && <ModalMyProgress workout={workout} isOpen={isOpen} closeModal={closeModal} />}
+    </div>
+=======
+    <h2 className={styles.title}>Курс</h2>
+    <div className={styles.description}>{workout.name}</div>
+    <Video workout={workout} />
+    <Exercises workout={workout} setIsOpen={setIsOpen}/>
+    {isOpen && <ModalMyProgress isOpen={isOpen} closeModal={closeModal} />}
   </div>
+>>>>>>> dev
   )
 }
