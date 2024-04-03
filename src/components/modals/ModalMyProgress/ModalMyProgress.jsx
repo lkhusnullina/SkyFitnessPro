@@ -4,7 +4,7 @@ import { BigButton } from '../../buttons/bigButton'
 
 function ModalMyProgress({ closeModal, workout }) {
   const list = Object.values(workout.exercises)
-  console.log(`lists : ${JSON.stringify(list)}`);
+  console.log(`lists : ${JSON.stringify(list)}`)
   const [isProgressFixed, setIsProgressFixed] = useState(false)
   const [itemErrors, setItemErrors] = useState({
     forwardBends: '',
@@ -73,24 +73,45 @@ function ModalMyProgress({ closeModal, workout }) {
           <div className={styles.modalInputs}>
             <div className={styles.modalInputsResult}>
               {list?.map((item) => {
-                return <>
-                 <p key={item.id} className={styles.modalText}>Сколько раз вы делали {item.name}?</p>
-                <input
-                className={styles.modalInput}
-                name="forwardBends"
-                type="number"
-                pattern="\d+"
-                placeholder="Введите значение"
-                onInput={integerValidation}
-                onChange={(event) => handleItemChange(event, 'forwardBends')}
-              />
-              <span className={styles.error}>{itemErrors.forwardBends}</span>
-                </>
-              })} 
+                // Преобразование первой буквы в нижний регистр
+                const itemName =
+                  item.name.charAt(0).toLowerCase() + item.name.slice(1)
+                // Удаление всего, что находится в скобках
+                const itemNameWithoutParentheses = itemName.replace(
+                  /\s*\(.*?\)\s*/g,
+                  '',
+                )
+
+                return (
+                  <>
+                    <p key={item.id} className={styles.modalText}>
+                      Сколько раз вы сделали {itemNameWithoutParentheses}?
+                    </p>
+                    <input
+                      className={styles.modalInput}
+                      name="forwardBends"
+                      type="number"
+                      pattern="\d+"
+                      placeholder="Введите значение"
+                      onInput={integerValidation}
+                      onChange={(event) =>
+                        handleItemChange(event, 'forwardBends')
+                      }
+                    />
+                    <span className={styles.error}>
+                      {itemErrors.forwardBends}
+                    </span>
+                  </>
+                )
+              })}
             </div>
           </div>
           <div className={styles.buttons}>
-            <BigButton value={buttonValue} onClick={handleProgressFixed} disabled={isLoading}/>
+            <BigButton
+              value={buttonValue}
+              onClick={handleProgressFixed}
+              disabled={isLoading}
+            />
           </div>
           <span className={styles.errorForm}>{errorMessage}</span>
         </div>
