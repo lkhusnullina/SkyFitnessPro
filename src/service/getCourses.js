@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const getCourses = createApi({
   reducerPath: 'getCourses',
-  tagTypes: ['Courses', 'Workouts'],
+  tagTypes: ['Courses', 'Workouts', 'Users'],
   baseQuery: fetchBaseQuery({
     baseUrl:
       'https://fitness-project-bc4c2-default-rtdb.asia-southeast1.firebasedatabase.app/',
@@ -21,13 +21,13 @@ export const getCourses = createApi({
       }),
       providesTags: ['Courses'],
     }),
-    addUserIdByCourse: builder.query({
-      query: (id, uid) => ({
-        url: `courses/${id}/users.json`,
-        method: 'POST',
-      }),
-      providesTags: ['Courses'],
-    }),
+    // addUserIdByCourse: builder.query({
+    //   query: (id, uid) => ({
+    //     url: `courses/${id}/users.json`,
+    //     method: 'POST',
+    //   }),
+    //   providesTags: ['Courses'],
+    // }),
     getAllWorkouts: builder.query({
       query: () => ({
         url: 'workouts.json',
@@ -41,6 +41,27 @@ export const getCourses = createApi({
       }),
       providesTags: ['Workouts'],
     }),
+    getAllUsers: builder.query({
+      query: () => ({
+        url: `users.json`,
+        method: 'GET',
+      }),
+      providesTags: ['Users'],
+    }),
+    getUser: builder.query({
+      query: (id) => ({
+        url: `users/${id}.json`,
+        method: 'GET',
+      }),
+      providesTags: ['Users'],
+    }),
+    addUser: builder.mutation({
+      query: (id) => ({
+        url: `users/${id}.json`,
+        method: 'POST',
+      }),
+      invalidatesTags: ['Users'],
+    }),
   }),
 })
 
@@ -50,6 +71,7 @@ export const {
   useGetAllWorkoutsQuery,
   useGetWorkoutsIdQuery,
   useLazyGetWorkoutsIdQuery,
-  useAddUserIdByCourseQuery,
+  useAddUserMutation,
+  useGetAllUsersQuery
 } = getCourses
 export default getCourses.reducer

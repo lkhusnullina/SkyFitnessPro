@@ -1,8 +1,10 @@
 import styles from './MainPage.module.css'
 import Cards from '../../components/cards/Cards.jsx'
+import { useGetAllUsersQuery } from '../../service/getCourses.js';
 
 export const MainPage = () => {
-  
+  const {data: users } = useGetAllUsersQuery();
+  console.log(users);
 
   return (
     <div>
