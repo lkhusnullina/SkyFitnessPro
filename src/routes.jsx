@@ -34,7 +34,7 @@ export const AppRoutes = () => {
         <Route path="/course/:id" element={<CoursePage />} />
         <Route element={<ProtectedRoute isAllowed={isAllowed} />}>
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/workout/:id" element={<WorkoutVideoPage />} />
+          <Route path="/:courseId/workout/:id" element={<WorkoutVideoPage />} />
         </Route>
       </Route>
       <Route path="/login" element={<AuthPage isLoginMode={true} />} />

@@ -17,11 +17,7 @@ export const ProfilePage = (props) => {
 
   const closeModal = () => {
     setIsModalOpen(false)
-    }
-
-  // const click = () => {
-  //   console.log('  ');
-  // }
+  }
 
   return (
     <div className={styles.container}>
