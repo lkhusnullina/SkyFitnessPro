@@ -1,8 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-// import { collection, getDocs, getFirestore } from 'firebase/firestore'
 // import { } from 'firebase/<service>';
-// import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 

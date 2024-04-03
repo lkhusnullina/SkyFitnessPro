@@ -11,6 +11,7 @@ import { auth, } from '../../firebase'
 import {  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from'firebase/auth'
 import { useDispatch } from 'react-redux'
 import { setAuth } from '../../store/authSlice'
+import { useAddUserMutation } from '../../service/getCourses'
 
 export const AuthPage = (
   { isLoginMode = false }
@@ -30,6 +31,7 @@ export const AuthPage = (
   
   const logButtonValue = isLoading ? 'Загрузка...' : 'Войти'
   const regButtonValue = isLoading ? 'Регистрация...' : 'Зарегистрироваться'
+  const [addUser, { error }] = useAddUserMutation();
 
   useEffect(() => {
     if (repeatPasswordError && repeatPasswordValue === passwordValue) {
@@ -89,11 +91,13 @@ export const AuthPage = (
       // Зарегистрироваться
       createUserWithEmailAndPassword(getAuth(), email, password)
       .then((userCredential) => {
+        
         // Signed up 
         console.log(userCredential);
         const user = userCredential.user;
         console.log(user);
         console.log('Вход/Регистрация прошла успешно!')
+        addUser({id: user.uid })
         //навигация на страницу авторизации
           navigate('/login')
       })

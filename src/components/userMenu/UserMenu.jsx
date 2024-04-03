@@ -34,14 +34,15 @@ function UserMenu({user}) {
       {isOpen && (
         <div className={styles.menu}>
           <Link className={styles.menu_block} to="/">
-            <div className={styles.menu_link}>На главную</div>
+            <div className={styles.menu_link} onClick={() => setIsOpen(false)}>На главную</div>
           </Link>
           <Link className={styles.menu_block} to="/profile">
-            <div className={styles.menu_link}>Профиль</div>
+            <div className={styles.menu_link} onClick={() => setIsOpen(false)}>Профиль</div>
           </Link>
           <Link className={styles.menu_block} onClick={handleLogout}>
             <div className={styles.menu_link} onClick={() => {
               localStorage.clear()
+              setIsOpen(false)
               navigate('/login')
             }}>Выйти</div>
           </Link>

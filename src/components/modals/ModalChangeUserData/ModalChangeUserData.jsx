@@ -11,11 +11,12 @@ import { useDispatch } from 'react-redux'
 import {
   getAuth,
   updatePassword,
-  updateLogin,
   reauthenticateWithCredential,
   EmailAuthProvider,
+  updateEmail,
 } from 'firebase/auth';
 import { auth } from '../../../firebase'
+import { setAuth } from '../../../store/authSlice'
 
 function ModalChangeUserData({ isPasswordChange, closeModal }) {
   const dispatch = useDispatch()
@@ -55,17 +56,86 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
       setErrorMessage('Форма заполнена некорректно')
       return
     }
+    else {
+
+      async function changeLog(){
+        const oldPassword = JSON.parse(localStorage.getItem('user')).password
+        const oldLogin = JSON.parse(localStorage.getItem('user')).email
+        const newLogin = loginValue
+
+        const credentialOld = EmailAuthProvider.credential(
+          oldLogin,
+          oldPassword
+        );
+
+        await reauthenticateWithCredential(auth.currentUser, credentialOld);
+
+        updateEmail(auth.currentUser, newLogin)
+            .then(() => {
+              console.log('Логин успешно изменен');
+            })
+            .catch((error) => {
+              console.error('Ошибка изменения логина:', error);
+            });
+      
+        dispatch(
+          setAuth( 
+            {
+              password: oldPassword,
+              id: auth.currentUser.uid,
+              email: newLogin,
+              accessToken: auth.currentUser.accessToken,
+              refreshToken: auth.currentUser.stsTokenManager.refreshToken
+            })
+        )
+        // const credentialNew = EmailAuthProvider.credential(
+        //   newLogin,
+        //   oldPassword
+        // );
+        //await reauthenticateWithCredential(auth.currentUser, credentialNew);
+      }
+
+      async function changePass(){
+        const oldPassword = JSON.parse(localStorage.getItem('user')).password
+        const newPassword = passwordValue
+        const credentialOld = EmailAuthProvider.credential(
+          auth.currentUser.email,
+          oldPassword
+        );
+      
+      await reauthenticateWithCredential(auth.currentUser, credentialOld);
+      await updatePassword(auth.currentUser, newPassword);
+        dispatch(
+          setAuth( 
+            {
+            password: newPassword,
+            id: auth.currentUser.uid,
+            email: auth.currentUser.email,
+            accessToken: auth.currentUser.accessToken,
+            refreshToken: auth.currentUser.stsTokenManager.refreshToken
+          })
+        )
+        const credentialNew = EmailAuthProvider.credential(
+          auth.currentUser.email,
+          newPassword
+        );
+        await reauthenticateWithCredential(auth.currentUser, credentialNew);
+      }
+    if(isPasswordChange === false) {
+      changeLog();
+    }
+    
+    if(isPasswordChange) {
+      changePass();
+    }
+    
+    console.log(auth.currentUser);
+    closeModal();
     console.log('Смена данных прошла успешно!')
-    // async function changePass(){
-    //   //const oldPassword = JSON.parse(localStorage.getItem('user')).password
-  
-    //   const newPassword = passwordValue
-    //   await updatePassword(auth.currentUser, newPassword);
-    // }
-    // changePass();
-    // console.log(auth.currentUser);
+
     setErrorMessage('')
   }
+}
 
   return (
     <div className={styles.pageContainer} onClick={handleClickOutside}>
