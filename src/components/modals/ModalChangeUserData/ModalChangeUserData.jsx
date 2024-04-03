@@ -16,6 +16,7 @@ import {
   EmailAuthProvider,
 } from 'firebase/auth';
 import { auth } from '../../../firebase'
+import { setAuth } from '../../../store/authSlice'
 
 function ModalChangeUserData({ isPasswordChange, closeModal }) {
   const dispatch = useDispatch()
@@ -56,14 +57,32 @@ function ModalChangeUserData({ isPasswordChange, closeModal }) {
       return
     }
     console.log('Смена данных прошла успешно!')
-    // async function changePass(){
-    //   //const oldPassword = JSON.parse(localStorage.getItem('user')).password
-  
-    //   const newPassword = passwordValue
-    //   await updatePassword(auth.currentUser, newPassword);
-    // }
-    // changePass();
-    // console.log(auth.currentUser);
+    async function changePass(){
+      //const oldPassword = JSON.parse(localStorage.getItem('user')).password
+      
+      const newPassword = passwordValue
+      const credential = EmailAuthProvider.credential(
+        auth.currentUser.email,
+        newPassword
+     );
+      await updatePassword(auth.currentUser, newPassword);
+      dispatch(
+        setAuth( 
+          {
+          password: newPassword,
+          id: auth.currentUser.uid,
+          email: auth.currentUser.email,
+          accessToken: auth.currentUser.accessToken,
+          refreshToken: auth.currentUser.stsTokenManager.refreshToken
+        }
+        )
+      )
+      //await reauthenticateWithCredential(auth.currentUser, credential);
+    }
+    changePass();
+    
+    console.log(auth.currentUser);
+    closeModal()
     setErrorMessage('')
   }
 
