@@ -21,6 +21,13 @@ export const getCourses = createApi({
       }),
       providesTags: ['Courses'],
     }),
+    addUserIdByCourse: builder.query({
+      query: (id, uid) => ({
+        url: `courses/${id}/users.json`,
+        method: 'POST',
+      }),
+      providesTags: ['Courses'],
+    }),
     getAllWorkouts: builder.query({
       query: () => ({
         url: 'workouts.json',
@@ -42,6 +49,7 @@ export const {
   useGetCourseIdQuery,
   useGetAllWorkoutsQuery,
   useGetWorkoutsIdQuery,
-  useLazyGetWorkoutsIdQuery
+  useLazyGetWorkoutsIdQuery,
+  useAddUserIdByCourseQuery,
 } = getCourses
 export default getCourses.reducer

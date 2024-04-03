@@ -29,7 +29,7 @@ export const CoursePage = () => {
       <FittingCourse course={course}/>
       <DirectionsCourse course={course}/>
       <DescriptionCourse course={course}/>
-      <ApplicationCourse/>
+      <ApplicationCourse paramId={id}/>
     </div>
   )
 }
