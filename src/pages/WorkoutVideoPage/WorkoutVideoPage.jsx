@@ -12,10 +12,11 @@ import { useParams } from 'react-router-dom'
 
 export const WorkoutVideoPage = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const params = useParams()
-  const id = params.id
-  const workouts = useSelector((state) => state.workouts.workouts)
-  let workout = workouts.find((p) => p._id === id)
+  const params = useParams();
+  const courseId = params.courseId;
+  const id = params.id;
+  const workouts = useSelector((state) => state.workouts.workouts);
+  let workout = workouts.find((p) => p._id === id);
 
   if (!workout) {
     const { data: wkt } = useGetWorkoutsIdQuery(id)
@@ -27,22 +28,13 @@ export const WorkoutVideoPage = () => {
     setIsOpen(false)
   }
 
-  // const courses = useSelector((state) => state.courses.courses)
-  // let course = courses.find((p) => p._id === id)
-  // if (!course) {
-  //   const { data: crs } = useGetCourseIdQuery(id)
-  //   course = crs
-  // }
-  // if (!course) return
-
-  //    workout.exercises     Lessons  Progress
-  //      Lessons  Progress
-
-  //
+  const courses = useSelector((state) => state.courses.courses)
+  let course = courses.find((p) => p._id === courseId)
+  
 
   return (
     <div>
-      {/* <h2 className={styles.title}>{course.nameRU}</h2> */}
+      <h2 className={styles.title}>{course.nameRU}</h2>
       <div className={styles.description}>{workout.name}</div>
       <Video workout={workout} />
       {workout.exercises ? (

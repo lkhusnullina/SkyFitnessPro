@@ -6,13 +6,17 @@ const coursesSlice = createSlice({
   initialState: {
     pictures: Pictures,
     courses: [],
+    isLoaded: false,
   },
   reducers: {
     setCourses(state, action) {
       state.courses = action.payload.courses;
-    }
+    },
+    setCoursesLoaded(state, action) {
+      state.isLoaded = true;
+    },
   },
   
 })
 export const coursesReducer = coursesSlice.reducer
-export const {setCourses} = coursesSlice.actions;
+export const { setCourses, setCoursesLoaded } = coursesSlice.actions;

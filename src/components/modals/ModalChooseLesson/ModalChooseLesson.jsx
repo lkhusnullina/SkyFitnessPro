@@ -1,35 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import styles from './ModalChooseLesson.module.css'
 import { Link } from 'react-router-dom'
-import {
-  useGetCourseIdQuery,
-  useLazyGetWorkoutsIdQuery,
-} from '../../../service/getCourses'
+import { useSelector } from 'react-redux'
 
 function ModalChooseLesson({ closeProgressModal, idWorkout }) {
-  const { data: course, isLoading: courseLoading } =
-    useGetCourseIdQuery(idWorkout)
-  const [getWorkout] = useLazyGetWorkoutsIdQuery()
   const [workouts, setWorkouts] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+
+  const courses = useSelector(state => state.courses.courses);
+  const course = courses.find(p => p._id === idWorkout)
 
   // TODO: ДОПИСАТЬ ЛОГИКУ ЗАВЕРШЕНИЯ УРОКА ПОЛЬЗОВАТЕЛЕМ isFinished
   let isFinished = true
-
+  const ws = useSelector(state => state.workouts.workouts);
   useEffect(() => {
-    if (course) {
-      const workoutsId = course.workouts
-      Promise.all(
-        workoutsId.map((element) =>
-          getWorkout(element)
-            .unwrap()
-            .then((res) => ({ name: res.name, id: res._id })),
-        ),
-      ).then((res) => {
-        setWorkouts(res)
-        setIsLoading(false)
-      })
-    }
+    if (!course) return;
+    const filtred = ws.filter(p => course.workouts.includes(p._id));
+    filtred.sort((a, b) => a.name.localeCompare(b.name));
+    setWorkouts(filtred)
   }, [course])
 
   const handleClickOutside = (event) => {
@@ -42,9 +29,6 @@ function ModalChooseLesson({ closeProgressModal, idWorkout }) {
     <div className={styles.pageContainer} onClick={handleClickOutside}>
       <div className={styles.modalForm}>
         <h1 className={styles.title}>Выберите тренировку</h1>
-        {isLoading ? (
-          <div className={styles.loader}></div>
-        ) : (
           <div className={styles.lessonsContainerScroll}>
             <div className={styles.lessonsContainer}>
               {workouts?.map((work) => {
@@ -53,8 +37,8 @@ function ModalChooseLesson({ closeProgressModal, idWorkout }) {
                 const lessonDescription = parts.slice(1, -1).join(' / ')
                 return (
                   <Link
-                    key={work.id}
-                    to={`/workout/${work.id}`}
+                    key={work._id}
+                    to={`/${course._id}/workout/${work._id}`}
                     className={styles.lessonsLink}
                   >
                     <div
@@ -86,7 +70,6 @@ function ModalChooseLesson({ closeProgressModal, idWorkout }) {
               })}
             </div>
           </div>
-        )}
       </div>
     </div>
   )
