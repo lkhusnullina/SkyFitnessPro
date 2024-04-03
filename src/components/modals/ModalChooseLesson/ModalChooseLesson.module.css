@@ -1,3 +1,12 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .pageContainer {
   width: 100%;
   height: 100vh;
@@ -9,7 +18,7 @@
 }
 
 .modalForm {
-  height: 626px;
+  max-height: 626px;
   width: 444px;
   position: fixed;
   left: 50%;
@@ -19,7 +28,7 @@
   box-sizing: border-box;
   background-color: #fff;
   border-radius: 12px;
-  padding: 36px 46px 47px 51px;
+  padding: 35px 46px 58px 51px;
 }
 
 .title {
@@ -49,7 +58,6 @@
   display: flex;
   flex-direction: column;
   width: 278px;
-  gap: 6px;
   align-items: center;
   border: 1px solid #000;
   border-radius: 26px;
@@ -88,10 +96,55 @@
   line-height: 23px;
   text-align: center;
   width: 192px;
+  color: #000;
 }
 
 .lesson {
   font-size: 16px;
   letter-spacing: -0.05px;
   line-height: 18px;
+  color: #000;
+}
+
+.lessonsLink {
+  text-decoration: none;
+}
+
+.lessonDoneContainer {
+  display: flex;
+}
+
+.markDone {
+  position: absolute;
+  transform: translate(813%, 9%);
+  width: 24px;
+  height: 24px;
+  border: 1px solid #06b16e;
+  border-radius: 50%;
+}
+
+.done {
+  position: absolute;
+  z-index: 1;
+  background-image: url(/public/images/done.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 21px;
+  height: 15px;
+  transform: translate(23%, -14%);
+}
+
+.finishLesson {
+  border-color: #06b16e;
+  color: #06b16e;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #976bc4;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
 }
