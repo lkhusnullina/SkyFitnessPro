@@ -1,20 +1,20 @@
 import React, { useState } from 'react'
 import styles from './ModalMyProgress.module.css'
 import { BigButton } from '../../buttons/bigButton'
+import { useDispatch } from 'react-redux'
+import { updateCourseProgress } from '../../../store/workoutsSlice'
 
 function ModalMyProgress({ closeModal, workout }) {
   const list = Object.values(workout.exercises)
   console.log(`lists : ${JSON.stringify(list)}`)
   const [isProgressFixed, setIsProgressFixed] = useState(false)
-  const [itemErrors, setItemErrors] = useState({
-    forwardBends: '',
-    backwardBends: '',
-    kneeRaises: '',
-  })
+  const [itemErrors, setItemErrors] = useState('')
+  const [progress, setProgress] = useState({})
   const [errorMessage, setErrorMessage] = useState('')
   const isLoading = false
 
   const buttonValue = isLoading ? 'Отправка...' : 'Отправить'
+  const dispatch = useDispatch()
 
   const handleClickOutside = (event) => {
     if (event.target.classList.contains(styles.pageContainer)) {
@@ -22,15 +22,30 @@ function ModalMyProgress({ closeModal, workout }) {
     }
   }
 
-  const handleItemChange = (event, fieldName) => {
-    const itemValue = event.target.value
+  const handleItemChange = (event, index) => {
+    const inputValue = event.target.value
     event.target.value = event.target.value.replace(/\D/g, '').slice(0, 2)
 
+    const updatedProgress = {
+      ...progress,
+      [index]: inputValue,
+    }
+
+    setProgress(updatedProgress)
+
+    dispatch(
+      updateCourseProgress({
+        workoutId: workout._id,
+        index,
+        progress: updatedProgress[index],
+      }),
+    )
+
     let errors = { ...itemErrors }
-    if (!itemValue) {
-      errors[fieldName] = 'Поле обязательно для заполнения'
+    if (!inputValue) {
+      errors[index] = 'Поле обязательно для заполнения'
     } else {
-      errors[fieldName] = ''
+      errors[index] = ''
     }
     setItemErrors(errors)
   }
@@ -72,36 +87,28 @@ function ModalMyProgress({ closeModal, workout }) {
           <h1 className={styles.title}>Мой прогресс</h1>
           <div className={styles.modalInputs}>
             <div className={styles.modalInputsResult}>
-              {list?.map((item) => {
-                // Преобразование первой буквы в нижний регистр
+              {list?.map((item, index) => {
                 const itemName =
                   item.name.charAt(0).toLowerCase() + item.name.slice(1)
-                // Удаление всего, что находится в скобках
-                const itemNameWithoutParentheses = itemName.replace(
-                  /\s*\(.*?\)\s*/g,
-                  '',
-                )
+                const itemNameExercise = itemName.replace(/\s*\(.*?\)\s*/g, '')
 
                 return (
-                  <>
-                    <p key={item.id} className={styles.modalText}>
-                      Сколько раз вы сделали {itemNameWithoutParentheses}?
+                  <React.Fragment key={item.id}>
+                    <p className={styles.modalText}>
+                      Сколько раз вы сделали {itemNameExercise}?
                     </p>
                     <input
                       className={styles.modalInput}
-                      name="forwardBends"
+                      name={index}
                       type="number"
                       pattern="\d+"
                       placeholder="Введите значение"
+                      maxLength="2"
                       onInput={integerValidation}
-                      onChange={(event) =>
-                        handleItemChange(event, 'forwardBends')
-                      }
+                      onChange={(event) => handleItemChange(event, index)}
                     />
-                    <span className={styles.error}>
-                      {itemErrors.forwardBends}
-                    </span>
-                  </>
+                    <span className={styles.error}>{itemErrors[index]}</span>
+                  </React.Fragment>
                 )
               })}
             </div>

@@ -98,15 +98,15 @@
   color: #ffffff;
 }
 
-progress {
+/* progress {
   width: 278px;
   height: 36px;
   border-radius: 22px;
   text-align: center;
   background: transparent;
   color: red;
-}
-
+} */
+/* 
 progress::-webkit-progress-bar {
   border-radius: 22px;
   text-align: center;
@@ -157,4 +157,4 @@ progress::-moz-progress-bar {
 .progress_percent__value3::-webkit-progress-bar {
   border: 2px solid #9a48f1;
   background: #f9ebff;
-}
+} */

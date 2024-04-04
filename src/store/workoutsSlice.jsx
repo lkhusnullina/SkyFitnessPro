@@ -5,16 +5,25 @@ const workoutsSlice = createSlice({
   initialState: {
     workouts: [],
     isLoaded: false,
+    progress: {},
   },
   reducers: {
     setWorkouts(state, action) {
-      state.workouts = action.payload.workouts;
+      state.workouts = action.payload.workouts
     },
     setWorkoutsLoaded(state, action) {
-      state.isLoaded = true;
+      state.isLoaded = true
+    },
+    updateCourseProgress(state, action) {
+      const { workoutId, index, progress } = action.payload
+      if (!state.progress[workoutId]) {
+        state.progress[workoutId] = []
+      }
+      state.progress[workoutId][index] = progress
     },
   },
 })
 
 export const workoutsReducer = workoutsSlice.reducer
-export const { setWorkouts, setWorkoutsLoaded } = workoutsSlice.actions;
+export const { setWorkouts, setWorkoutsLoaded, updateCourseProgress } =
+  workoutsSlice.actions
