@@ -1,18 +1,12 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
-import {
-  arrayUnion,
-  collection,
-  doc,
-  updateDoc,
-  getDocs,
-} from 'firebase/firestore'
-// import { firestore } from '../../firebase'
+import { ref, child, get, set } from 'firebase/database'
 import { db } from '../firebase'
 
 export const firestoreApi = createApi({
   reducerPath: 'firestoreApi',
   baseQuery: fakeBaseQuery({
-    baseUrl: 'https://fitness-project-bc4c2-default-rtdb.asia-southeast1.firebasedatabase.app/',
+    baseUrl:
+      'https://fitness-project-bc4c2-default-rtdb.asia-southeast1.firebasedatabase.app/',
   }),
   tagTypes: ['Courses'],
   endpoints: (builder) => ({
@@ -21,21 +15,34 @@ export const firestoreApi = createApi({
       async queryFn() {
         try {
           // posts is the collection name
-          const coursesRef = collection(db, 'courses')
-          const querySnaphot = await getDocs(coursesRef)
-          let courses = []
-          querySnaphot?.forEach((doc) => {
-            courses.push({ id: doc.id, ...doc.data() })
-          })
-          return { data: courses }
+          const dbRef = ref(db)
+          const snapshot = await get(child(dbRef, `courses`))
+          if (snapshot.exists()) {
+            console.log(snapshot.val())
+          } else {
+            console.log('No data available')
+          }
+          return { data: snapshot.val() }
         } catch (error) {
           return { error }
         }
       },
       providesTags: ['Courses'],
     }),
+    add: builder.mutation({
+      async queryFn(course) {
+        try {
+          console.log(course);
+          const dbRef = ref(db)
+          await set(child(dbRef, `courses/${course._id}`), course)
+          return { data: "null" }
+        } catch (error) {
+          return { error }
+        }
+      },
+    })
   }),
 })
 
-export const { useGetAllQuery } = firestoreApi
+export const { useGetAllQuery, useAddMutation } = firestoreApi
 export default firestoreApi.reducer

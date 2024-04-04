@@ -1,13 +1,28 @@
 import styles from './MainPage.module.css'
 import Cards from '../../components/cards/Cards.jsx'
-import { useGetAllUsersQuery } from '../../service/getCourses.js';
+import { useAddMutation } from '../../service/firestoreApi.js';
+import { useSelector } from 'react-redux';
 
 export const MainPage = () => {
-  // const {data: users } = useGetAllUsersQuery();
-  // console.log(users);
+  const courses = useSelector((state) => state.courses.courses);
+  const [addNew, {Loading}] = useAddMutation();
+  const course = courses.find(p => p._id === "q02a6i")
+  console.log(courses);
+  if (!course) return;
+  
+  const update = async () => {
+    if (course && !Loading) {
+      const newCourse = {...course, users: [...course.users, "NEKIY USER ID"]}
+      console.log(newCourse);
+      const res = await addNew(newCourse)
+      console.log(res);
+    }
+  }
+
 
   return (
     <div>
+      <button onClick={() => update()}>TRY UP</button>
       <section className={styles.section}>
         <h3 className={styles.top__sub_title}>
         Онлайн-тренировки для занятий дома
