@@ -78,7 +78,7 @@ function ModalMyProgress({ closeModal, workout }) {
           <h1 className={styles.fixedTitle}>Ваш прогресс засчитан!</h1>
           <img
             className={styles.fixedImg}
-            src="../images/progress_fixed.svg"
+            src="/images/progress_fixed.svg"
             alt="Прогресс засчитан"
           />
         </div>
