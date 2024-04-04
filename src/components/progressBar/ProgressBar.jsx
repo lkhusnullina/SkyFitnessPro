@@ -7,7 +7,9 @@ export const ProgressBar = ({ quantity, name, index, workoutId }) => {
     (state) => state.workouts.progress[workoutId] || [],
   )
   const savedResult = progress[index] || 0
-  const completionPercentage = Math.round((savedResult / quantity) * 100)
+  const completionPercentage = parseInt(
+    Math.round((savedResult / quantity) * 100),
+  )
 
   return (
     <div className={styles.progress_percent}>

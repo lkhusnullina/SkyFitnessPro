@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ModalMyProgress from '../../components/modals/ModalMyProgress/ModalMyProgress.jsx'
 import Video from '../../components/workoutVideo/WorkoutVideo'
 import styles from './WorkoutVideoPage.module.css'
@@ -12,11 +12,11 @@ import { useParams } from 'react-router-dom'
 
 export const WorkoutVideoPage = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const params = useParams();
-  const courseId = params.courseId;
-  const id = params.id;
-  const workouts = useSelector((state) => state.workouts.workouts);
-  let workout = workouts.find((p) => p._id === id);
+  const params = useParams()
+  const courseId = params.courseId
+  const id = params.id
+  const workouts = useSelector((state) => state.workouts.workouts)
+  let workout = workouts.find((p) => p._id === id)
 
   if (!workout) {
     const { data: wkt } = useGetWorkoutsIdQuery(id)
@@ -30,7 +30,19 @@ export const WorkoutVideoPage = () => {
 
   const courses = useSelector((state) => state.courses.courses)
   let course = courses.find((p) => p._id === courseId)
-  
+
+  //для предотвращения скролла фона при открытом модальном окне
+  useEffect(() => {
+    const bodyNotScroll = () => {
+      document.body.classList.toggle('openModal', isOpen)
+    }
+
+    bodyNotScroll()
+
+    return () => {
+      document.body.classList.remove('openModal')
+    }
+  }, [isOpen])
 
   return (
     <div>

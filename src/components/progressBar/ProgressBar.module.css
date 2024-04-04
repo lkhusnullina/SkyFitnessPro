@@ -1,11 +1,11 @@
 .progress_percent {
   display: flex;
-  gap: 20px;
+  gap: 45px;
   align-items: center;
 }
 
 .progress_percent__name {
-  width: 227px;
+  width: 200px;
 }
 
 /* .progress_input {
