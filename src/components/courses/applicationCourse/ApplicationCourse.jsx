@@ -2,6 +2,18 @@ import { useNavigate } from 'react-router-dom'
 import { BigButton } from '../../buttons/bigButton'
 import styles from './ApplicationCourse.module.css'
 
+import {
+  Database,
+  getDatabase,
+  ref,
+  set,
+  child,
+  push,
+  update,
+  get,
+  onValue,
+} from '@firebase/database'
+
 const ApplicationCourse = (paramId) => {
   
   const navigate = useNavigate()
@@ -10,10 +22,23 @@ const ApplicationCourse = (paramId) => {
     const loggedBuyCourse = () => {
       const result = confirm("Благодарим за приобретение курса. Теперь он отображается на странице вашего профиля.\n \nВы готовы начать работу над собой и достичь своей мечты, стать более здоровым и уверенным в себе человеком? \nНаша команда уверена, что вместе мы сможем достичь невероятных результатов! \n \nХотите перейти к обучению?");
       if(result === true) {
-        const uid = JSON.parse(localStorage.getItem('user')).id
-        console.log(paramId);
-        console.log(uid);
-       // useAddUserIdByCourseQuery(paramId, uid);
+        const id = JSON.parse(localStorage.getItem('user')).id
+        console.log(id);
+        console.log(paramId)
+        // async function postCourseId(paramId) {
+        //   const db = getDatabase()
+        //   set(ref(db,  'users/' + id ), {
+        //     paramId
+        //   })
+        // }
+
+        async function postCourseId(paramId) {
+          const db = getDatabase()
+          push(ref(db,  'users/' + id ), {
+            paramId
+          })
+        }
+        postCourseId(paramId)
         navigate("/profile");
       }
     };

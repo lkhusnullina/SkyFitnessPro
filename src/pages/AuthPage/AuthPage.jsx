@@ -13,6 +13,17 @@ import { useDispatch } from 'react-redux'
 import { setAuth } from '../../store/authSlice'
 import { useAddUserMutation } from '../../service/getCourses'
 
+import {
+  Database,
+  getDatabase,
+  ref,
+  set,
+  child,
+  push,
+  update,
+  get,
+} from '@firebase/database'
+
 export const AuthPage = (
   { isLoginMode = false }
   ) => {
@@ -64,6 +75,7 @@ export const AuthPage = (
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        
         dispatch(
           setAuth( 
             {
@@ -97,7 +109,19 @@ export const AuthPage = (
         const user = userCredential.user;
         console.log(user);
         console.log('Вход/Регистрация прошла успешно!')
-        addUser({id: user.uid })
+            // Функция сохраняет пользователя в базе
+        const id = user.uid
+        async function saveUser(id) {
+          console.log(id)
+          const db = getDatabase()
+          set(ref(db, 'users/' + id), {
+            _id: id,
+            email: user.email,
+            courses: [1],
+          })
+        }
+        saveUser(id)
+        // addUser({id: user.uid })
         //навигация на страницу авторизации
           navigate('/login')
       })
