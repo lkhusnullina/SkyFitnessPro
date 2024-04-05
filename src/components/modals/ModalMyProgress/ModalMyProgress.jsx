@@ -6,7 +6,7 @@ import { updateCourseProgress } from '../../../store/workoutsSlice'
 
 function ModalMyProgress({ closeModal, workout }) {
   const list = Object.values(workout.exercises)
-  console.log(`lists : ${JSON.stringify(list)}`)
+  //console.log(`lists : ${JSON.stringify(list)}`)
   const [isProgressFixed, setIsProgressFixed] = useState(false)
   const [itemErrors, setItemErrors] = useState('')
   const [progress, setProgress] = useState({})
@@ -22,7 +22,7 @@ function ModalMyProgress({ closeModal, workout }) {
     }
   }
 
-  const handleItemChange = (event, index) => {
+  const handleItemChange = (event, index, itemQuantity) => {
     const inputValue = event.target.value
     event.target.value = event.target.value.replace(/\D/g, '').slice(0, 2)
 
@@ -44,7 +44,10 @@ function ModalMyProgress({ closeModal, workout }) {
     let errors = { ...itemErrors }
     if (!inputValue) {
       errors[index] = 'Поле обязательно для заполнения'
-    } else {
+    } 
+    if (inputValue > itemQuantity) {
+      errors[index] = `не более ${itemQuantity}`
+    }else {
       errors[index] = ''
     }
     setItemErrors(errors)
@@ -78,7 +81,7 @@ function ModalMyProgress({ closeModal, workout }) {
           <h1 className={styles.fixedTitle}>Ваш прогресс засчитан!</h1>
           <img
             className={styles.fixedImg}
-            src="../images/progress_fixed.svg"
+            src="/images/progress_fixed.svg"
             alt="Прогресс засчитан"
           />
         </div>
@@ -91,7 +94,7 @@ function ModalMyProgress({ closeModal, workout }) {
                 const itemName =
                   item.name.charAt(0).toLowerCase() + item.name.slice(1)
                 const itemNameExercise = itemName.replace(/\s*\(.*?\)\s*/g, '')
-
+                const itemQuantity = item.quantity
                 return (
                   <React.Fragment key={item.id}>
                     <p className={styles.modalText}>
@@ -105,7 +108,7 @@ function ModalMyProgress({ closeModal, workout }) {
                       placeholder="Введите значение"
                       maxLength="2"
                       onInput={integerValidation}
-                      onChange={(event) => handleItemChange(event, index)}
+                      onChange={(event) => handleItemChange(event, index, itemQuantity)}
                     />
                     <span className={styles.error}>{itemErrors[index]}</span>
                   </React.Fragment>
