@@ -24,29 +24,27 @@ function Cards({showButton, setIsOpen, setIdWorkout}) {
     const dispatch = useDispatch();
     const id = JSON.parse(localStorage.getItem('user')).id
     
-    // const isLoadedIdUserCourses = useSelector((state) => state.users.isLoaded);
-    // const {data: userCourses, isLoading} = useGetIdUserCoursesQuery(id)
-    // useEffect(() => {
-    //   if (isLoadedIdUserCourses) return;
-    //   if (!userCourses) return;
-    //   const arrayUserCourses = Object.keys(userCourses)
-    //   if (!arrayUserCourses) return;
-    //   dispatch(setIdUserCourses({ idUserCourses: arrayUserCourses }));
-    //   dispatch(setIdUserCoursesLoaded())
-    //   console.log(userCourses);
-    //   console.log(arrayUserCourses);
-    // }, [userCourses])
-    // const idUserCourses = useSelector((state) => state.users.idUserCourses);
-    // console.log(idUserCourses);
-
-      const {data: userCourses, isLoading} = useGetIdUserCoursesQuery(id)
-      console.log(userCourses);
-      if(userCourses){
-        const arrayUserCourses = Object.keys(userCourses)
-        console.log(arrayUserCourses);
-        const arrayAllCoursesId = courses?.map((course, index) => course._id)
-        console.log(arrayAllCoursesId);
-      }
+    const isLoadedIdUserCourses = useSelector((state) => state.users.isLoaded);
+    const {data: userCourses, isLoading} = useGetIdUserCoursesQuery(id)
+    useEffect(() => {
+      if (isLoadedIdUserCourses) return;
+      if (!userCourses) return;
+      const arrayUserCourses = Object.keys(userCourses)
+      if (!arrayUserCourses) return;
+      dispatch(setIdUserCourses(arrayUserCourses ));
+      dispatch(setIdUserCoursesLoaded())
+      // console.log(userCourses);
+      // console.log(arrayUserCourses);
+    }, [userCourses])
+    const idUserCourses = useSelector((state) => state.users.idUserCourses);
+    console.log(idUserCourses);
+    const arrayAllCoursesId = courses?.map((course, index) => course._id)
+    console.log(arrayAllCoursesId);
+    Array.prototype.diff = function(a) {
+      return this.filter(function(i) {return a.indexOf(i) < 0;});
+    };
+    const arrayUserCourses = arrayAllCoursesId.diff( idUserCourses );
+    console.log(arrayUserCourses); 
         return (
           <>
             {isLoading ?  <strong className={styles.cards_alert}> Идёт загрузка курсов, пожалуйста, подождите.</strong> 

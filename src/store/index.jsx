@@ -3,14 +3,14 @@ import { coursesReducer } from './coursesSlice'
 import { authReducer } from './authSlice'
 import {getCourses} from '../service/getCourses'
 import { workoutsReducer } from './workoutsSlice'
-// import { usersReducer } from './usersSlice'
+import { usersReducer } from './usersSlice'
 
 export const store = configureStore({
   reducer: {
     courses: coursesReducer,
     workouts: workoutsReducer,
     auth: authReducer,
-    
+    users: usersReducer,
     //[getUsers.reducerPath]: getCourses.reducer,
     [getCourses.reducerPath]: getCourses.reducer,
   },
