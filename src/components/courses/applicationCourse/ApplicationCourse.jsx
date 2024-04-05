@@ -15,7 +15,7 @@ import {
 } from '@firebase/database'
 
 const ApplicationCourse = (paramId) => {
-  
+  const db = getDatabase()
   const navigate = useNavigate()
   const buyCourse = () => {
 
@@ -24,21 +24,25 @@ const ApplicationCourse = (paramId) => {
       if(result === true) {
         const id = JSON.parse(localStorage.getItem('user')).id
         console.log(id);
-        console.log(paramId)
+        const courseId = Object.values(paramId)
+        console.log(courseId)
+
+
         // async function postCourseId(paramId) {
         //   const db = getDatabase()
         //   set(ref(db,  'users/' + id ), {
         //     paramId
         //   })
         // }
-
-        async function postCourseId(paramId) {
+       
+        async function postCourseId(courseId) {
           const db = getDatabase()
-          push(ref(db,  'users/' + id ), {
-            paramId
+          set(ref(db,  'users/' + id + '/courses/' + courseId ), {
+            courseId
           })
         }
-        postCourseId(paramId)
+        postCourseId(courseId)
+       
         navigate("/profile");
       }
     };

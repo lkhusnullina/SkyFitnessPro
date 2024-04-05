@@ -5,6 +5,7 @@ import { ProfileData } from '../../components/profileData/profileData.jsx'
 import ModalChangeUserData from '../../components/modals/ModalChangeUserData/ModalChangeUserData.jsx'
 import Cards from '../../components/cards/Cards.jsx'
 
+
 export const ProfilePage = (props) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -18,7 +19,6 @@ export const ProfilePage = (props) => {
   const closeModal = () => {
     setIsModalOpen(false)
   }
-
   return (
     <div className={styles.container}>
       <ProfileData setIsPasswordChange={setIsPasswordChange} setIsModalOpen={setIsModalOpen} />
