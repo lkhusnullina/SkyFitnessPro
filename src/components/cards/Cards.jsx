@@ -9,7 +9,7 @@ import { useGetIdUserCoursesQuery } from '../../service/getCourses';
 
 function Cards({showButton, setIsOpen, setIdWorkout}) {
   const pictures = useSelector((state) => state.courses.pictures);
-  const courses = useSelector((state) => state.courses.courses);
+  let courses = useSelector((state) => state.courses.courses);
 
   const location = useLocation()
   const home = location.pathname === '/'
@@ -23,8 +23,9 @@ function Cards({showButton, setIsOpen, setIdWorkout}) {
     console.log("It`s a profile Page!!!");
     const dispatch = useDispatch();
     const id = JSON.parse(localStorage.getItem('user')).id
-    
+    // console.log(courses);
     const isLoadedIdUserCourses = useSelector((state) => state.users.isLoaded);
+    const idUserCourses = useSelector((state) => state.users.idUserCourses);
     const {data: userCourses, isLoading} = useGetIdUserCoursesQuery(id)
     useEffect(() => {
       if (isLoadedIdUserCourses) return;
@@ -35,21 +36,24 @@ function Cards({showButton, setIsOpen, setIdWorkout}) {
       dispatch(setIdUserCoursesLoaded())
       // console.log(userCourses);
       // console.log(arrayUserCourses);
+
     }, [userCourses])
-    const idUserCourses = useSelector((state) => state.users.idUserCourses);
-    console.log(idUserCourses);
-    const arrayAllCoursesId = courses?.map((course, index) => course._id)
-    console.log(arrayAllCoursesId);
-    Array.prototype.diff = function(a) {
-      return this.filter(function(i) {return a.indexOf(i) < 0;});
-    };
-    const arrayUserCourses = arrayAllCoursesId.diff( idUserCourses );
-    console.log(arrayUserCourses); 
+     
+    let usCourses = courses.map((el) => {
+     for(let i = 0; i<idUserCourses.length; i++){
+      if(el._id === idUserCourses[i]){
+        return el
+      }
+     }
+    })
+    usCourses = usCourses.filter(Boolean)
+    //console.log(usCourses);
+
         return (
           <>
             {isLoading ?  <strong className={styles.cards_alert}> Идёт загрузка курсов, пожалуйста, подождите.</strong> 
-            : <div className={styles.cards_block}>{courses ?
-            courses.map((course) => (
+            : <div className={styles.cards_block}>{usCourses ?
+              usCourses.map((course) => (
               <Card key={course._id} card={course} showButton={showButton} setIsOpen={setIsOpen} setIdWorkout={setIdWorkout} picture={pictures.find(p => p.altCard == course.nameEN)}/>
             )) 
             : <> <h3>У вас ещё нет приобретённых курсов</h3>

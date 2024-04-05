@@ -117,7 +117,6 @@ export const AuthPage = (
           set(ref(db, 'users/' + id), {
             _id: id,
             email: user.email,
-            courses: [1],
           })
         }
         saveUser(id)
