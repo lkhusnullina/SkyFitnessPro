@@ -1,8 +1,11 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Card from '../сard/Card'
 import styles from './Cards.module.css'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useGetIdUserCoursesQuery } from '../../service/getCourses';
+import { BigButton } from '../buttons/bigButton';
+import { useEffect } from 'react';
+import { setIdUserCourses, setIdUserCoursesLoaded } from '../../store/usersSlice';
 
 function Cards({showButton, setIsOpen, setIdWorkout}) {
   const pictures = useSelector((state) => state.courses.pictures);
@@ -11,32 +14,50 @@ function Cards({showButton, setIsOpen, setIdWorkout}) {
   const location = useLocation()
   const home = location.pathname === '/'
   const profile = location.pathname === '/profile'
+  const goToMainPage = () => {
+    const navigate = useNavigate()
+    navigate("/")
+  }
 
   if(profile) {
     console.log("It`s a profile Page!!!");
-    async function getIdUserCourses() {
-      const id = JSON.parse(localStorage.getItem('user')).id
-      const {data: userCourses, isLoading, isError} = useGetIdUserCoursesQuery(id)
-      console.log(userCourses);
-      if(userCourses){
-        const arrayUserCourses = Object.keys(await userCourses)
-        console.log(arrayUserCourses);
-        return arrayUserCourses
-      }
-     
-    }
-    const idUserCourses = getIdUserCourses()
+    const dispatch = useDispatch();
+    const id = JSON.parse(localStorage.getItem('user')).id
+    const isLoadedIdUserCourses = useSelector((state) => state.users.isLoaded);
     
-        // return (
-        //   <div className={styles.cards_block}>
-        //     {courses ?
-        //     courses.map((course) => (
-        //       <Card key={course._id} card={course} showButton={showButton} setIsOpen={setIsOpen} setIdWorkout={setIdWorkout} picture={pictures.find(p => p.altCard == course.nameEN)}/>
-        //     )) :
-        //     <h3>Нет доступных курсов</h3>}
-        //   </div>
-        // )
-   } else{
+    const {data: userCourses, isLoading} = useGetIdUserCoursesQuery(id)
+    useEffect(() => {
+      if (isLoadedIdUserCourses) return;
+      if (!userCourses) return;
+      const arrayUserCourses = Object.keys(userCourses)
+      if (!arrayUserCourses) return;
+      dispatch(setIdUserCourses({ idUserCourses: arrayUserCourses }));
+      dispatch(setIdUserCoursesLoaded())
+      console.log(userCourses);
+      console.log(arrayUserCourses);
+    }, [userCourses])
+     
+      // const {data: userCourses, isLoading} = useGetIdUserCoursesQuery(id)
+      // console.log(userCourses);
+      // if(userCourses){
+      //   const arrayUserCourses = Object.keys(userCourses)
+      //   console.log(arrayUserCourses);
+      //   const arrayAllCoursesId = courses?.map((course, index) => course._id)
+      //   console.log(arrayAllCoursesId);
+      // }
+        return (
+          <>
+            {!isLoadedIdUserCourses ?  <strong className={styles.cards_alert}> Идёт загрузка курсов, пожалуйста, подождите.</strong> 
+            : <div className={styles.cards_block}>{courses ?
+            courses.map((course) => (
+              <Card key={course._id} card={course} showButton={showButton} setIsOpen={setIsOpen} setIdWorkout={setIdWorkout} picture={pictures.find(p => p.altCard == course.nameEN)}/>
+            )) 
+            : <> <h3>У вас ещё нет приобретённых курсов</h3>
+            <BigButton value='Выбрать курс' onClick={goToMainPage} /></>}</div>}
+            
+          </>
+        )
+   } else if(home){
     return (
       <div className={styles.cards_block}>
         {courses ?

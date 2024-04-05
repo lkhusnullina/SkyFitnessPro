@@ -3,15 +3,9 @@ import { BigButton } from '../../buttons/bigButton'
 import styles from './ApplicationCourse.module.css'
 
 import {
-  Database,
   getDatabase,
   ref,
   set,
-  child,
-  push,
-  update,
-  get,
-  onValue,
 } from '@firebase/database'
 
 const ApplicationCourse = (paramId) => {
@@ -27,14 +21,6 @@ const ApplicationCourse = (paramId) => {
         const courseId = Object.values(paramId)
         console.log(courseId)
 
-
-        // async function postCourseId(paramId) {
-        //   const db = getDatabase()
-        //   set(ref(db,  'users/' + id ), {
-        //     paramId
-        //   })
-        // }
-       
         async function postCourseId(courseId) {
           const db = getDatabase()
           set(ref(db,  'users/' + id + '/courses/' + courseId ), {
