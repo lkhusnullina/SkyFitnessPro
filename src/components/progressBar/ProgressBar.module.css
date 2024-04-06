@@ -1,16 +1,14 @@
 .progress_percent {
-  position: relative;
   display: flex;
-  justify-content: space-between;
-  font-size: 24px;
-  line-height: 32px;
+  gap: 45px;
+  align-items: center;
 }
 
 .progress_percent__name {
-  width: 227px;
+  width: 200px;
 }
 
-.progress_input {
+/* .progress_input {
   cursor: pointer;
   width: 278px;
   border-radius: 22px;
@@ -48,10 +46,10 @@
 
 .progress_input::-webkit-slider-runnable-track {
   background: var(--progress-bg-color);
-}
+} */
 
 /* FF */
-.progress_input::-moz-range-track {
+/* .progress_input::-moz-range-track {
   width: 100%;
   height: var(--progress-height);
   background: var(--progress-bg-color);
@@ -70,4 +68,92 @@
 .progress_input::-moz-range-progress {
   background-color: var(--progress-color);
   height: var(--progress-height);
+} */
+/* 
+.progress_fill_0 {
+  border-color: #565eef;
+  background: #edecff;
+  --progress-color: #565eef;
+  --progress-bg-color: #edecff;
+}
+
+.progress_fill_0::-webkit-progress-value {
+  -webkit-border-top-left-radius: 22px;
+  -webkit-border-bottom-left-radius: 22px;
+  border-color: #565eef;
+  background: #edecff;
+  text-align: center;
+}
+
+.progress_fill_1 {
+  border-color: #ff6d00;
+  background: #fff2e0;
+  --progress-color: #ff6d00;
+  --progress-bg-color: #fff2e0;
+}
+
+.progress_fill_1::-webkit-progress-value {
+  -webkit-border-top-left-radius: 22px;
+  -webkit-border-bottom-left-radius: 22px;
+  border-color: #ff6d00;
+  background: #fff2e0;
+  text-align: center;
+}
+
+.progress_fill_2 {
+  border-color: #9a48f1;
+  background: #f9ebff;
+}
+
+.progress_fill_2::-webkit-progress-value {
+  -webkit-border-top-left-radius: 22px;
+  -webkit-border-bottom-left-radius: 22px;
+  border-color: #9a48f1;
+  background: #f9ebff;
+  text-align: center;
+}
+
+.progress_fill_3 {
+  border: #a7de00;
+  background: #bdec2f56;
+}
+
+.progress_fill_3::-webkit-progress-value {
+  -webkit-border-top-left-radius: 22px;
+  -webkit-border-bottom-left-radius: 22px;
+  border: #a7de00;
+  background: #bdec2f56;
+  text-align: center;
+}
+
+.progress_fill_4 {
+  border: #03c1ff;
+  background: #03c0ff46;
+}
+
+.progress_fill_4::-webkit-progress-value {
+  -webkit-border-top-left-radius: 22px;
+  -webkit-border-bottom-left-radius: 22px;
+  border: #03c1ff;
+  background: #03c0ff46;
+  text-align: center;
+} */
+
+.progress_bar {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  min-width: 278px;
+  height: 36px;
+  border-radius: 22px;
+}
+
+.done {
+  position: absolute;
+  height: 100%;
+  border-radius: 22px 0px 0px 22px;
+}
+
+.percent {
+  position: absolute;
 }
