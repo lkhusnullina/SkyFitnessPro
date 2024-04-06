@@ -5,6 +5,7 @@ const usersSlice = createSlice({
   initialState: {
     users: [],
     idUserCourses:[],
+    purchasedCourses: [],
     isLoaded: false,
   },
   reducers: {
@@ -17,8 +18,11 @@ const usersSlice = createSlice({
     setIdUserCoursesLoaded(state) {
       state.isLoaded = true;
     },
+    setPurchasedCourses(state, action) {
+      state.purchasedCourses = action.payload
+    },
   },
   
 })
 export const usersReducer = usersSlice.reducer
-export const { setUsers, setIdUserCourses, setIdUserCoursesLoaded } = usersSlice.actions;
+export const { setUsers, setIdUserCourses, setIdUserCoursesLoaded, setPurchasedCourses } = usersSlice.actions;

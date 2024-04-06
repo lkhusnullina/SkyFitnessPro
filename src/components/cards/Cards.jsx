@@ -4,7 +4,7 @@ import styles from './Cards.module.css'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BigButton } from '../buttons/bigButton';
 import { useEffect } from 'react';
-import { setIdUserCourses, setIdUserCoursesLoaded } from '../../store/usersSlice';
+import { setIdUserCourses, setIdUserCoursesLoaded, setPurchasedCourses} from '../../store/usersSlice';
 import { useGetIdUserCoursesQuery } from '../../service/getCourses';
 
 function Cards({showButton, setIsOpen, setIdWorkout}) {
@@ -22,10 +22,9 @@ function Cards({showButton, setIsOpen, setIdWorkout}) {
 
   if(profile) {
     console.log("It`s a profile Page!!!");
-    
     const id = JSON.parse(localStorage.getItem('user')).id
     const isLoadedIdUserCourses = useSelector((state) => state.users.isLoaded);
-
+    //const purchCourses = useSelector((state) => state.users.purchasedCourses);
     const idUserCourses = useSelector((state) => state.users.idUserCourses);
     //Получаем данные купленных курсов из базы (массив объектов)
     const {data: userCourses} = useGetIdUserCoursesQuery(id)
@@ -41,8 +40,8 @@ function Cards({showButton, setIsOpen, setIdWorkout}) {
       dispatch(setIdUserCourses(arrayUserCourses ));
       dispatch(setIdUserCoursesLoaded())
 
-    }, [userCourses])
-    // Сортируем массив всех курсов, лдаляя данные ещё не купленных курсов
+    }, [userCourses, idUserCourses])
+    // Сортируем массив всех курсов, удаляя данные ещё не купленных курсов
     let usCourses = courses.map((el) => {
      for(let i = 0; i<idUserCourses.length; i++){
       if(el._id === idUserCourses[i]){
@@ -51,6 +50,7 @@ function Cards({showButton, setIsOpen, setIdWorkout}) {
      }
     })
     usCourses = usCourses.filter(Boolean)
+    dispatch(setPurchasedCourses(usCourses))
 
         return (
           <>
