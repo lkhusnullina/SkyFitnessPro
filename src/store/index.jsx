@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { coursesReducer } from './coursesSlice'
 import { authReducer } from './authSlice'
-import {getCourses} from '../service/getCourses'
+import { FirebaseApi } from '../service/firebaseApi'
 import { workoutsReducer } from './workoutsSlice'
 import { usersReducer } from './usersSlice'
 
@@ -11,7 +11,7 @@ export const store = configureStore({
     workouts: workoutsReducer,
     auth: authReducer,
     users: usersReducer,
-    [getCourses.reducerPath]: getCourses.reducer,
+    [FirebaseApi.reducerPath]: FirebaseApi.reducer
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(getCourses.middleware)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(FirebaseApi.middleware)
 })

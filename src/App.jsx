@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppRoutes } from './routes'
-import { useGetAllCoursesQuery, useGetAllWorkoutsQuery } from './service/getCourses';
+import { useGetAllCoursesQuery, useGetAllWorkoutsQuery } from './service/firebaseApi';
 import { setWorkouts, setWorkoutsLoaded } from './store/workoutsSlice';
 import { setCourses, setCoursesLoaded } from './store/coursesSlice';
 import { useEffect } from 'react';

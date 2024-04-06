@@ -5,10 +5,10 @@ import Card from '../сard/Card'
 import styles from './Cards.module.css'
 
 function Cards({ showButton, setIsOpen, setIdWorkout, courses }) {
+  const navigate = useNavigate()
   const pictures = useSelector((state) => state.courses.pictures)
 
   const goToMainPage = () => {
-    const navigate = useNavigate()
     navigate('/')
   }
 
@@ -17,7 +17,7 @@ function Cards({ showButton, setIsOpen, setIdWorkout, courses }) {
       {courses && courses.length > 0 ?
         courses.map((course) => (
           <Card key={course._id} card={course} showButton={showButton} setIsOpen={setIsOpen}
-                setIdWorkout={setIdWorkout} picture={pictures.find(p => p.altCard == course.nameEN)} />
+                setIdWorkout={setIdWorkout} picture={pictures.find(p => p.altCard === course.nameEN)} />
         )) :
         !setIsOpen ?
           <h3>Нет доступных курсов</h3>

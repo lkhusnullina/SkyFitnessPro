@@ -1,30 +1,30 @@
 import { useEffect, useState } from 'react'
-import styles from './ProfilePage.module.css'
+import { useSelector } from 'react-redux'
+import Cards from '../../components/cards/Cards.jsx'
+import ModalChangeUserData from '../../components/modals/ModalChangeUserData/ModalChangeUserData.jsx'
 import ModalChooseLesson from '../../components/modals/ModalChooseLesson/ModalChooseLesson.jsx'
 import { ProfileData } from '../../components/profileData/profileData.jsx'
-import ModalChangeUserData from '../../components/modals/ModalChangeUserData/ModalChangeUserData.jsx'
-import Cards from '../../components/cards/Cards.jsx'
-import { useSelector } from 'react-redux'
-import { useGetIdUserCoursesQuery } from '../../service/getCourses'
+import { useGetIdUserCoursesQuery } from '../../service/firebaseApi'
+import styles from './ProfilePage.module.css'
 
-
-export const ProfilePage = (props) => {
+export const ProfilePage = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isPasswordChange, setIsPasswordChange] = useState(false)
   const [idWorkout, setIdWorkout] = useState(null)
-
-
-  const courses = useSelector((state) => state.courses.courses)
-  const id = useSelector((state) => state.auth.id)
-  const { data: userCourses } = useGetIdUserCoursesQuery(id)
   const [myCourses, setMyCourses] = useState([]);
 
+  const id = useSelector(state => state.auth.id)
+  const courses = useSelector(state => state.courses.courses)
+
+  const { data: userCourses } = useGetIdUserCoursesQuery(id, { refetchOnMountOrArgChange: true })
+
   useEffect(() => {
+    console.log(userCourses)
     if (!userCourses) return;
     const courseIds = Object.keys(userCourses);
     setMyCourses(courses.filter((course) => courseIds.includes(course._id)))
-  }, [userCourses])
+  }, [userCourses, courses])
 
   const closeProgressModal = () => {
     setIsOpen(false)
@@ -82,3 +82,4 @@ export const ProfilePage = (props) => {
     </div>
   )
 }
+

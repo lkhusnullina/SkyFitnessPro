@@ -6,7 +6,7 @@ import Exercises from '../../components/exercises/Exercises.jsx'
 import {
   useGetCourseIdQuery,
   useGetWorkoutsIdQuery,
-} from '../../service/getCourses.js'
+} from '../../service/firebaseApi.js'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
