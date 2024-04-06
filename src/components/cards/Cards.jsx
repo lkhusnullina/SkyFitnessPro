@@ -40,7 +40,7 @@ function Cards({showButton, setIsOpen, setIdWorkout}) {
       dispatch(setIdUserCourses(arrayUserCourses ));
       dispatch(setIdUserCoursesLoaded())
 
-    }, [userCourses, idUserCourses])
+    }, [userCourses])
     // Сортируем массив всех курсов, удаляя данные ещё не купленных курсов
     let usCourses = courses.map((el) => {
      for(let i = 0; i<idUserCourses.length; i++){

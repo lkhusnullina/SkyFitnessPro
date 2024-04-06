@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import styles from './ModalMyProgress.module.css'
 import { BigButton } from '../../buttons/bigButton'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { updateCourseProgress } from '../../../store/workoutsSlice'
+import {
+  getDatabase,
+  ref,
+  set,
+} from '@firebase/database'
+import { useGetUserProgressQuery } from '../../../service/getCourses'
 
 function ModalMyProgress({ closeModal, workout }) {
   const list = Object.values(workout.exercises)
@@ -12,6 +18,10 @@ function ModalMyProgress({ closeModal, workout }) {
   const [progress, setProgress] = useState({})
   const [errorMessage, setErrorMessage] = useState('')
   const isLoading = false
+  const db = getDatabase()
+  const id = JSON.parse(localStorage.getItem('user')).id
+  const wktProgress = useSelector(state => state.workouts.progress)
+  const workoutIds = workout._id
 
   const buttonValue = isLoading ? 'Отправка...' : 'Отправить'
   const dispatch = useDispatch()
@@ -30,7 +40,6 @@ function ModalMyProgress({ closeModal, workout }) {
       ...progress,
       [index]: inputValue,
     }
-
     setProgress(updatedProgress)
 
     dispatch(
@@ -57,6 +66,13 @@ function ModalMyProgress({ closeModal, workout }) {
     event.target.value = event.target.value.replace(/[^\d]+/g, '')
   }
 
+  async function addWorkoutProgress(wktProgress) {
+    
+    set(ref(db, 'users/' + id + '/workouts/' ), 
+       wktProgress
+    )
+  }
+
   const handleProgressFixed = () => {
     const areInputsFilled = Array.from(
       document.querySelectorAll('input[type="number"]'),
@@ -68,6 +84,7 @@ function ModalMyProgress({ closeModal, workout }) {
     ) {
       setIsProgressFixed(true)
       setErrorMessage('')
+      addWorkoutProgress(wktProgress)
       console.log('Отправка данных прошла успешно!')
     } else {
       setErrorMessage('Форма заполнена некорректно')

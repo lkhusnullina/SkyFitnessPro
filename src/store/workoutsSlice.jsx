@@ -6,6 +6,7 @@ const workoutsSlice = createSlice({
     workouts: [],
     isLoaded: false,
     progress: {},
+    workoutProgress: [],
   },
   reducers: {
     setWorkouts(state, action) {
@@ -21,9 +22,12 @@ const workoutsSlice = createSlice({
       }
       state.progress[workoutId][index] = progress
     },
+    setWorkoutProgress(state, action) {
+      state.workoutProgress = action.payload
+    },
   },
 })
 
 export const workoutsReducer = workoutsSlice.reducer
-export const { setWorkouts, setWorkoutsLoaded, updateCourseProgress } =
+export const { setWorkouts, setWorkoutsLoaded, updateCourseProgress, setWorkoutProgress } =
   workoutsSlice.actions

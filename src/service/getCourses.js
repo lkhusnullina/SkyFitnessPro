@@ -55,6 +55,12 @@ export const getCourses = createApi({
         method: 'GET',
       }),
     }),
+    getUserProgress: builder.query({
+      query: (id, workoutId) => ({
+        url: `users/${id}/workouts/.json`,
+        method: 'GET',
+      }),
+    }),
     addUser: builder.mutation({
       query: (id) => ({
         url: `users/${id}.json`,
@@ -74,5 +80,6 @@ export const {
   useAddUserMutation,
   useGetAllUsersQuery,
   useGetIdUserCoursesQuery,
+  useGetUserProgressQuery,
 } = getCourses
 export default getCourses.reducer
