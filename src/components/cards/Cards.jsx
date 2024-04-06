@@ -4,7 +4,7 @@ import { BigButton } from '../buttons/bigButton'
 import Card from '../сard/Card'
 import styles from './Cards.module.css'
 
-function Cards({ showButton, setIsOpen, setIdWorkout, courses }) {
+function Cards({ showButton, setIsOpen, setCourseId, courses }) {
   const navigate = useNavigate()
   const pictures = useSelector((state) => state.courses.pictures)
 
@@ -17,7 +17,7 @@ function Cards({ showButton, setIsOpen, setIdWorkout, courses }) {
       {courses && courses.length > 0 ?
         courses.map((course) => (
           <Card key={course._id} card={course} showButton={showButton} setIsOpen={setIsOpen}
-                setIdWorkout={setIdWorkout} picture={pictures.find(p => p.altCard === course.nameEN)} />
+                setCourseId={setCourseId} picture={pictures.find(p => p.altCard === course.nameEN)} />
         )) :
         !setIsOpen ?
           <h3>Нет доступных курсов</h3>

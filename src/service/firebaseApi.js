@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ref, set } from 'firebase/database'
+import { child, get, ref, set } from 'firebase/database'
 import { db } from '../firebase'
 
 export const FirebaseApi = createApi({
@@ -76,6 +76,25 @@ export const FirebaseApi = createApi({
         }
       },
       invalidatesTags: ['User']
+    }),
+    addFullCourseToUser: builder.mutation({
+      async queryFn({ userId, course }) {
+        try {
+          const dbRef = ref(db)
+          const snapshot = await get(child(dbRef, `users/${userId}/courses`))
+          let courses = []
+          if (snapshot.exists()) {
+            courses = [...snapshot.val(), course]
+          } else {
+            courses.push(course)
+          }
+          await set(child(dbRef, `users/${userId}/courses`), courses)
+          return {data: courses}
+        } catch (error) {
+          console.error(error)
+        }
+      },
+      invalidatesTags: ['User']
     })
   })
 })
@@ -89,6 +108,7 @@ export const {
   useAddUserMutation,
   useGetAllUsersQuery,
   useGetIdUserCoursesQuery,
-  useAddCourseToUserMutation
+  useAddCourseToUserMutation,
+  useAddFullCourseToUserMutation
 } = FirebaseApi
 export default FirebaseApi.reducer

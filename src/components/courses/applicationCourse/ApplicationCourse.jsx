@@ -1,13 +1,17 @@
 import { useNavigate } from 'react-router-dom'
 import { BigButton } from '../../buttons/bigButton'
 import styles from './ApplicationCourse.module.css'
-import { useAddCourseToUserMutation } from '../../../service/firebaseApi'
-import { useSelector } from 'react-redux'
+import { useAddFullCourseToUserMutation } from '../../../service/firebaseApi'
+import { useDispatch, useSelector } from 'react-redux'
+import { setPurchasedCourses } from '../../../store/usersSlice'
 
 function ApplicationCourse({ courseId }) {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const courses = useSelector((state) => state.courses.courses)
+  const workouts = useSelector((state) => state.workouts.workouts)
 
-  const [addCourseToUser] = useAddCourseToUserMutation()
+  const [addFullUser] = useAddFullCourseToUserMutation()
 
   const userId = useSelector(state => state.auth.id)
 
@@ -21,13 +25,33 @@ function ApplicationCourse({ courseId }) {
       Наша команда уверена, что вместе мы сможем достичь невероятных результатов! \n
       Если у вас есть аккаунт, пожалуйста, авторизуйтесь.`
 
-    const result = true//confirm(confirmText)
+    const result = confirm(confirmText)
     if (!userId && result === true) {
       navigate('/login')
       return
     }
 
-    addCourseToUser({ userId, courseId })
+    const getCourse = () => {
+      const course = courses.find((course) => course._id === courseId)
+      const workoutIds = course.workouts
+      const ws = workouts.filter(workout => workoutIds.includes(workout._id))
+      const wss = ws.map(w =>  {
+        return {
+          _id: w._id,
+          exercises: w.exercises ? w.exercises.map(ex => {return {
+            name: ex.name,
+            quantity: ex.quantity,
+            count: 0
+          }}) : null
+        }
+      });
+      return {
+        _id: course._id,
+        workouts: wss
+      };
+    }
+    const {data: newCourses} = await addFullUser({userId, course: getCourse()})
+    dispatch(setPurchasedCourses({courses: newCourses}))
     if (result) navigate('/profile')
   }
 

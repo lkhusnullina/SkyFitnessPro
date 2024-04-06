@@ -47,7 +47,7 @@ function ModalMyProgress({ closeModal, workout }) {
     } 
     if (inputValue > itemQuantity) {
       errors[index] = `не более ${itemQuantity}`
-    }else {
+    } else {
       errors[index] = ''
     }
     setItemErrors(errors)

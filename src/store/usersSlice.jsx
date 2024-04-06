@@ -5,7 +5,7 @@ const usersSlice = createSlice({
   initialState: {
     users: [],
     idUserCourses:[],
-    purchasedCourses: [],
+    purchasedCourses: null,
     isLoaded: false,
   },
   reducers: {
@@ -19,7 +19,7 @@ const usersSlice = createSlice({
       state.isLoaded = true;
     },
     setPurchasedCourses(state, action) {
-      state.purchasedCourses = action.payload
+      state.purchasedCourses = action.payload.courses
     },
   },
   
