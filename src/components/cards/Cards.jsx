@@ -11,6 +11,7 @@ function Cards({showButton, setIsOpen, setIdWorkout}) {
   const pictures = useSelector((state) => state.courses.pictures);
   let courses = useSelector((state) => state.courses.courses);
 
+  const dispatch = useDispatch();
   const location = useLocation()
   const home = location.pathname === '/'
   const profile = location.pathname === '/profile'
@@ -21,24 +22,27 @@ function Cards({showButton, setIsOpen, setIdWorkout}) {
 
   if(profile) {
     console.log("It`s a profile Page!!!");
-    const dispatch = useDispatch();
+    
     const id = JSON.parse(localStorage.getItem('user')).id
-    // console.log(courses);
     const isLoadedIdUserCourses = useSelector((state) => state.users.isLoaded);
+
     const idUserCourses = useSelector((state) => state.users.idUserCourses);
-    const {data: userCourses, isLoading} = useGetIdUserCoursesQuery(id)
+    //Получаем данные купленных курсов из базы (массив объектов)
+    const {data: userCourses} = useGetIdUserCoursesQuery(id)
+    
     useEffect(() => {
+      // Дожидаемся получения данных из useGetIdUserCoursesQuery
       if (isLoadedIdUserCourses) return;
       if (!userCourses) return;
-      const arrayUserCourses = Object.keys(userCourses)
+      // Записываем в массив ключи полученных данных - id купленных курсов
+      const arrayUserCourses = Object.keys(userCourses);
       if (!arrayUserCourses) return;
+      // Храним данные в Store и меняем стэйт загрузки
       dispatch(setIdUserCourses(arrayUserCourses ));
       dispatch(setIdUserCoursesLoaded())
-      // console.log(userCourses);
-      // console.log(arrayUserCourses);
 
     }, [userCourses])
-     
+    // Сортируем массив всех курсов, лдаляя данные ещё не купленных курсов
     let usCourses = courses.map((el) => {
      for(let i = 0; i<idUserCourses.length; i++){
       if(el._id === idUserCourses[i]){
@@ -47,19 +51,19 @@ function Cards({showButton, setIsOpen, setIdWorkout}) {
      }
     })
     usCourses = usCourses.filter(Boolean)
-    //console.log(usCourses);
 
         return (
           <>
-            {isLoading ?  <strong className={styles.cards_alert}> Идёт загрузка курсов, пожалуйста, подождите.</strong> 
+            {!isLoadedIdUserCourses ?  <strong className={styles.cards_alert}> Идёт загрузка курсов, пожалуйста, подождите.</strong> 
             : <div className={styles.cards_block}>{usCourses ?
               usCourses.map((course) => (
               <Card key={course._id} card={course} showButton={showButton} setIsOpen={setIsOpen} setIdWorkout={setIdWorkout} picture={pictures.find(p => p.altCard == course.nameEN)}/>
             )) 
-            : <> <h3>У вас ещё нет приобретённых курсов</h3>
-            <BigButton value='Выбрать курс' onClick={goToMainPage} /></>}</div>}
-            
-          </>
+            : <div className={styles.cards_noCourses_massage}> 
+                <h3>У вас ещё нет приобретённых курсов</h3>
+                <BigButton value='Выбрать курс' onClick={goToMainPage} /></div>}
+             </div>}
+         </>
         )
    } else if(home){
     return (
@@ -73,15 +77,6 @@ function Cards({showButton, setIsOpen, setIdWorkout}) {
     )
    }
   
-  // return (
-  //   <div className={styles.cards_block}>
-  //     {courses ?
-  //     courses.map((course) => (
-  //       <Card key={course._id} card={course} showButton={showButton} setIsOpen={setIsOpen} setIdWorkout={setIdWorkout} picture={pictures.find(p => p.altCard == course.nameEN)}/>
-  //     )) :
-  //     <h3>Нет доступных курсов</h3>}
-  //   </div>
-  // )
 }
 
 export default Cards

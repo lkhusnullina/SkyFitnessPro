@@ -11,9 +11,7 @@ export const store = configureStore({
     workouts: workoutsReducer,
     auth: authReducer,
     users: usersReducer,
-    //[getUsers.reducerPath]: getCourses.reducer,
     [getCourses.reducerPath]: getCourses.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(getCourses.middleware)
 })
-// users: usersReducer,

@@ -1,14 +1,11 @@
 import { useState } from 'react'
 import styles from './UserMenu.module.css'
-import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase'
 
 
 function UserMenu({user}) {
-  const navigate = useNavigate()
-  const dispatch = useDispatch
   const [isOpen, setIsOpen] = useState(false)
   
   const toggleVisibility = () => {
@@ -18,6 +15,8 @@ function UserMenu({user}) {
   function handleLogout() {
     signOut(auth).then(() => {
       console.log("signOut");
+      localStorage.clear()
+      setIsOpen(false)
     }).catch((error) => {
       console.log(error);
     });
@@ -39,11 +38,10 @@ function UserMenu({user}) {
           <Link className={styles.menu_block} to="/profile">
             <div className={styles.menu_link} onClick={() => setIsOpen(false)}>Профиль</div>
           </Link>
-          <Link className={styles.menu_block} onClick={handleLogout}>
+          <Link  className={styles.menu_block} to='/login' onClick={handleLogout}>
             <div className={styles.menu_link} onClick={() => {
-              localStorage.clear()
-              setIsOpen(false)
-              navigate('/login')
+              // localStorage.clear()
+              // setIsOpen(false)
             }}>Выйти</div>
           </Link>
         </div>
