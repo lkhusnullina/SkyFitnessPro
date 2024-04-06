@@ -13,13 +13,12 @@ function UserMenu({ user }) {
   }
 
   function handleLogout() {
-    signOut(auth)
-      .then(() => {
-      localStorage.clear()
-      setIsOpen(false)
-      .catch((error) => {
-        console.log(error)
-      })
+    signOut(auth).then(() => {
+      console.log('signOut')
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
   const handleClickOutside = (event) => {
@@ -54,21 +53,27 @@ function UserMenu({ user }) {
         <div className={styles.menu}>
           <Link className={styles.menu_block} to="/">
             <div className={styles.menu_link} onClick={() => setIsOpen(false)}>
-               
+              Главная
             </div>
           </Link>
           <Link className={styles.menu_block} to="/profile">
             <div className={styles.menu_link} onClick={() => setIsOpen(false)}>
-              
+              Профиль
             </div>
           </Link>
-          <Link  className={styles.menu_block} to='/login' onClick={handleLogout}>
+          <Link
+            className={styles.menu_block}
+            to="/login"
+            onClick={handleLogout}
+          >
             <div
-              // localStorage.clear()
-              // setIsOpen(false)
+              className={styles.menu_link}
+              onClick={() => {
+                localStorage.clear()
+                setIsOpen(false)
               }}
             >
-              
+              Выйти
             </div>
           </Link>
         </div>

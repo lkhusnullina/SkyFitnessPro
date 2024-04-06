@@ -42,7 +42,7 @@ export const ProfilePage = (props) => {
         setIsPasswordChange={setIsPasswordChange}
         setIsModalOpen={setIsModalOpen}
       />
-      <h2 className={styles.title_courses}> </h2>
+      <h2 className={styles.title_courses}>Мои курсы</h2>
       <Cards
         showButton={true}
         setIsOpen={setIsOpen}

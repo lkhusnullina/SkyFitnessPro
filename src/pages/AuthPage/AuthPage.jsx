@@ -29,6 +29,7 @@ import {
   get,
 } from '@firebase/database'
 
+export const AuthPage = ({ isLoginMode = false }) => {
   // const isLoginMode = Boolean(localStorage.getItem('user'))
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -42,8 +43,8 @@ import {
   const [errorAuthMessage, setErrorAuthMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const logButtonValue = isLoading ? '...' : ''
-  const regButtonValue = isLoading ? '...' : ''
+  const logButtonValue = isLoading ? 'Загрузка...' : 'Войти'
+  const regButtonValue = isLoading ? 'Регистрация...' : 'Зарегистрироваться'
   const [addUser, { error }] = useAddUserMutation()
   console.log(isLoading)
   useEffect(() => {
@@ -199,7 +200,7 @@ import {
               />
               <Link to="/registration">
                 <button className={styles.secondaryButton}>
-                  
+                  Зарегистрироваться
                 </button>
               </Link>
             </div>
