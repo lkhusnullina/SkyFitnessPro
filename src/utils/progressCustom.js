@@ -1,5 +1,4 @@
 //цвета для прогрессбара
-
 export const colors = [
   { fill: '#565EEF', background: '#EDECFF' },
   { fill: '#FF6D00', background: '#FFF2E0' },
@@ -45,10 +44,14 @@ export const getLeftPosition = (completionPercentage) => {
       return `${completionPercentage + 215}px`
     case completionPercentage >= 20:
       return `${completionPercentage + 230}px`
-    case completionPercentage >= 10:
+    case completionPercentage >= 15:
       return `${completionPercentage + 240}px`
-    case completionPercentage >= 0:
+    case completionPercentage >= 10:
+      return `${completionPercentage + 250}px`
+    case completionPercentage >= 5:
       return `${completionPercentage + 260}px`
+    case completionPercentage >= 0:
+      return `${completionPercentage + 310}px`
     default:
       return `${completionPercentage}px`
   }

@@ -7,8 +7,13 @@ import {
   handleRepeatPasswordChange,
 } from '../../utils/formValidation'
 import { BigButton } from '../../components/buttons/bigButton'
-import { auth, } from '../../firebase'
-import {  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from'firebase/auth'
+import { auth } from '../../firebase'
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth'
 import { useDispatch } from 'react-redux'
 import { setAuth } from '../../store/authSlice'
 import { useAddUserMutation } from '../../service/getCourses'
@@ -24,12 +29,9 @@ import {
   get,
 } from '@firebase/database'
 
-export const AuthPage = (
-  { isLoginMode = false }
-  ) => {
   // const isLoginMode = Boolean(localStorage.getItem('user'))
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [loginError, setLoginError] = useState([])
   const [loginValue, setLoginValue] = useState('')
   const [passwordError, setPasswordError] = useState('')
@@ -38,12 +40,12 @@ export const AuthPage = (
   const [errorMessage, setErrorMessage] = useState('')
   const [repeatPasswordValue, setRepeatPasswordValue] = useState('')
   const [errorAuthMessage, setErrorAuthMessage] = useState('')
-  const isLoading = false
-  
-  const logButtonValue = isLoading ? 'Загрузка...' : 'Войти'
-  const regButtonValue = isLoading ? 'Регистрация...' : 'Зарегистрироваться'
-  const [addUser, { error }] = useAddUserMutation();
+  const [isLoading, setIsLoading] = useState(false)
 
+  const logButtonValue = isLoading ? '...' : ''
+  const regButtonValue = isLoading ? '...' : ''
+  const [addUser, { error }] = useAddUserMutation()
+  console.log(isLoading)
   useEffect(() => {
     if (repeatPasswordError && repeatPasswordValue === passwordValue) {
       setRepeatPasswordError('')
@@ -51,65 +53,68 @@ export const AuthPage = (
   }, [passwordValue, repeatPasswordValue])
 
   const handleRegister = () => {
+    setIsLoading(true)
+
     if (
       loginError.length > 0 ||
       passwordError ||
       !passwordValue ||
       !loginValue
     ) {
-      setErrorMessage('Форма заполнена некорректно')
+      setErrorMessage('  ')
+      setIsLoading(false)
       return
     }
 
     if (!isLoginMode && repeatPasswordError) {
-      setErrorMessage('Форма заполнена некорректно')
+      setErrorMessage('  ')
+      setIsLoading(false)
       return
     }
 
     const email = loginValue
-    const password = passwordValue 
+    const password = passwordValue
 
     if (isLoginMode) {
-      // Авторизоваться
+      // 
       signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user
         
-        dispatch(
-          setAuth( 
-            {
-            password: password,
-            id: user.uid,
-            email: user.email,
-            accessToken: user.accessToken,
-            refreshToken: user.stsTokenManager.refreshToken
-          }
+          dispatch(
+            setAuth({
+              password: password,
+              id: user.uid,
+              email: user.email,
+              accessToken: user.accessToken,
+              refreshToken: user.stsTokenManager.refreshToken,
+            }),
           )
-        )
-       console.log(user);
-        //console.log(userCredential);
-        //навигация на главную страницу 
-        navigate('/')
-      })
-      .catch((error) => {
-        // const errorCode = error.code;
-        // const errorMessage = error.message;
-        alert("Извините, мы не смогли найти ваш аккаунт. Пожалуйста, перепроверьте введённые данные.")
-      });
-
-      
+          console.log(user)
+          //console.log(userCredential);
+          //   
+          navigate('/')
+        })
+        .catch((error) => {
+          // const errorCode = error.code;
+          // const errorMessage = error.message;
+          // errorMessage = ''
+          let errorMessage = ''
+          errorMessage = '   '
+          setErrorMessage(errorMessage)
+          setIsLoading(false)
+        })
     } else {
-      // Зарегистрироваться
+      // 
       createUserWithEmailAndPassword(getAuth(), email, password)
-      .then((userCredential) => {
-        
-        // Signed up 
-        console.log(userCredential);
-        const user = userCredential.user;
-        console.log(user);
-        console.log('Вход/Регистрация прошла успешно!')
-            // Функция сохраняет пользователя в базе
+        .then((userCredential) => {
+          // Signed up
+          console.log(userCredential)
+          const user = userCredential.user
+          console.log(user)
+          console.log('/  !')
+            //     
         const id = user.uid
         async function saveUser(id) {
           console.log(id)
@@ -121,14 +126,19 @@ export const AuthPage = (
         }
         saveUser(id)
         // addUser({id: user.uid })
-        //навигация на страницу авторизации
+          //   
           navigate('/login')
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-      });
+        })
+        .catch((error) => {
+          let errorMessage = ''
+          // const errorCode = error.code
+          errorMessage = '   '
+          setErrorMessage(errorMessage)
+          // ..
+        })
+        .finally(() => {
+          setIsLoading(false)
+        })
     }
     setErrorMessage('')
   }
@@ -149,7 +159,7 @@ export const AuthPage = (
                 className={styles.modalInput}
                 type="text"
                 name="login"
-                placeholder="Логин"
+                placeholder=""
                 onChange={(event) =>
                   handleLoginChange(event, setLoginError, setLoginValue)
                 }
@@ -166,7 +176,7 @@ export const AuthPage = (
                 className={styles.modalInput}
                 type="password"
                 name="password"
-                placeholder="Пароль"
+                placeholder=""
                 onChange={(event) =>
                   handlePasswordChange(
                     event,
@@ -181,10 +191,15 @@ export const AuthPage = (
               <span className={styles.error}>{passwordError}</span>
             </div>
             <div className={styles.buttons}>
-              <BigButton value={logButtonValue} onClick={handleRegister} disabled={isLoading} />
+              <BigButton
+                value={logButtonValue}
+                onClick={handleRegister}
+                disabled={isLoading}
+                isLoading={isLoading}
+              />
               <Link to="/registration">
                 <button className={styles.secondaryButton}>
-                  Зарегистрироваться
+                  
                 </button>
               </Link>
             </div>
@@ -199,7 +214,7 @@ export const AuthPage = (
                 className={styles.modalInput}
                 type="text"
                 name="login"
-                placeholder="Логин"
+                placeholder=""
                 onChange={(event) =>
                   handleLoginChange(event, setLoginError, setLoginValue)
                 }
@@ -216,7 +231,7 @@ export const AuthPage = (
                 className={styles.modalInput}
                 type="password"
                 name="password"
-                placeholder="Пароль"
+                placeholder=""
                 onChange={(event) =>
                   handlePasswordChange(
                     event,
@@ -233,7 +248,7 @@ export const AuthPage = (
                 className={styles.modalInput}
                 type="password"
                 name="repeat-password"
-                placeholder="Повторите пароль"
+                placeholder=" "
                 onChange={(event) =>
                   handleRepeatPasswordChange(
                     event,
@@ -246,7 +261,12 @@ export const AuthPage = (
               />
               <span className={styles.error}>{repeatPasswordError}</span>
             </div>
-            <BigButton value={regButtonValue} onClick={handleRegister} disabled={isLoading} />
+            <BigButton
+              value={regButtonValue}
+              onClick={handleRegister}
+              disabled={isLoading}
+              isLoading={isLoading}
+            />
             {errorMessage && (
               <span className={styles.errorForm}>{errorMessage}</span>
             )}
