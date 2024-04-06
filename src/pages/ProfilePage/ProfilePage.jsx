@@ -4,6 +4,8 @@ import ModalChooseLesson from '../../components/modals/ModalChooseLesson/ModalCh
 import { ProfileData } from '../../components/profileData/profileData.jsx'
 import ModalChangeUserData from '../../components/modals/ModalChangeUserData/ModalChangeUserData.jsx'
 import Cards from '../../components/cards/Cards.jsx'
+import { useSelector } from 'react-redux'
+import { useGetIdUserCoursesQuery } from '../../service/getCourses'
 
 
 export const ProfilePage = (props) => {
@@ -12,6 +14,18 @@ export const ProfilePage = (props) => {
   const [isPasswordChange, setIsPasswordChange] = useState(false)
   const [idWorkout, setIdWorkout] = useState(null)
 
+
+  const courses = useSelector((state) => state.courses.courses)
+  const id = useSelector((state) => state.auth.id)
+  const { data: userCourses } = useGetIdUserCoursesQuery(id)
+  const [myCourses, setMyCourses] = useState([]);
+
+  useEffect(() => {
+    if (!userCourses) return;
+    const courseIds = Object.keys(userCourses);
+    setMyCourses(courses.filter((course) => courseIds.includes(course._id)))
+  }, [userCourses])
+
   const closeProgressModal = () => {
     setIsOpen(false)
   }
@@ -19,7 +33,7 @@ export const ProfilePage = (props) => {
   const closeModal = () => {
     setIsModalOpen(false)
   }
-  //       
+  
   useEffect(() => {
     const handleBodyScroll = () => {
       if (isOpen || isModalOpen) {
@@ -47,6 +61,7 @@ export const ProfilePage = (props) => {
         showButton={true}
         setIsOpen={setIsOpen}
         setIdWorkout={setIdWorkout}
+        courses={myCourses}
       />
       {isOpen && (
         <div className={styles.modalOverlay}>

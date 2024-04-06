@@ -4,6 +4,7 @@ import { useGetAllCoursesQuery, useGetAllWorkoutsQuery } from './service/getCour
 import { setWorkouts, setWorkoutsLoaded } from './store/workoutsSlice';
 import { setCourses, setCoursesLoaded } from './store/coursesSlice';
 import { useEffect } from 'react';
+import { setAuthUser } from './store/authSlice'
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,13 @@ function App() {
     dispatch(setWorkouts({ workouts: workoutValues }));
     dispatch(setWorkoutsLoaded())
   }, [workoutsQuery])
+
+// устанавливаем пользователя в слайс из локалстораджа, если он там есть
+  const userId = useSelector((state) => state.auth.id)
+  const lsUser = JSON.parse(localStorage.getItem('user'));
+  if (lsUser && lsUser.id && !userId) {
+    dispatch(setAuthUser({user: lsUser}))
+  }
   
   return <AppRoutes />
 }

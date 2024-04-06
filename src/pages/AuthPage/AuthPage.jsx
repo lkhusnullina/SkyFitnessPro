@@ -46,7 +46,6 @@ export const AuthPage = ({ isLoginMode = false }) => {
   const logButtonValue = isLoading ? 'Загрузка...' : 'Войти'
   const regButtonValue = isLoading ? 'Регистрация...' : 'Зарегистрироваться'
   const [addUser, { error }] = useAddUserMutation()
-  console.log(isLoading)
   useEffect(() => {
     if (repeatPasswordError && repeatPasswordValue === passwordValue) {
       setRepeatPasswordError('')

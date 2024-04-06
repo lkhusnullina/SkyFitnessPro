@@ -1,10 +1,9 @@
 import styles from './MainPage.module.css'
 import Cards from '../../components/cards/Cards.jsx'
-import { useGetAllUsersQuery } from '../../service/getCourses.js';
+import { useSelector } from 'react-redux'
 
 export const MainPage = () => {
-  // const {data: users } = useGetAllUsersQuery();
-  // console.log(users);
+  const courses = useSelector((state) => state.courses.courses)
 
   return (
     <div>
@@ -28,7 +27,7 @@ export const MainPage = () => {
         </div>
       </section>
       <section className={styles.section}>
-        <Cards showButton={false}/>
+        <Cards showButton={false} courses={courses}/>
         <div className={styles.footer}>
           <a href="#top">
             <button className={styles.footer__button}>Наверх ↑</button>

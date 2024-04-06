@@ -1,8 +1,7 @@
-import { initializeApp } from 'firebase/app'
-import { getAuth } from 'firebase/auth'
-// import { } from 'firebase/<service>';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getDatabase } from 'firebase/database';
 import 'firebase/firestore';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyBAa9OxprPu2EuJEl5vvoRqIzGJ9-FSK48",
@@ -13,6 +12,8 @@ const firebaseApp = initializeApp({
   messagingSenderId: "155881875437",
   appId: "1:155881875437:web:5c0638eea857109e04a9e4"
 })
-const db = getFirestore(firebaseApp)
+
+const db = getDatabase(firebaseApp)
 const auth = getAuth(firebaseApp)
+
 export {firebaseApp, db, auth}
