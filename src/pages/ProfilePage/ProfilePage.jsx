@@ -5,6 +5,7 @@ import { ProfileData } from '../../components/profileData/profileData.jsx'
 import ModalChangeUserData from '../../components/modals/ModalChangeUserData/ModalChangeUserData.jsx'
 import Cards from '../../components/cards/Cards.jsx'
 
+
 export const ProfilePage = (props) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -18,8 +19,7 @@ export const ProfilePage = (props) => {
   const closeModal = () => {
     setIsModalOpen(false)
   }
-
-  //для предотвращения скролла фона при открытом модальном окне
+  //       
   useEffect(() => {
     const handleBodyScroll = () => {
       if (isOpen || isModalOpen) {
@@ -42,7 +42,7 @@ export const ProfilePage = (props) => {
         setIsPasswordChange={setIsPasswordChange}
         setIsModalOpen={setIsModalOpen}
       />
-      <h2 className={styles.title_courses}>Мои курсы</h2>
+      <h2 className={styles.title_courses}> </h2>
       <Cards
         showButton={true}
         setIsOpen={setIsOpen}

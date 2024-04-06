@@ -21,13 +21,7 @@ export const getCourses = createApi({
       }),
       providesTags: ['Courses'],
     }),
-    // addUserIdByCourse: builder.query({
-    //   query: (id, uid) => ({
-    //     url: `courses/${id}/users.json`,
-    //     method: 'POST',
-    //   }),
-    //   providesTags: ['Courses'],
-    // }),
+   
     getAllWorkouts: builder.query({
       query: () => ({
         url: 'workouts.json',
@@ -55,6 +49,12 @@ export const getCourses = createApi({
       }),
       providesTags: ['Users'],
     }),
+    getIdUserCourses: builder.query({
+      query: (id) => ({
+        url: `users/${id}/courses.json`,
+        method: 'GET',
+      }),
+    }),
     addUser: builder.mutation({
       query: (id) => ({
         url: `users/${id}.json`,
@@ -72,6 +72,7 @@ export const {
   useGetWorkoutsIdQuery,
   useLazyGetWorkoutsIdQuery,
   useAddUserMutation,
-  useGetAllUsersQuery
+  useGetAllUsersQuery,
+  useGetIdUserCoursesQuery,
 } = getCourses
 export default getCourses.reducer

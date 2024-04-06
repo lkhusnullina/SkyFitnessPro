@@ -1,6 +1,32 @@
 .cards_block {
+  height: auto;
   display: flex;
   flex-wrap: wrap;
   column-gap: 37px;
   row-gap: 44px;
+}
+.cards_alert {
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  border: 1px solid #580EA2;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #580EA2;
+  font-size: 48px;
+  line-height: 56px;
+  text-align: left;
+}
+.cards_noCourses_massage {
+  width: 100%;
+  height: 100px;
+  padding: 15px;
+  border: 1px solid #580EA2;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #580EA2;
+  font-size: 48px;
+  line-height: 56px;
+  text-align: left;
+  position: fixed;
 }
