@@ -98,7 +98,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
           // const errorMessage = error.message;
           // errorMessage = ''
           let errorMessage = ''
-          errorMessage = '   '
+          errorMessage = 'Данный аккаунт не найден'
           setErrorMessage(errorMessage)
           setIsLoading(false)
         })
@@ -124,7 +124,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
         .catch((error) => {
           let errorMessage = ''
           // const errorCode = error.code
-          errorMessage = '   '
+          errorMessage = 'Данный аккаунт уже существует'
           setErrorMessage(errorMessage)
           // ..
         })
@@ -151,7 +151,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
                 className={styles.modalInput}
                 type="text"
                 name="login"
-                placeholder=""
+                placeholder="Логин"
                 onChange={(event) =>
                   handleLoginChange(event, setLoginError, setLoginValue)
                 }
@@ -168,7 +168,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
                 className={styles.modalInput}
                 type="password"
                 name="password"
-                placeholder=""
+                placeholder="Пароль"
                 onChange={(event) =>
                   handlePasswordChange(
                     event,
@@ -206,7 +206,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
                 className={styles.modalInput}
                 type="text"
                 name="login"
-                placeholder=""
+                placeholder="Логин"
                 onChange={(event) =>
                   handleLoginChange(event, setLoginError, setLoginValue)
                 }
@@ -223,7 +223,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
                 className={styles.modalInput}
                 type="password"
                 name="password"
-                placeholder=""
+                placeholder="Пароль"
                 onChange={(event) =>
                   handlePasswordChange(
                     event,
@@ -240,7 +240,7 @@ export const AuthPage = ({ isLoginMode = false }) => {
                 className={styles.modalInput}
                 type="password"
                 name="repeat-password"
-                placeholder=" "
+                placeholder="Повторите пароль"
                 onChange={(event) =>
                   handleRepeatPasswordChange(
                     event,
