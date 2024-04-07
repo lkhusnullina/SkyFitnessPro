@@ -127,7 +127,7 @@ function ModalMyProgress({ closeModal, workout }) {
                       onChange={(event) => handleItemChange(event, item.name, itemQuantity)}
                       defaultValue={progress[item.name]}
                     />
-                    <span className={styles.error}>{itemErrors[index]}</span>
+                    <span className={styles.error}>{itemErrors[item.name]}</span>
                   </React.Fragment>
                 )
               })}
