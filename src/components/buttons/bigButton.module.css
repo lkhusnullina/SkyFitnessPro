@@ -1,0 +1,36 @@
+.button {
+  width: 276px;
+  height: 52px;
+  border: none;
+  border-radius: 46px;
+  background-color: #580ea2;
+  color: #ffff;
+  font-weight: 'StratosSkyeng';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #3f007d;
+}
+
+.button:active {
+  background-color: #271a58;
+}
+
+.button:disabled {
+  background-color: #271a58;
+}
+
+.secondaryButton {
+  width: 278px;
+  height: 52px;
+  border-radius: 46px;
+  border: none;
+  font-size: 18px;
+  line-height: 24px;
+  cursor: pointer;
+}

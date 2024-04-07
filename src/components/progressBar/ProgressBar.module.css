@@ -1,0 +1,159 @@
+.progress_percent {
+  display: flex;
+  gap: 45px;
+  align-items: center;
+}
+
+.progress_percent__name {
+  width: 200px;
+}
+
+/* .progress_input {
+  cursor: pointer;
+  width: 278px;
+  border-radius: 22px;
+  text-align: center;
+  border: 2px solid #565eef;
+
+  --progress-height: 36px;
+  --progress-color: #565eef;
+  --progress-bg-color: #edecff;
+
+  margin: 0;
+  height: var(--progress-height);
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress_input::-webkit-slider-runnable-track {
+  position: relative;
+  height: var(--progress-height);
+  background: var(--progress-bg-color);
+}
+
+.progress_input::-webkit-slider-thumb {
+  --thumb-height: 1px;
+  --thumb-width: 1px;
+  position: relative;
+  -webkit-appearance: none;
+  width: var(--thumb-width, var(--thumb-height));
+  box-shadow: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
+    100vmax var(--progress-color);
+}
+
+.progress_input::-webkit-slider-runnable-track {
+  background: var(--progress-bg-color);
+} */
+
+/* FF */
+/* .progress_input::-moz-range-track {
+  width: 100%;
+  height: var(--progress-height);
+  background: var(--progress-bg-color);
+  border: none;
+  border-radius: 0px;
+}
+
+.progress_input::-moz-range-thumb {
+  border: none;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.progress_input::-moz-range-progress {
+  background-color: var(--progress-color);
+  height: var(--progress-height);
+} */
+/* 
+.progress_fill_0 {
+  border-color: #565eef;
+  background: #edecff;
+  --progress-color: #565eef;
+  --progress-bg-color: #edecff;
+}
+
+.progress_fill_0::-webkit-progress-value {
+  -webkit-border-top-left-radius: 22px;
+  -webkit-border-bottom-left-radius: 22px;
+  border-color: #565eef;
+  background: #edecff;
+  text-align: center;
+}
+
+.progress_fill_1 {
+  border-color: #ff6d00;
+  background: #fff2e0;
+  --progress-color: #ff6d00;
+  --progress-bg-color: #fff2e0;
+}
+
+.progress_fill_1::-webkit-progress-value {
+  -webkit-border-top-left-radius: 22px;
+  -webkit-border-bottom-left-radius: 22px;
+  border-color: #ff6d00;
+  background: #fff2e0;
+  text-align: center;
+}
+
+.progress_fill_2 {
+  border-color: #9a48f1;
+  background: #f9ebff;
+}
+
+.progress_fill_2::-webkit-progress-value {
+  -webkit-border-top-left-radius: 22px;
+  -webkit-border-bottom-left-radius: 22px;
+  border-color: #9a48f1;
+  background: #f9ebff;
+  text-align: center;
+}
+
+.progress_fill_3 {
+  border: #a7de00;
+  background: #bdec2f56;
+}
+
+.progress_fill_3::-webkit-progress-value {
+  -webkit-border-top-left-radius: 22px;
+  -webkit-border-bottom-left-radius: 22px;
+  border: #a7de00;
+  background: #bdec2f56;
+  text-align: center;
+}
+
+.progress_fill_4 {
+  border: #03c1ff;
+  background: #03c0ff46;
+}
+
+.progress_fill_4::-webkit-progress-value {
+  -webkit-border-top-left-radius: 22px;
+  -webkit-border-bottom-left-radius: 22px;
+  border: #03c1ff;
+  background: #03c0ff46;
+  text-align: center;
+} */
+
+.progress_bar {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  min-width: 278px;
+  height: 36px;
+  border-radius: 22px;
+}
+
+.done {
+  position: absolute;
+  height: 100%;
+  border-radius: 22px 0px 0px 22px;
+}
+
+.percent {
+  position: absolute;
+}

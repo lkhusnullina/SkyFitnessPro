@@ -1,0 +1,140 @@
+.pageContainer {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.modalForm {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 33px 47px 10px 41px;
+}
+
+.title {
+  font-size: 32px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.modalLogo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 38px;
+  background-color: transparent;
+}
+
+.modalLogoImage {
+  width: 140px;
+  height: 21px;
+}
+
+.modalText {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  padding-bottom: 20px;
+}
+
+.modalInputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalInput {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #d0cece;
+  padding: 6px 0px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.modalInput:focus {
+  outline: none;
+}
+
+.modalInput::placeholder {
+  font-style: normal;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #d0cece;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.primaryButton {
+  width: 278px;
+  height: 52px;
+  border-radius: 46px;
+  border: none;
+  font-size: 18px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.primaryButton {
+  color: #ffffff;
+  background-color: #580ea2;
+}
+
+.primaryButton:hover {
+  background-color: #3f007d;
+}
+
+.primaryButton:active {
+  background-color: #271a58;
+}
+
+.primaryButton:disabled {
+  background-color: #271a58;
+}
+
+.errorItem {
+  color: red;
+  font-size: 12px;
+  display: block;
+  padding-top: 3px;
+  margin: 0;
+  line-height: 1;
+}
+
+.errorList {
+  height: 44px;
+  width: 270px;
+  line-height: 0.1;
+}
+
+.error {
+  width: 280px;
+  color: red;
+  font-size: 12px;
+  display: block;
+  height: 32px;
+  line-height: 1;
+  padding-top: 3px;
+}
+
+.errorForm {
+  text-align: center;
+  color: red;
+  display: block;
+  padding: 8px;
+  height: 38px;
+}

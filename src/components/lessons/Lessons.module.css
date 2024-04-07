@@ -1,0 +1,46 @@
+.workout_description {
+  margin-bottom: 30px;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.workout_element {
+  width: 428px;
+  margin-bottom: 40px;
+  padding-left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.workout_header {
+  margin-bottom: 40px;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 400;
+}
+
+.button_progress {
+  width: 275px;
+  height: 52px;
+  border: none;
+  border-radius: 46px;
+  background-color: #580ea2;
+  color: #ffff;
+  font-weight: 'StratosSkyeng';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button_progress:hover {
+  background-color: #2d1f79;
+}
+
+.button_progress:active {
+  background-color: #3b29a1;
+}

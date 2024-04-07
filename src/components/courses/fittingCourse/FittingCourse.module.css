@@ -1,0 +1,34 @@
+.fitting_block {
+  margin-top: 40px;
+  margin-bottom: 75px;
+  display: flex;
+  gap: 87px;
+}
+
+.fitting_info {
+  display: flex;
+  gap: 24px;
+}
+
+.fitting_des {
+  width: 244px;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.fitting_circle {
+  position: relative;
+  width: 67px;
+  height: 67px;
+  border-radius: 50%;
+  background-color: #c7e957;
+  text-align: center 
+}
+
+.fitting_number {
+  position: absolute;
+  top: 22%;
+  left: 38%;
+  font-size: 32px;
+  line-height: 40px;
+}
