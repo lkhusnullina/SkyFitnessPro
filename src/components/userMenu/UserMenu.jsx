@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase'
 import { removeAuth } from '../../store/authSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setPurchasedCourses } from '../../store/usersSlice'
 
 function UserMenu({ user }) {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
   const dispatch = useDispatch();
+
+  const userLogin = useSelector(state => state.auth.email)
 
   const toggleVisibility = () => {
     setIsOpen(!isOpen)
@@ -46,7 +48,7 @@ function UserMenu({ user }) {
           src="/images/avatar.svg"
           alt="avatar"
         />
-        <div className={styles.header_userName}>{user.email}</div>
+        <div className={styles.header_userName}>{userLogin}</div>
         <img
           className={styles.header_img_arrow}
           src="/images/arrow.svg"
