@@ -14,7 +14,7 @@ export const ProfilePage = () => {
   const [myCourses, setMyCourses] = useState([]);
 
   const courses = useSelector(state => state.courses.courses)
-  const purchasedCourses = useSelector(state => state.users.purchasedCourses)
+  const purchasedCourses = useSelector(state => state.users.purchasedCourses) || []
 
   useEffect(() => {
     const courseIds = Object.values(purchasedCourses).map((course) => course._id);

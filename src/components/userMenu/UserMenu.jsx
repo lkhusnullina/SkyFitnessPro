@@ -5,6 +5,7 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase'
 import { removeAuth } from '../../store/authSlice'
 import { useDispatch } from 'react-redux'
+import { setPurchasedCourses } from '../../store/usersSlice'
 
 function UserMenu({ user }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -74,6 +75,7 @@ function UserMenu({ user }) {
               onClick={() => {
                 dispatch(removeAuth())
                 setIsOpen(false)
+                dispatch(setPurchasedCourses({courses: []}))
               }}
             >
               Выйти

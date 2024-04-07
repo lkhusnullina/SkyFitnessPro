@@ -30,6 +30,9 @@ function ApplicationCourse({ courseId }) {
       navigate('/login')
       return
     }
+    if (!userId && result === false) {
+      return
+    }
 
     const getCourse = () => {
       const course = courses.find((course) => course._id === courseId)
