@@ -16,7 +16,7 @@ import {
 } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
 import { setAuth } from '../../store/authSlice'
-import { useAddUserMutation } from '../../service/getCourses'
+import { useAddUserMutation } from '../../service/firebaseApi'
 
 import {
   Database,
@@ -27,7 +27,7 @@ import {
   push,
   update,
   get,
-} from '@firebase/database'
+} from 'firebase/database'
 
 export const AuthPage = ({ isLoginMode = false }) => {
   // const isLoginMode = Boolean(localStorage.getItem('user'))
@@ -46,7 +46,6 @@ export const AuthPage = ({ isLoginMode = false }) => {
   const logButtonValue = isLoading ? 'Загрузка...' : 'Войти'
   const regButtonValue = isLoading ? 'Регистрация...' : 'Зарегистрироваться'
   const [addUser, { error }] = useAddUserMutation()
-  console.log(isLoading)
   useEffect(() => {
     if (repeatPasswordError && repeatPasswordValue === passwordValue) {
       setRepeatPasswordError('')
@@ -92,9 +91,6 @@ export const AuthPage = ({ isLoginMode = false }) => {
               refreshToken: user.stsTokenManager.refreshToken,
             }),
           )
-          console.log(user)
-          //console.log(userCredential);
-          //   
           navigate('/')
         })
         .catch((error) => {
@@ -110,15 +106,10 @@ export const AuthPage = ({ isLoginMode = false }) => {
       // 
       createUserWithEmailAndPassword(getAuth(), email, password)
         .then((userCredential) => {
-          // Signed up
-          console.log(userCredential)
           const user = userCredential.user
-          console.log(user)
-          console.log('/  !')
             //     
         const id = user.uid
         async function saveUser(id) {
-          console.log(id)
           const db = getDatabase()
           set(ref(db, 'users/' + id), {
             _id: id,

@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { LayoutPage } from './pages/LayoutPage/LayoutPage.jsx'
-import { ProtectedRoute } from './components/protectedRoute/index.jsx'
+import { ProtectedRoute } from './components/protectedRoute'
 import { MainPage } from './pages/MainPage/MainPage.jsx'
 import { AuthPage } from './pages/AuthPage/AuthPage.jsx'
 import { ProfilePage } from './pages/ProfilePage/ProfilePage.jsx'
@@ -12,19 +12,16 @@ import { auth } from './firebase.js'
 import { useEffect, useState } from 'react'
 
 export const AppRoutes = () => {
-  //const isAllowed = Boolean(localStorage.getItem('user'))
   const [isAllowed, setIsAllowed] = useState(null)
   //  
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       if (user !== null) {
-      console.log("logged in!")
-      setIsAllowed(true)
+        setIsAllowed(true)
       } else {
-      console.log("no user");
-      setIsAllowed(false)
+        setIsAllowed(false)
       }
-   })
+    })
   }, [isAllowed])
 
   return (

@@ -1,15 +1,16 @@
 import { useSelector } from 'react-redux'
 import styles from './ProgressBar.module.css'
 import { colors, getLeftPosition } from '../../utils/progressCustom'
+import { useParams } from 'react-router-dom'
 
 export const ProgressBar = ({ quantity, name, index, workoutId }) => {
-  const progress = useSelector(
-    (state) => state.workouts.progress[workoutId] || [],
-  )
-  const savedResult = progress[index] || 0
-  const completionPercentage = parseInt(
-    Math.round((savedResult / quantity) * 100),
-  )
+  const params = useParams();
+  const courseId = params.courseId;
+  const purchasedCourses = useSelector(state => state.users.purchasedCourses)
+  const exercise = purchasedCourses.find((course) => course._id === courseId).workouts.find((w) => w._id === workoutId).exercises.find((ex) => ex.name === name);
+
+  const savedResult = exercise.count || 0
+  const completionPercentage = Math.round((savedResult / quantity) * 100)
 
   return (
     <div className={styles.progress_percent}>

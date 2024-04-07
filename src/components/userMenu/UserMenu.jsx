@@ -3,10 +3,13 @@ import styles from './UserMenu.module.css'
 import { Link } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase'
+import { removeAuth } from '../../store/authSlice'
+import { useDispatch } from 'react-redux'
 
 function UserMenu({ user }) {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
+  const dispatch = useDispatch();
 
   const toggleVisibility = () => {
     setIsOpen(!isOpen)
@@ -69,7 +72,7 @@ function UserMenu({ user }) {
             <div
               className={styles.menu_link}
               onClick={() => {
-                localStorage.clear()
+                dispatch(removeAuth())
                 setIsOpen(false)
               }}
             >

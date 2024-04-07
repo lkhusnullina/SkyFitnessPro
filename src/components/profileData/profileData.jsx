@@ -1,8 +1,6 @@
-import ModalChangeUserData from '../modals/ModalChangeUserData/ModalChangeUserData.jsx'
-import { useEffect, useState } from 'react'
-import styles from './profileData.module.css'
 import { BigButton } from '../buttons/bigButton.jsx'
 import { auth } from '../../firebase.js'
+import styles from './profileData.module.css'
 
 export const ProfileData = ({ setIsModalOpen, setIsPasswordChange }) => {
   const password = JSON.parse(localStorage.getItem('user')).password
