@@ -25,7 +25,7 @@ function ModalChooseLesson({ closeProgressModal, courseId }) {
   useEffect(() => {
     if (!course) return;
     const filtered = ws.filter(p => course.workouts.includes(p._id));
-    filtered.sort((a, b) => a.name.localeCompare(b.name));
+    filtered.sort((a, b) => a.name.replace(/[^0-9]/g, '').localeCompare(b.name.replace(/[^0-9]/g, '')));
     setWorkouts(filtered)
   }, [course])
 

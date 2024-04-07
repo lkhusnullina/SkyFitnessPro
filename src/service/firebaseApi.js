@@ -95,6 +95,18 @@ export const FirebaseApi = createApi({
         }
       },
       invalidatesTags: ['User']
+    }),
+    updateUserCourses: builder.mutation({
+      async queryFn({ userId, courses }) {
+        try {
+          const dbRef = ref(db)
+          await set(child(dbRef, `users/${userId}/courses`), courses)
+          return {data: courses}
+        } catch (error) {
+          console.error(error)
+        }
+      },
+      invalidatesTags: ['User']
     })
   })
 })
@@ -109,6 +121,7 @@ export const {
   useGetAllUsersQuery,
   useGetIdUserCoursesQuery,
   useAddCourseToUserMutation,
-  useAddFullCourseToUserMutation
+  useAddFullCourseToUserMutation,
+  useUpdateUserCoursesMutation,
 } = FirebaseApi
 export default FirebaseApi.reducer

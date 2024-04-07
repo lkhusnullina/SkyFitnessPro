@@ -1,20 +1,43 @@
-import React, { useState } from 'react'
-import styles from './ModalMyProgress.module.css'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import { BigButton } from '../../buttons/bigButton'
-import { useDispatch } from 'react-redux'
-import { updateCourseProgress } from '../../../store/workoutsSlice'
+import { useUpdateUserCoursesMutation } from '../../../service/firebaseApi'
+import styles from './ModalMyProgress.module.css'
+import { updatePurchasedCourses } from '../../../store/usersSlice'
 
 function ModalMyProgress({ closeModal, workout }) {
-  const list = Object.values(workout.exercises)
-  //console.log(`lists : ${JSON.stringify(list)}`)
+  const params = useParams();
+  const courseId = params.courseId;
+  const dispatch = useDispatch()
+  const userId = useSelector((state) => state.auth.id)
+  const [updateProgress] = useUpdateUserCoursesMutation()
+  const purchasedCourses = useSelector(state => state.users.purchasedCourses)
+
+
+  const exercises = Object.values(workout.exercises)
+  const [purchasedWorkout, setPurchasedWorkout] = useState()
   const [isProgressFixed, setIsProgressFixed] = useState(false)
-  const [itemErrors, setItemErrors] = useState('')
+  const [itemErrors, setItemErrors] = useState({})
   const [progress, setProgress] = useState({})
   const [errorMessage, setErrorMessage] = useState('')
   const isLoading = false
 
+
+  useEffect(() => {
+    const pw = purchasedCourses.find((course) => course._id === courseId).workouts.find((w) => w._id === workout._id);
+    if (!pw) return
+    setPurchasedWorkout(pw)
+    let res = {};
+    for (let ex of pw.exercises) {
+      res[ex.name] = ex.count
+    }
+
+    setProgress(res)
+  }, [purchasedCourses, courseId, workout])
+
+
   const buttonValue = isLoading ? 'Отправка...' : 'Отправить'
-  const dispatch = useDispatch()
 
   const handleClickOutside = (event) => {
     if (event.target.classList.contains(styles.pageContainer)) {
@@ -22,33 +45,24 @@ function ModalMyProgress({ closeModal, workout }) {
     }
   }
 
-  const handleItemChange = (event, index, itemQuantity) => {
-    const inputValue = event.target.value
-    event.target.value = event.target.value.replace(/\D/g, '').slice(0, 2)
+  const handleItemChange = (event, name, itemQuantity) => {
+    const value = Number(event.target.value)
 
     const updatedProgress = {
       ...progress,
-      [index]: inputValue,
+      [name]: value,
     }
 
     setProgress(updatedProgress)
 
-    dispatch(
-      updateCourseProgress({
-        workoutId: workout._id,
-        index,
-        progress: updatedProgress[index],
-      }),
-    )
-
     let errors = { ...itemErrors }
-    if (!inputValue) {
-      errors[index] = 'Поле обязательно для заполнения'
+    if (!value) {
+      errors[name] = 'Поле обязательно для заполнения'
     } 
-    if (inputValue > itemQuantity) {
-      errors[index] = `не более ${itemQuantity}`
+    if (value > itemQuantity) {
+      errors[name] = `не более ${itemQuantity}`
     } else {
-      errors[index] = ''
+      errors[name] = ''
     }
     setItemErrors(errors)
   }
@@ -68,6 +82,9 @@ function ModalMyProgress({ closeModal, workout }) {
     ) {
       setIsProgressFixed(true)
       setErrorMessage('')
+
+      dispatch(updatePurchasedCourses({courseId, workoutId: workout._id, progress, userId}))
+
       console.log('Отправка данных прошла успешно!')
     } else {
       setErrorMessage('Форма заполнена некорректно')
@@ -90,25 +107,25 @@ function ModalMyProgress({ closeModal, workout }) {
           <h1 className={styles.title}>Мой прогресс</h1>
           <div className={styles.modalInputs}>
             <div className={styles.modalInputsResult}>
-              {list?.map((item, index) => {
+              {exercises?.map((item, index) => {
                 const itemName =
                   item.name.charAt(0).toLowerCase() + item.name.slice(1)
                 const itemNameExercise = itemName.replace(/\s*\(.*?\)\s*/g, '')
                 const itemQuantity = item.quantity
                 return (
-                  <React.Fragment key={item.id}>
+                  <React.Fragment key={item.name}>
                     <p className={styles.modalText}>
                       Сколько раз вы сделали {itemNameExercise}?
                     </p>
                     <input
                       className={styles.modalInput}
-                      name={index}
                       type="number"
                       pattern="\d+"
                       placeholder="Введите значение"
                       maxLength="2"
                       onInput={integerValidation}
-                      onChange={(event) => handleItemChange(event, index, itemQuantity)}
+                      onChange={(event) => handleItemChange(event, item.name, itemQuantity)}
+                      defaultValue={progress[item.name]}
                     />
                     <span className={styles.error}>{itemErrors[index]}</span>
                   </React.Fragment>

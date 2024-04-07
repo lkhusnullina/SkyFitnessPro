@@ -1,5 +1,5 @@
 import styles from './Progress.module.css'
-import { ProgressBar } from '../../components/progressBar/ProgressBar.jsx'
+import { ProgressBar } from '../progressBar/ProgressBar'
 
 export const Progress = ({ workout }) => {
   let list = []
