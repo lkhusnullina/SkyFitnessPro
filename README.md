@@ -14,6 +14,8 @@
 
 Страница авторизации.
 
+Деплой проекта: https://master--fitprosky.netlify.app
+
 Технологический стек:
 React Redux/toolkit RTK Query Google Firebase React Router
 
