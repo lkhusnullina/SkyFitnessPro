@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c4e24798.css",
+    "main.js": "/static/js/main.037bf326.js",
+    "static/media/StratosSkyeng.woff2": "/static/media/StratosSkyeng.ce93393e831d32412096.woff2",
+    "index.html": "/index.html",
+    "static/media/done.svg": "/static/media/done.24002cc00f30ccf1f18a.svg",
+    "main.c4e24798.css.map": "/static/css/main.c4e24798.css.map",
+    "main.037bf326.js.map": "/static/js/main.037bf326.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c4e24798.css",
+    "static/js/main.037bf326.js"
+  ]
+}

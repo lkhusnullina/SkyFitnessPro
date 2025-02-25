@@ -7,7 +7,7 @@ export const FirebaseApi = createApi({
   tagTypes: ['Courses', 'Workouts', 'Users', 'User'],
   baseQuery: fetchBaseQuery({
     baseUrl:
-      'https://fitness-project-bc4c2-default-rtdb.asia-southeast1.firebasedatabase.app/'
+      'https://sport-courses-default-rtdb.asia-southeast1.firebasedatabase.app/'
   }),
   endpoints: (builder) => ({
     getAllCourses: builder.query({
